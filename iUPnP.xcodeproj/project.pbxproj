@@ -311,17 +311,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E74B1085140E240F00D4E8E2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		E78E96B2140D91FB000BB196 = {
 			isa = PBXGroup;
 			children = (
-				E74B1085140E240F00D4E8E2 /* Resources */,
 				E78E97DA140D9429000BB196 /* libiUPnP */,
 				E78E9700140D9219000BB196 /* libupnp */,
 				E78E96C7140D91FC000BB196 /* iUPnP */,
