@@ -37,6 +37,7 @@
     NSTimeInterval _timeout;
     
 }
+
 @property(nonatomic,retain) NSString* deviceType;
 @property(nonatomic,retain) NSString* friendlyName;
 @property(nonatomic,retain) NSString* manufacturer;

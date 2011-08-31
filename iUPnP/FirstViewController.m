@@ -10,15 +10,17 @@
 #import "ixml.h"
 
 @implementation FirstViewController
+@synthesize tableView;
 
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    controlPoint = [[UPnPControlPoint alloc] init];
+    controlPoint.delegate = self;
 }
-*/
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -57,6 +59,12 @@
     
 }
 
+-(IBAction) btnSearchClicked:(id) sender
+{
+    [controlPoint searchTarget:@"ssdp:all" withMx:5];
+}
+
+
 -(void) upnpDeviceDidFinishParsing:(UPnPDevice*) upnpDevice
 {
     NSLog(@"Device finish.");
@@ -89,8 +97,28 @@
 {
     
 }
+
+#pragma UPnPControlPoint callback
+
+-(void) errorDidReceive:    (NSError*) error
+{
+    
+}
+
+-(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice
+{
+    NSLog(@"Device added.");
+}
+
+-(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice
+{
+
+}
+
+
 - (void)dealloc
 {
+    [controlPoint release];
     [super dealloc];
 }
 

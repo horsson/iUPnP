@@ -25,8 +25,13 @@
     self = [super init];
     if (self)
     {
+        if (_locationURL)
+        {
+            [_locationURL release];
+        }
         _locationURL = locationURL;
-        _baseURL = [self getBaseUrlFrom:locationURL];
+        [_locationURL copy];
+        _baseURL = [[self getBaseUrlFrom:locationURL] retain];
         _upnpServiceLock = [[NSLock alloc] init];
         _timeout = timeout;
     }
@@ -39,7 +44,7 @@
     NSURL* nsurl = [[NSURL alloc] initWithString:_locationURL];
     NSURLRequest* urlRequest = [[NSURLRequest alloc] initWithURL:nsurl cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:_timeout];
     [nsurl release];
-    NSURLResponse* resp;
+    NSURLResponse* resp = NULL;
     _xmlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&resp error:NULL];
     [urlRequest release];
     NSHTTPURLResponse* httpResp = (NSHTTPURLResponse*) resp;
@@ -101,6 +106,7 @@
     if ([elementName isEqualToString:@"service"])
     {
         _service = [[UPnPService alloc] init];
+        _service.controlPointHandle = self.controlPointHandle;
         _service.delegate = self;
     }
     else if ([elementName isEqualToString:@"deviceType"]        ||  [elementName isEqualToString:@"UDN"]            || 
@@ -349,6 +355,8 @@
 #pragma dealloc and clean code.
 - (void)dealloc {
 
+    [_baseURL release];
+    [_locationURL release];
     [_upnpServiceLock release];
     [deviceType release];
     [friendlyName release];
@@ -363,7 +371,7 @@
     [presentationURL release];
     [iconList release];
     [serviceList release];
-     
+
     [super dealloc];
 }
 

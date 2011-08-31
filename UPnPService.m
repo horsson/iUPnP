@@ -94,6 +94,7 @@
     if ([elementName isEqualToString:@"action"])
     {
         _action = [[UPnPAction alloc] init];
+        _action.controlPointHandle = self.controlPointHandle;
     }
     
     if ([elementName isEqualToString:@"argumentList"])

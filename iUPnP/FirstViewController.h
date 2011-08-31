@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "UPnPDevice.h"
 #import "UPnPAction.h"
+#import "UPnPControlPoint.h"
 
-@interface FirstViewController : UIViewController<UPnPDDeviceDelegate> {
+@interface FirstViewController : UIViewController<UPnPDDeviceDelegate,UPnPControlPointDelegate> {
 
     UPnPDevice* _upnpDevice;
+    UPnPControlPoint* controlPoint;
 }
 
+@property(nonatomic,retain)IBOutlet UITableView* tableView;
 -(IBAction) btnSendAction:(id) sender;
+-(IBAction) btnSearchClicked:(id) sender;
 
 @end

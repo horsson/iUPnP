@@ -15,22 +15,25 @@
 
 @protocol UPnPControlPointDelegate <NSObject>
 
--(void) errorDidReceived:(NSError*) error;
-
+-(void) errorDidReceive:    (NSError*) error;
+-(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice;
+-(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice; 
 
 @end
 
 //One UPnPControlPoint is a cooresponding UPnP Client in libupnp.
-@interface UPnPControlPoint : NSObject {
+@interface UPnPControlPoint : NSObject<UPnPDDeviceDelegate> {
     @private
     //UPnP client handle, which is used in the entire Control Point life.
     UpnpClient_Handle _clientHandle;
-
+    dispatch_queue_t _controlPointQueue;
     NSLock* _globalLock;
+    NSLock* _devicesLock;
 
 }
 
-@property(nonatomic,retain) id<UPnPControlPointDelegate> delegate;
+@property(nonatomic,assign) id<UPnPControlPointDelegate> delegate;
+
 
 //All the devices found in the LAN, key is the Device_id.
 @property(retain) NSMutableDictionary* devices;
@@ -42,8 +45,9 @@
 
 -(void) stop;
 
+-(NSLock*) globalLock;
+-(NSLock*) devicesLock;
 
--(NSMutableDictionary*) getDevices;
--(NSLock*) getGlobalLock;
+-(dispatch_queue_t) controlPointQueue;
 
 @end

@@ -10,9 +10,8 @@
 
 @implementation UPnPControlPoint
 @synthesize delegate;
-@synthesize devices = _device;
+@synthesize devices = _devices;
 
-typedef void (^upnpXmlParserBlock)(void);
 
 //Callback function for the client.
 int upnp_callback_func(Upnp_EventType, void *, void *);
@@ -27,27 +26,27 @@ id refToSelf = nil;
     {
         [self initWithHostAddress:nil andPort:0];
     }
-    
     return self;
 }
 
+-(dispatch_queue_t) controlPointQueue
+{
+    return _controlPointQueue;
+}
 
+-(NSLock*) devicesLock
+{
+    return _devicesLock;
+}
 
 -(void) fireErrorEvent:(int) upnpError
 {
     NSError* error = [[[NSError alloc] initWithUPnPError:upnpError] autorelease];
     if (delegate)
-        [delegate errorDidReceived:error];
+        [delegate errorDidReceive:error];
 }
 
--(NSMutableDictionary*) getDevices
-{
-    @synchronized(self)
-    {
-        [[_device retain] autorelease];
-    }
-    return _device;
-}
+
 
 
 -(id) initWithHostAddress:(NSString *)address andPort:(UInt16)port
@@ -72,8 +71,12 @@ id refToSelf = nil;
             }
         }
         
-        _device = [[NSMutableDictionary alloc] init];
+        //==========================Init some iVars=====================================
+        _devices = [[NSMutableDictionary alloc] init];
         _globalLock =[[NSLock alloc] init];
+        _devicesLock = [[NSLock alloc] init];
+        _controlPointQueue = dispatch_queue_create("de.haohu.upnp.controlpoint", NULL);
+       
     }
     return self;
 }
@@ -83,8 +86,9 @@ id refToSelf = nil;
 //Callback function for the client.
 int upnp_callback_func(Upnp_EventType eventType, void *event, void *cookie)
 {
-    NSLock* lock = [[refToSelf getGlobalLock] retain];
+    NSLock* lock = [refToSelf globalLock];
     [lock lock];
+    
     switch(eventType)
     {
         case UPNP_DISCOVERY_SEARCH_RESULT:
@@ -115,7 +119,6 @@ int upnp_callback_func(Upnp_EventType eventType, void *event, void *cookie)
         }
     }
     [lock unlock];
-    [lock release];
     return UPNP_E_SUCCESS;
 }
 
@@ -123,33 +126,36 @@ int upnp_callback_func(Upnp_EventType eventType, void *event, void *cookie)
 #pragma Callback function different handle
 void handle_discovery_message(void* event)
 {
-    /*
-  
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NSAutoreleasePool *pool =[[NSAutoreleasePool alloc] init];
+
+    NSLock* nslock = [refToSelf devicesLock];
+    [nslock lock];
     struct Upnp_Discovery *discovery = (struct Upnp_Discovery*) event;
-    UPnPDevice *device = [[UPnPDevice alloc] init];
-    NSString* locationURL = [[NSString stringWithCString:discovery->Location encoding:NSUTF8StringEncoding] autorelease];
-    NSString *deviceID = [[NSString stringWithCString:discovery->DeviceId encoding:NSUTF8StringEncoding] autorelease];
+    NSString *deviceID = [NSString stringWithCString:discovery->DeviceId encoding:NSUTF8StringEncoding];
+  /*
+    if ([[refToSelf devices] objectForKey:deviceID])
+    {
+        NSLog(@"Device is in, ignore.");
+        return;
+    }
+*/
+    NSString* locationURL = [NSString stringWithCString:discovery->Location encoding:NSUTF8StringEncoding];
+    
+    
+    
+    UPnPDevice *device = [[UPnPDevice alloc] initWithLocationURL:locationURL timeout:4.0];
+
+   
     device.UDN = deviceID;
-    //dispatch_queue_t  upnpXmlParserQueue;
-    
-    //upnpXmlParserQueue = dispatch_queue_create("de.haohu.upnp.xml.queue", NULL);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-
-        NSMutableDictionary* devicesDict = [refToSelf getDevices];
-        [devicesDict retain];
-        [devicesDict setObject:device forKey:deviceID];
-        [devicesDict release];
-
-        
+    device.delegate = refToSelf;
+    [nslock unlock];
+    dispatch_async([refToSelf controlPointQueue], ^{
+        [device startParsing];
     });
-    //dispatch_release(upnpXmlParserQueue);
     
-    [device release];
     [pool drain];
-     */
-
 }
+
 
 
 
@@ -168,14 +174,36 @@ void handle_discovery_message(void* event)
     }
 }
 
--(NSLock*) getGlobalLock
+-(NSLock*) globalLock
 {
     return _globalLock;
 }
+
+
+#pragma UPnPDevice callback
+-(void) upnpDeviceDidFinishParsing:(UPnPDevice*) upnpDevice
+{
+    NSLog(@"Finish parsing.");
+    [_devices setObject:upnpDevice forKey:upnpDevice.UDN];
+    [delegate upnpDeviceDidAdd:upnpDevice];
+    [upnpDevice release];
+    
+    
+}
+
+-(void) upnpDeviceDidReceiveError:(UPnPDevice*)  withError:(NSError*) error;
+{
+    
+}
+
+
+
 -(void) dealloc
 {
+    dispatch_release(_controlPointQueue);
+    [_devicesLock release];
     [_globalLock release];
-    [_device release];
+    [_devices release];
     [delegate release];
     [super dealloc];
 }
