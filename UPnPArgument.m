@@ -10,9 +10,10 @@
 
 
 @implementation UPnPArgument
-@synthesize name,direction,relatedStateVariable;
+@synthesize name,direction,relatedStateVariable,valueType,strValue,intValue,uintValue;
 
 - (void)dealloc {
+    [strValue release];
     [name release];
     [relatedStateVariable release];
     [super dealloc];

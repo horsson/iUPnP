@@ -34,11 +34,14 @@
 @property(nonatomic,retain) NSString* SCPDURL;
 @property(nonatomic,retain) NSString* eventSubURL;
 @property(nonatomic,retain) NSString* controlURL;
-@property(retain) NSMutableArray* actionList;
+@property(retain)           NSMutableArray* actionList;
+@property(nonatomic,assign) UpnpClient_Handle controlPointHandle;
 @property(nonatomic,assign) id<UPnPServiceParserDelegate> delegate;
 
 
 -(id) initWithURL:(NSString*) url timeout:(NSTimeInterval) timeout;
 -(void) startParsing;
+
+-(NSUInteger) actionCount;
 
 @end

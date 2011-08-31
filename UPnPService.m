@@ -10,7 +10,7 @@
 
 
 @implementation UPnPService
-@synthesize serviceId,serviceType,SCPDURL,controlURL,eventSubURL,actionList,delegate;
+@synthesize serviceId,serviceType,SCPDURL,controlURL,eventSubURL,actionList,delegate,controlPointHandle;
 
 
 -(id) initWithURL:(NSString*) url timeout:(NSTimeInterval) timeout
@@ -57,6 +57,13 @@
         [_xmlParser release];
         _xmlParser = nil;
     }
+}
+
+
+
+-(NSUInteger) actionCount
+{
+    return [actionList count];
 }
 
 -(void) dealloc

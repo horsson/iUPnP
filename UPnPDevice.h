@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "UPnPIcon.h"
 #import "UPnPService.h"
+#import "upnp.h"
 
 @class UPnPDevice;
 
@@ -50,9 +51,12 @@
 @property(nonatomic,retain) NSMutableArray* iconList;
 @property(nonatomic,retain) NSMutableDictionary* serviceList;
 @property(nonatomic,assign) id<UPnPDDeviceDelegate> delegate;
+@property(nonatomic,assign) UpnpClient_Handle controlPointHandle;
 
 -(id) initWithLocationURL:(NSString*) locationURL timeout:(NSTimeInterval) timeout;
 -(UPnPService*) getUPnPServiceById:(NSString*) serviceId;
+-(UPnPAction*)  getActionByName:(NSString*) actionName;
+
 -(void) startParsing;
 
 @end

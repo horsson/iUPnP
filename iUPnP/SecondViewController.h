@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UPnPDevice.h"
 
-
-@interface SecondViewController : UIViewController {
+@interface SecondViewController : UIViewController<UPnPDDeviceDelegate> {
     
+    @private
+    UPnPDevice* _upnpDevice;
 }
+
+-(IBAction) btnParserDeviceClicked:(id)sender;
+-(IBAction) btnParserServiceClicked:(id)sender;
 
 @end

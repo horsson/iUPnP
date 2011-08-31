@@ -10,7 +10,7 @@
 
 
 @implementation UPnPDevice
-@synthesize friendlyName,UDN, UPC,iconList,modelURL,serviceList,modelName,deviceType,modelNumber,manufacturer,manufacturerURL,presentationURL,modelDescription,delegate;
+@synthesize friendlyName,UDN, UPC,iconList,modelURL,serviceList,modelName,deviceType,modelNumber,manufacturer,manufacturerURL,presentationURL,modelDescription,delegate,controlPointHandle;
 
 -(NSString*) getBaseUrlFrom:(NSString*) url
 {
@@ -64,7 +64,20 @@
    return [serviceList objectForKey:serviceId];
 }
 
-
+-(UPnPAction*)  getActionByName:(NSString*) actionName
+{
+    NSArray* services = [serviceList allValues];
+    for (UPnPService* aService in services) {
+        for (UPnPAction* anAction in aService.actionList) {
+            if ([actionName isEqualToString:anAction.name])
+            {
+                anAction.parentService = aService;
+                return anAction;
+            }
+        }
+    }
+    return nil;
+}
 
 #pragma XML-SAX callback.
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict

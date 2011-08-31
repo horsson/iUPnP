@@ -25,7 +25,7 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void) testParserDevice
 {
     
 }

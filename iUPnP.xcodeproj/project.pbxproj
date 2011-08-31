@@ -145,6 +145,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E74B1088140E55F300D4E8E2 /* iUPnP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iUPnP.h; sourceTree = "<group>"; };
 		E78E96BD140D91FC000BB196 /* iUPnP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iUPnP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78E96C1140D91FC000BB196 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E78E96C3140D91FC000BB196 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -310,9 +311,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E74B1085140E240F00D4E8E2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		E78E96B2140D91FB000BB196 = {
 			isa = PBXGroup;
 			children = (
+				E74B1085140E240F00D4E8E2 /* Resources */,
 				E78E97DA140D9429000BB196 /* libiUPnP */,
 				E78E9700140D9219000BB196 /* libupnp */,
 				E78E96C7140D91FC000BB196 /* iUPnP */,
@@ -395,7 +404,6 @@
 				E78E97D9140D92D6000BB196 /* ixml */,
 				E78E97D8140D92C8000BB196 /* pthread */,
 				E78E9709140D92A2000BB196 /* api */,
-				E78E970F140D92A2000BB196 /* autoconfig.h */,
 				E78E9776140D92A2000BB196 /* urlconfig */,
 				E78E9714140D92A2000BB196 /* gena */,
 				E78E9718140D92A2000BB196 /* genlib */,
@@ -404,6 +412,7 @@
 				E78E975F140D92A2000BB196 /* soap */,
 				E78E9763140D92A2000BB196 /* ssdp */,
 				E78E976C140D92A2000BB196 /* upnp.h */,
+				E78E970F140D92A2000BB196 /* autoconfig.h */,
 				E78E976D140D92A2000BB196 /* upnpconfig.h */,
 				E78E976E140D92A2000BB196 /* upnpdebug.h */,
 				E78E976F140D92A2000BB196 /* UpnpGlobal.h */,
@@ -651,6 +660,7 @@
 				E78E97E8140D946C000BB196 /* UPnPService.m */,
 				E78E97E9140D946C000BB196 /* UPnPStack.h */,
 				E78E97EA140D946C000BB196 /* UPnPStack.m */,
+				E74B1088140E55F300D4E8E2 /* iUPnP.h */,
 			);
 			name = libiUPnP;
 			sourceTree = "<group>";
@@ -1061,6 +1071,7 @@
 				E78E96FC140D91FC000BB196 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E78E96FD140D91FC000BB196 /* Build configuration list for PBXNativeTarget "iUPnPTests" */ = {
 			isa = XCConfigurationList;
@@ -1069,6 +1080,7 @@
 				E78E96FF140D91FC000BB196 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
