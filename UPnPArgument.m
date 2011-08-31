@@ -12,6 +12,12 @@
 @implementation UPnPArgument
 @synthesize name,direction,relatedStateVariable,valueType,strValue,intValue,uintValue;
 
+-(BOOL) isInArgument
+{
+    return (direction == UPnPArgumentDirectionIn);
+}
+
+
 - (void)dealloc {
     [strValue release];
     [name release];

@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UPnPDevice.h"
+#import "UPnPAction.h"
 
+@interface FirstViewController : UIViewController<UPnPDDeviceDelegate> {
 
-@interface FirstViewController : UIViewController {
-
+    UPnPDevice* _upnpDevice;
 }
+
+-(IBAction) btnSendAction:(id) sender;
 
 @end

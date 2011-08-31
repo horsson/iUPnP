@@ -32,5 +32,6 @@ typedef enum _ArgumentValueType {
 
 @property(nonatomic,retain) NSString* relatedStateVariable;
 
+-(BOOL) isInArgument;
 
 @end

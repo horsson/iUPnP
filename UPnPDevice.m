@@ -56,6 +56,7 @@
         [_xmlParser parse];
         [_xmlParser release];
         _xmlParser = nil;
+
     }
 }
 
@@ -71,7 +72,9 @@
         for (UPnPAction* anAction in aService.actionList) {
             if ([actionName isEqualToString:anAction.name])
             {
-                anAction.parentService = aService;
+                [anAction setControlURL:aService.controlURL];
+                [anAction setServiceType:aService.serviceType];
+                [anAction setDeviceUDN:UDN];
                 return anAction;
             }
         }
@@ -345,7 +348,7 @@
 
 #pragma dealloc and clean code.
 - (void)dealloc {
-    
+
     [_upnpServiceLock release];
     [deviceType release];
     [friendlyName release];
