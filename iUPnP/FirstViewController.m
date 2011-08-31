@@ -80,6 +80,7 @@
             DOMString str =  ixmlDocumenttoString(resDoc);
             NSLog(@"%s",str);
             ixmlDocument_free(resDoc);
+            ixmlFreeDOMString(str);
         }
     }
 }
