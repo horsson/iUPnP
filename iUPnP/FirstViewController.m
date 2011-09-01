@@ -93,35 +93,13 @@
 -(IBAction) btnSearchClicked:(id) sender
 {
     [controlPoint searchTarget:@"upnp:rootdevice" withMx:5];
+
 }
 
 #pragma UPnPDevice delegate method.
 -(void) upnpDeviceDidFinishParsing:(UPnPDevice*) upnpDevice
 {
        
-    IXML_Document* resDoc= NULL;
-    UPnPAction* action = [upnpDevice getActionByName:@"Browse"];
-    
-    [action setArgumentStringVal:@"0" forName:@"ObjectID"];
-    [action setArgumentStringVal:@"BrowseDirectioinChild" forName:@"BrowseFlag"];
-    [action setArgumentStringVal:@"*" forName:@"Filter"];
-    [action setArgumentStringVal:@"0" forName:@"StartingIndex"];
-    [action setArgumentStringVal:@"100" forName:@"RequestedCount"];
-    [action setArgumentStringVal:@"*" forName:@"SortCriteria"];
-
-    
-    if(action)
-    {
-        int rc = [action getXmlDocForAction:&resDoc];
-        if (rc == UPNP_E_SUCCESS)
-        {
-            NSLog(@"Success!!!");
-            DOMString str =  ixmlDocumenttoString(resDoc);
-            NSLog(@"%s",str);
-            ixmlDocument_free(resDoc);
-            ixmlFreeDOMString(str);
-        }
-    }
 }
 
 -(void) upnpDeviceDidReceiveError:(UPnPDevice*)  withError:(NSError*) error

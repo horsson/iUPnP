@@ -7,7 +7,10 @@
 //
 
 #import "UPnPAction.h"
+@interface UPnPAction() 
+-(int) getXmlDocForAction:(IXML_Document**) xmlDoc;
 
+@end
 
 @implementation UPnPAction
 @synthesize argumentList,name,controlPointHandle;
@@ -90,8 +93,12 @@
     const char* pcharUDN = [deviceUDN cStringUsingEncoding:NSUTF8StringEncoding];
     int result = UpnpSendAction(controlPointHandle, pcharActonurl, pcharServiceType, pcharUDN, actionNode, &actionResp);
     
+    
+    
+    ixmlDocument_free(actionResp);
     ixmlDocument_free(actionNode);
-    //
+    
+    
     return result;
 }
 

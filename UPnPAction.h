@@ -43,7 +43,3 @@
 
 @end
 
-@interface UPnPAction() 
--(int) getXmlDocForAction:(IXML_Document**) xmlDoc;
-
-@end

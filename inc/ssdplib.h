@@ -89,7 +89,7 @@ typedef enum SsdpSearchType {
 	 *  https://sourceforge.net/forum/message.php?msg_id=3166856 for more
 	 * information
 	 */
-	#define X_USER_AGENT "redsonic"
+	#define X_USER_AGENT "iUPnP"
 #endif
 
 /*! Error codes. */
