@@ -22,15 +22,14 @@ typedef enum _ArgumentValueType {
 
 @interface UPnPArgument : NSObject {
 }
-@property(nonatomic,retain)  NSString* name;
-@property(nonatomic,assign)  ArgumentValueType valueType;
-@property(nonatomic,assign)  ArgumentDirection direction;
-@property(nonatomic,assign)  NSInteger  intValue;
-@property(nonatomic,assign)  NSUInteger uintValue;
-@property(nonatomic,retain)  NSString*   strValue;
 
-
-@property(nonatomic,retain) NSString* relatedStateVariable;
+@property(nonatomic,copy)       NSString* name;
+@property(nonatomic,assign)     ArgumentValueType valueType;
+@property(nonatomic,assign)     ArgumentDirection direction;
+@property(nonatomic,assign)     NSInteger  intValue;
+@property(nonatomic,assign)     NSUInteger uintValue;
+@property(nonatomic,copy)       NSString*   strValue;
+@property(nonatomic,copy)       NSString* relatedStateVariable;
 
 -(BOOL) isInArgument;
 

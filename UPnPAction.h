@@ -21,7 +21,7 @@
     NSString* deviceUDN;
 }
 
-@property(nonatomic,retain) NSString* name;
+@property(nonatomic,copy) NSString* name;
 @property(nonatomic,retain) NSMutableArray* argumentList;
 @property(nonatomic,assign) UpnpClient_Handle controlPointHandle;
 

@@ -28,9 +28,9 @@
         if (_locationURL)
         {
             [_locationURL release];
+            _locationURL = nil;
         }
-        _locationURL = locationURL;
-        [_locationURL copy];
+        _locationURL = [locationURL copy];
         _baseURL = [[self getBaseUrlFrom:locationURL] retain];
         _upnpServiceLock = [[NSLock alloc] init];
         _timeout = timeout;
@@ -265,17 +265,6 @@
     if ([elementName isEqualToString:@"service"])
     {
         [serviceList setObject:_service forKey:_service.serviceId];
-        
-        /*
-        dispatch_async(upnpServiceQueue, ^(void) {
-            //TODO maybe bug here:
-            //FIXME!!
-            UPnPService* tempService = [[serviceList objectForKey:_service.serviceId] retain];
-            [tempService beginParser];
-            [tempService release];
-        });
-         
-         */
         [_service release];
         _service = nil;
     }
@@ -291,8 +280,8 @@
             [tempService startParsing];
         });
         dispatch_release(upnpServiceQueue);
-        
     }
+    
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -342,7 +331,7 @@
 
 -(void) parseDidFinish:(UPnPService*)  upnpService
 {
-    NSLog(@"Parser done at %@",upnpService.serviceId);
+    //NSLog(@"Parser done at %@",upnpService.serviceId);
     if ([self isFinishParsing:upnpService])
     {
         [_processingService release];

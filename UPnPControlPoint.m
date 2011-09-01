@@ -24,6 +24,7 @@ id refToSelf = nil;
     self = [super init];
     if (self)
     {
+        refToSelf = self;
         [self initWithHostAddress:nil andPort:0];
     }
     return self;
@@ -97,7 +98,7 @@ int upnp_callback_func(Upnp_EventType eventType, void *event, void *cookie)
             if (eventType == UPNP_DISCOVERY_SEARCH_RESULT)
                 NSLog(@"Device search result.");
             else
-                NSLog(@"Device advertisment.");
+                NSLog(@"Device advertisment result.");
             handle_discovery_message(event);
             break;
         }
@@ -132,20 +133,16 @@ void handle_discovery_message(void* event)
     [nslock lock];
     struct Upnp_Discovery *discovery = (struct Upnp_Discovery*) event;
     NSString *deviceID = [NSString stringWithCString:discovery->DeviceId encoding:NSUTF8StringEncoding];
-  /*
+  
     if ([[refToSelf devices] objectForKey:deviceID])
     {
         NSLog(@"Device is in, ignore.");
         return;
     }
-*/
-    NSString* locationURL = [NSString stringWithCString:discovery->Location encoding:NSUTF8StringEncoding];
-    
-    
-    
-    UPnPDevice *device = [[UPnPDevice alloc] initWithLocationURL:locationURL timeout:4.0];
 
-   
+    NSString* locationURL = [NSString stringWithCString:discovery->Location encoding:NSUTF8StringEncoding];
+    UPnPStack* upnpStack = [UPnPStack sharedUPnPStack];
+    UPnPDevice *device = [[UPnPDevice alloc] initWithLocationURL:locationURL timeout:[upnpStack defaultTimeoutForXmlParsing]];
     device.UDN = deviceID;
     device.delegate = refToSelf;
     [nslock unlock];

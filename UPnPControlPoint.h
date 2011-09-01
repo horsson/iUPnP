@@ -33,21 +33,14 @@
 }
 
 @property(nonatomic,assign) id<UPnPControlPointDelegate> delegate;
-
-
-//All the devices found in the LAN, key is the Device_id.
 @property(retain) NSMutableDictionary* devices;
 
 
 -(id) initWithHostAddress:(NSString*) address andPort:(UInt16) port;
-
 -(void) searchTarget:(NSString*) target withMx:(NSUInteger) mx;
-
 -(void) stop;
-
 -(NSLock*) globalLock;
 -(NSLock*) devicesLock;
-
 -(dispatch_queue_t) controlPointQueue;
 
 @end

@@ -18,6 +18,7 @@
 {
     [super viewDidLoad];
     controlPoint = [[UPnPControlPoint alloc] init];
+    _devices = [[NSMutableArray alloc] init];
     controlPoint.delegate = self;
 }
 
@@ -59,15 +60,21 @@
     
 }
 
+-(IBAction) btnReloadClicked:(id) sender
+{
+    [tableView reloadData];
+    NSLog(@"The number of devices is %d",[_devices count]);
+}
+
 -(IBAction) btnSearchClicked:(id) sender
 {
     [controlPoint searchTarget:@"ssdp:all" withMx:5];
 }
 
-
+#pragma UPnPDevice delegate method.
 -(void) upnpDeviceDidFinishParsing:(UPnPDevice*) upnpDevice
 {
-    NSLog(@"Device finish.");
+       
     IXML_Document* resDoc= NULL;
     UPnPAction* action = [upnpDevice getActionByName:@"Browse"];
     
@@ -107,17 +114,40 @@
 
 -(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice
 {
-    NSLog(@"Device added.");
+    NSLog(@"Device finish. The name is %@",upnpDevice.friendlyName);
+    [_devices addObject:upnpDevice];
+
 }
 
 -(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice
 {
-
+    [tableView reloadData];
 }
 
+#pragma UITableViewDatasource delegate
+- (UITableViewCell *)tableView:(UITableView *)tableVieww cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString* deviceCellId = @"DeviceListCellId";
+    UITableViewCell* cell = [tableVieww dequeueReusableCellWithIdentifier:deviceCellId];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:deviceCellId];
+        NSUInteger row = [indexPath row];
+        UPnPDevice* upnpDevice = [_devices objectAtIndex:row];
+        cell.textLabel.text = upnpDevice.friendlyName;
+    }
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableVieww numberOfRowsInSection:(NSInteger)section
+{
+    return [_devices count];
+}
 
 - (void)dealloc
 {
+    [_devices release];
     [controlPoint release];
     [super dealloc];
 }

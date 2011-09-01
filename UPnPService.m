@@ -26,7 +26,7 @@
 
 -(void) startParsing
 {
-    NSLog(@"The url is %@",SCPDURL);
+   // NSLog(@"The url is %@",SCPDURL);
     NSURL* nsurl = [[NSURL alloc] initWithString:SCPDURL];
     if (_timeout == 0) {
         _timeout = [[UPnPStack sharedUPnPStack] defaultTimeoutForXmlParsing];
