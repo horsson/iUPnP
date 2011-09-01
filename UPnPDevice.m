@@ -271,15 +271,27 @@
     
     if ([elementName isEqualToString:@"serviceList"])
     {
-        dispatch_queue_t upnpServiceQueue = dispatch_queue_create("de.haohu.upnp.service", NULL);
-        _tempServiceList =[serviceList allValues];
+
+        //dispatch_queue_t upnpServiceQueue = dispatch_queue_create("de.haohu.upnp.service", NULL);
+       dispatch_queue_t upnpServiceQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+       
         _processingService =[[NSMutableArray alloc] initWithArray:[serviceList allKeys] copyItems:YES];
+        /*
+        [serviceList enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            UPnPService* service = obj;
+                [service startParsing]; 
+        }];
+        */
+        
+        
+        _tempServiceList =[serviceList allValues];
         size_t count = [_tempServiceList count];
+        
         dispatch_apply(count, upnpServiceQueue, ^(size_t i) {
             UPnPService * tempService = [_tempServiceList objectAtIndex:i];
             [tempService startParsing];
         });
-        dispatch_release(upnpServiceQueue);
+        //dispatch_release(upnpServiceQueue);
     }
     
 }

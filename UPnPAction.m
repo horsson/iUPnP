@@ -83,12 +83,12 @@
 -(int) sendActionSync
 {
     IXML_Document* actionNode = NULL;
-    IXML_Document** actionResp = NULL;
+    IXML_Document* actionResp =ixmlDocument_createDocument();
     [self getXmlDocForAction:&actionNode];
     const char* pcharActonurl = [controlURL cStringUsingEncoding:NSUTF8StringEncoding];
     const char* pcharServiceType = [serviceType cStringUsingEncoding:NSUTF8StringEncoding];
     const char* pcharUDN = [deviceUDN cStringUsingEncoding:NSUTF8StringEncoding];
-    int result = UpnpSendAction(controlPointHandle, pcharActonurl, pcharServiceType, pcharUDN, actionNode, actionResp);
+    int result = UpnpSendAction(controlPointHandle, pcharActonurl, pcharServiceType, pcharUDN, actionNode, &actionResp);
     
     ixmlDocument_free(actionNode);
     //

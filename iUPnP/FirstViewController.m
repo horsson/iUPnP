@@ -20,6 +20,7 @@
     controlPoint = [[UPnPControlPoint alloc] init];
     _devices = [[NSMutableArray alloc] init];
     controlPoint.delegate = self;
+    tableView.dataSource = self;
 }
 
 
@@ -49,26 +50,49 @@
 
 -(IBAction) btnSendAction:(id) sender
 {
-    if (_upnpDevice)
-    {
-        [_upnpDevice release];
-        _upnpDevice = nil;
-    }
-    _upnpDevice = [[UPnPDevice alloc] initWithLocationURL:@"http://192.168.200.150:9000/TMSDeviceDescription.xml" timeout:3.0];
-    _upnpDevice.delegate = self;
-    [_upnpDevice startParsing];
+   //UDN: uuid:00113206-57d7-0011-d757-d75706321100
+    UPnPDevice* device = [controlPoint getUPnPDeviceById:@"uuid:00113206-57d7-0011-d757-d75706321100"];
+    UPnPAction* action = [device getActionByName:@"Browse"];
     
+    [action setArgumentStringVal:@"0" forName:@"ObjectID"];
+    [action setArgumentStringVal:@"BrowseDirectioinChild" forName:@"BrowseFlag"];
+    [action setArgumentStringVal:@"*" forName:@"Filter"];
+    [action setArgumentStringVal:@"0" forName:@"StartingIndex"];
+    [action setArgumentStringVal:@"100" forName:@"RequestedCount"];
+    [action setArgumentStringVal:@"*" forName:@"SortCriteria"];
+    if (action)
+    {
+        int ret =  [action sendActionSync];
+        if (ret == UPNP_E_SUCCESS)
+        {
+            UIAlertView *uiAlert = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Success" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [uiAlert show];
+            [uiAlert release];
+        }
+        else
+        {
+            NSString* errMsg = [NSString stringWithFormat:@"Error code=%d.",ret];
+            UIAlertView *uiAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:errMsg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [uiAlert show];
+            [uiAlert release];
+        }
+    }
+    
+
 }
 
 -(IBAction) btnReloadClicked:(id) sender
 {
     [tableView reloadData];
     NSLog(@"The number of devices is %d",[_devices count]);
+    for (UPnPDevice *aDevice in _devices) {
+        NSLog(@"The device name is %@.",aDevice.friendlyName);
+    }
 }
 
 -(IBAction) btnSearchClicked:(id) sender
 {
-    [controlPoint searchTarget:@"ssdp:all" withMx:5];
+    [controlPoint searchTarget:@"upnp:rootdevice" withMx:5];
 }
 
 #pragma UPnPDevice delegate method.
@@ -115,6 +139,7 @@
 -(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice
 {
     NSLog(@"Device finish. The name is %@",upnpDevice.friendlyName);
+    NSLog(@"Device ID is %@", upnpDevice.UDN);
     [_devices addObject:upnpDevice];
 
 }
@@ -131,12 +156,11 @@
     UITableViewCell* cell = [tableVieww dequeueReusableCellWithIdentifier:deviceCellId];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:deviceCellId];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:deviceCellId] autorelease];
         NSUInteger row = [indexPath row];
         UPnPDevice* upnpDevice = [_devices objectAtIndex:row];
         cell.textLabel.text = upnpDevice.friendlyName;
     }
-    
     return cell;
 }
 
