@@ -147,7 +147,7 @@ typedef enum {
 	IXML_INVALID_ITEM_NUMBER         = 107,
 } IXML_ERRORCODE;
 
-
+//DEBUG Hao Hu
 #define DOCUMENTNODENAME    "#document"
 #define TEXTNODENAME        "#text"
 #define CDATANODENAME       "#cdata-section"

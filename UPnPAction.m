@@ -53,52 +53,65 @@
     }
 }
 
-//TODO Maybe support in next version.
-/*
--(void) setArgumentIntVal:(NSInteger) val forName:(NSString*) argumentName
-{
-    for (UPnPArgument* anArg in argumentList) {
-        if ([argumentName isEqualToString:anArg.name] && (anArg.direction == UPnPArgumentDirectionIn))
-        {
-            anArg.intValue = val;
-            anArg.valueType = UPnPArgumentValueInt;
-        }
-    }
-}
 
--(void) setArgumentUIntVal:(NSUInteger) val forName:(NSString*) argumentName
-{
-    for (UPnPArgument* anArg in argumentList) {
-        if ([argumentName isEqualToString:anArg.name] && (anArg.direction == UPnPArgumentDirectionIn))
-        {
-            anArg.uintValue = val;
-            anArg.valueType = UPnPArgumentValueUInt;
-        }
-    }
-}
-*/
 
--(void) getArgumentStringVal:(NSString*) argumentName
+-(NSString*) getArgumentStringVal:(NSString*) argumentName
 {
-    
+   UPnPArgument* arg =  [self getArgumentByName:argumentName];
+   if (arg)
+   {
+       return  arg.strValue;
+   }
+    else
+    {
+        return  nil;
+    }
 }
 
 -(int) sendActionSync
 {
     IXML_Document* actionNode = NULL;
+    
     IXML_Document* actionResp =ixmlDocument_createDocument();
-    [self getXmlDocForAction:&actionNode];
+    
+    int ret =  [self getXmlDocForAction:&actionNode] ;
+    if (ret != UPNP_E_SUCCESS)
+    {
+        return ret;
+    }
+    
     const char* pcharActonurl = [controlURL cStringUsingEncoding:NSUTF8StringEncoding];
     const char* pcharServiceType = [serviceType cStringUsingEncoding:NSUTF8StringEncoding];
     const char* pcharUDN = [deviceUDN cStringUsingEncoding:NSUTF8StringEncoding];
     int result = UpnpSendAction(controlPointHandle, pcharActonurl, pcharServiceType, pcharUDN, actionNode, &actionResp);
     
     
-    
-    ixmlDocument_free(actionResp);
+    if (result != UPNP_E_SUCCESS)
+    {
+        if (actionResp != NULL)
+            ixmlDocument_free(actionResp);
+        ixmlDocument_free(actionNode);
+        return result;
+    }
     ixmlDocument_free(actionNode);
     
+    //Parser the result.
+    char* pcharResult = ixmlDocumenttoString(actionResp);
     
+    ixmlDocument_free(actionResp);
+    
+    if (pcharResult == NULL)
+    {
+      return UPNP_E_INTERNAL_ERROR;      
+    }
+    
+    NSData* respData = [[NSData alloc] initWithBytes:pcharResult length:strlen(pcharResult)];
+    free(pcharResult);
+    NSXMLParser* respParser = [[NSXMLParser alloc] initWithData:respData];
+    [respData release];
+    [respParser setDelegate:self];
+    [respParser parse];
+    [respParser release];
     return result;
 }
 
@@ -133,4 +146,40 @@
     [name release];
     [super dealloc];
 }
+
+
+#pragma NSXMLParser delegate method.
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
+{
+    //DEBUG
+    if (_contentStr)
+    {
+        [_contentStr release];
+        _contentStr = nil;
+    }
+    _contentStr = [[NSMutableString alloc] init];
+  
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    UPnPArgument* arg = [self getArgumentByName:elementName];
+    if (arg)
+    {
+        arg.strValue = _contentStr;
+        [_contentStr release];
+        _contentStr = nil;
+    }
+    
+    if (_contentStr) {
+        [_contentStr release];
+        _contentStr = nil;
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    [_contentStr appendString:string];
+}
+
 @end

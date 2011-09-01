@@ -121,6 +121,11 @@
              [elementName isEqualToString:@"controlURL"]
              )
     {
+        if (_currentContent)
+        {
+            [_currentContent release];
+            _currentContent = nil;
+        }
         _currentContent = [[NSMutableString alloc] init];
     }
 }

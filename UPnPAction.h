@@ -13,12 +13,13 @@
 #include "upnptools.h"
 
 
-@interface UPnPAction : NSObject {
+@interface UPnPAction : NSObject<NSXMLParserDelegate> {
 
     @private
     NSString* serviceType;
     NSString* controlURL;
     NSString* deviceUDN;
+    NSMutableString* _contentStr;
 }
 
 @property(nonatomic,copy) NSString* name;
@@ -31,7 +32,7 @@
 -(void) setArgumentStringVal:(NSString*) val forName:(NSString*) argumentName;
 //-(void) setArgumentIntVal:(NSInteger) val forName:(NSString*) argumentName;
 //-(void) setArgumentUIntVal:(NSUInteger) val forName:(NSString*) argumentName;
--(void) getArgumentStringVal:(NSString*) argumentName;
+-(NSString*) getArgumentStringVal:(NSString*) argumentName;
 
 -(void) setServiceType:(NSString*) newServiceType;
 -(void) setControlURL:(NSString*) newControlURL;

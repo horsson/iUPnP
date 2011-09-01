@@ -47,7 +47,7 @@ id refToSelf = nil;
 
 -(UPnPDevice*) getUPnPDeviceById:(NSString*) deviceID
 {
-    return [[_devices objectForKey:deviceID] autorelease];
+    return [_devices objectForKey:deviceID];
 }
 
 
@@ -158,7 +158,7 @@ void handle_byebye_message(void* event)
 {
     struct Upnp_Discovery* discovery = (struct Upnp_Discovery*) event;
     NSString* deviceId = [NSString stringWithCString:discovery->DeviceId encoding:NSUTF8StringEncoding];
-    UPnPDevice *device = [[[refToSelf devices] objectForKey:deviceId] autorelease];
+    UPnPDevice *device = [[[[refToSelf devices] objectForKey:deviceId] retain] autorelease];
     [[refToSelf devices] removeObjectForKey:deviceId];
     [[refToSelf deviceIDSet] removeObject:deviceId];
     if ([refToSelf delegate])
@@ -203,8 +203,6 @@ void handle_byebye_message(void* event)
 {
     
 }
-
-
 
 -(void) dealloc
 {

@@ -173,8 +173,8 @@ int ixmlDocument_createDocumentEx(IXML_Document **rtDoc)
 {
 	IXML_Document *doc;
 	int errCode = IXML_SUCCESS;
-
-	doc = NULL;
+    	
+    doc = NULL;
 	doc = (IXML_Document *)malloc(sizeof (IXML_Document));
 	if (doc == NULL) {
 		errCode = IXML_INSUFFICIENT_MEMORY;
