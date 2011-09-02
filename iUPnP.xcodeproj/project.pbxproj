@@ -132,6 +132,13 @@
 		E78E97F8140D946C000BB196 /* UPnPService.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E97E8140D946C000BB196 /* UPnPService.m */; };
 		E78E97F9140D946C000BB196 /* UPnPStack.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E97EA140D946C000BB196 /* UPnPStack.m */; };
 		E78E97FA140D946C000BB196 /* UPnPStack.m in Sources */ = {isa = PBXBuildFile; fileRef = E78E97EA140D946C000BB196 /* UPnPStack.m */; };
+		E7E06BC01410D57D002362D0 /* MediaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E06BBF1410D57D002362D0 /* MediaObject.m */; };
+		E7E06BC11410D57D002362D0 /* MediaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E06BBF1410D57D002362D0 /* MediaObject.m */; };
+		E7E06BC41410D594002362D0 /* MediaContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E06BC31410D594002362D0 /* MediaContainer.m */; };
+		E7E06BC71410D5A7002362D0 /* MediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E06BC61410D5A7002362D0 /* MediaItem.m */; };
+		E7E06BCA1410D8BA002362D0 /* MediaRes.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E06BC91410D8BA002362D0 /* MediaRes.m */; };
+		E7E06BCE1410E07A002362D0 /* ObjectClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E06BCD1410E07A002362D0 /* ObjectClass.m */; };
+		E7E06BD11410F849002362D0 /* DidlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E06BD01410F848002362D0 /* DidlParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,7 +152,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E74B1088140E55F300D4E8E2 /* iUPnP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iUPnP.h; sourceTree = "<group>"; };
 		E78E96BD140D91FC000BB196 /* iUPnP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iUPnP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78E96C1140D91FC000BB196 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E78E96C3140D91FC000BB196 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -285,6 +291,18 @@
 		E78E97E8140D946C000BB196 /* UPnPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPnPService.m; sourceTree = "<group>"; };
 		E78E97E9140D946C000BB196 /* UPnPStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPnPStack.h; sourceTree = "<group>"; };
 		E78E97EA140D946C000BB196 /* UPnPStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPnPStack.m; sourceTree = "<group>"; };
+		E7E06BBE1410D57D002362D0 /* MediaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaObject.h; sourceTree = "<group>"; };
+		E7E06BBF1410D57D002362D0 /* MediaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaObject.m; sourceTree = "<group>"; };
+		E7E06BC21410D594002362D0 /* MediaContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaContainer.h; sourceTree = "<group>"; };
+		E7E06BC31410D594002362D0 /* MediaContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaContainer.m; sourceTree = "<group>"; };
+		E7E06BC51410D5A7002362D0 /* MediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaItem.h; sourceTree = "<group>"; };
+		E7E06BC61410D5A7002362D0 /* MediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaItem.m; sourceTree = "<group>"; };
+		E7E06BC81410D8BA002362D0 /* MediaRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaRes.h; sourceTree = "<group>"; };
+		E7E06BC91410D8BA002362D0 /* MediaRes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaRes.m; sourceTree = "<group>"; };
+		E7E06BCC1410E07A002362D0 /* ObjectClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectClass.h; sourceTree = "<group>"; };
+		E7E06BCD1410E07A002362D0 /* ObjectClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectClass.m; sourceTree = "<group>"; };
+		E7E06BCF1410F848002362D0 /* DidlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DidlParser.h; sourceTree = "<group>"; };
+		E7E06BD01410F848002362D0 /* DidlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DidlParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,7 +333,6 @@
 			isa = PBXGroup;
 			children = (
 				E78E97DA140D9429000BB196 /* libiUPnP */,
-				E78E9700140D9219000BB196 /* libupnp */,
 				E78E96C7140D91FC000BB196 /* iUPnP */,
 				E78E96ED140D91FC000BB196 /* iUPnPTests */,
 				E78E96C0140D91FC000BB196 /* Frameworks */,
@@ -393,6 +410,7 @@
 		E78E9700140D9219000BB196 /* libupnp */ = {
 			isa = PBXGroup;
 			children = (
+				E78E9778140D92A2000BB196 /* uuid */,
 				E78E97D9140D92D6000BB196 /* ixml */,
 				E78E97D8140D92C8000BB196 /* pthread */,
 				E78E9709140D92A2000BB196 /* api */,
@@ -400,7 +418,6 @@
 				E78E9714140D92A2000BB196 /* gena */,
 				E78E9718140D92A2000BB196 /* genlib */,
 				E78E972E140D92A2000BB196 /* inc */,
-				E78E975E140D92A2000BB196 /* README */,
 				E78E975F140D92A2000BB196 /* soap */,
 				E78E9763140D92A2000BB196 /* ssdp */,
 				E78E976C140D92A2000BB196 /* upnp.h */,
@@ -414,7 +431,6 @@
 				E78E9773140D92A2000BB196 /* UpnpString.h */,
 				E78E9774140D92A2000BB196 /* upnptools.h */,
 				E78E9775140D92A2000BB196 /* UpnpUniStd.h */,
-				E78E9778140D92A2000BB196 /* uuid */,
 			);
 			name = libupnp;
 			sourceTree = "<group>";
@@ -636,6 +652,17 @@
 		E78E97DA140D9429000BB196 /* libiUPnP */ = {
 			isa = PBXGroup;
 			children = (
+				E78E975E140D92A2000BB196 /* README */,
+				E78E9700140D9219000BB196 /* libupnp */,
+				E7E06BBD1410CE11002362D0 /* av */,
+				E7E06BBB1410CDF1002362D0 /* core */,
+			);
+			name = libiUPnP;
+			sourceTree = "<group>";
+		};
+		E7E06BBB1410CDF1002362D0 /* core */ = {
+			isa = PBXGroup;
+			children = (
 				E78E97DB140D946C000BB196 /* NSError+UPnP.h */,
 				E78E97DC140D946C000BB196 /* NSError+UPnP.m */,
 				E78E97DD140D946C000BB196 /* UPnPAction.h */,
@@ -652,9 +679,35 @@
 				E78E97E8140D946C000BB196 /* UPnPService.m */,
 				E78E97E9140D946C000BB196 /* UPnPStack.h */,
 				E78E97EA140D946C000BB196 /* UPnPStack.m */,
-				E74B1088140E55F300D4E8E2 /* iUPnP.h */,
 			);
-			name = libiUPnP;
+			name = core;
+			sourceTree = "<group>";
+		};
+		E7E06BBD1410CE11002362D0 /* av */ = {
+			isa = PBXGroup;
+			children = (
+				E7E06BCB1410E033002362D0 /* didl */,
+			);
+			name = av;
+			sourceTree = "<group>";
+		};
+		E7E06BCB1410E033002362D0 /* didl */ = {
+			isa = PBXGroup;
+			children = (
+				E7E06BBE1410D57D002362D0 /* MediaObject.h */,
+				E7E06BBF1410D57D002362D0 /* MediaObject.m */,
+				E7E06BC21410D594002362D0 /* MediaContainer.h */,
+				E7E06BC31410D594002362D0 /* MediaContainer.m */,
+				E7E06BC51410D5A7002362D0 /* MediaItem.h */,
+				E7E06BC61410D5A7002362D0 /* MediaItem.m */,
+				E7E06BC81410D8BA002362D0 /* MediaRes.h */,
+				E7E06BC91410D8BA002362D0 /* MediaRes.m */,
+				E7E06BCC1410E07A002362D0 /* ObjectClass.h */,
+				E7E06BCD1410E07A002362D0 /* ObjectClass.m */,
+				E7E06BCF1410F848002362D0 /* DidlParser.h */,
+				E7E06BD01410F848002362D0 /* DidlParser.m */,
+			);
+			name = didl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -822,6 +875,12 @@
 				E78E97F5140D946C000BB196 /* UPnPIcon.m in Sources */,
 				E78E97F7140D946C000BB196 /* UPnPService.m in Sources */,
 				E78E97F9140D946C000BB196 /* UPnPStack.m in Sources */,
+				E7E06BC01410D57D002362D0 /* MediaObject.m in Sources */,
+				E7E06BC41410D594002362D0 /* MediaContainer.m in Sources */,
+				E7E06BC71410D5A7002362D0 /* MediaItem.m in Sources */,
+				E7E06BCA1410D8BA002362D0 /* MediaRes.m in Sources */,
+				E7E06BCE1410E07A002362D0 /* ObjectClass.m in Sources */,
+				E7E06BD11410F849002362D0 /* DidlParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +942,7 @@
 				E78E97F6140D946C000BB196 /* UPnPIcon.m in Sources */,
 				E78E97F8140D946C000BB196 /* UPnPService.m in Sources */,
 				E78E97FA140D946C000BB196 /* UPnPStack.m in Sources */,
+				E7E06BC11410D57D002362D0 /* MediaObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

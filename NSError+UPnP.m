@@ -15,33 +15,11 @@
 {
     NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] initWithCapacity:2];
     
-    NSString * errDesc = nil;
-    switch (errorCode) {
-        case UPNP_E_INIT_FAILED:
-            errDesc =@"";
-            break;
-        case UPNP_E_INIT:
-            errDesc =@"";
-            break;
-        case UPNP_E_NETWORK_ERROR:
-            errDesc =@"";
-            break;
-        case UPNP_E_SOCKET_WRITE:
-            errDesc =@"";
-            break;
-        case UPNP_E_SOCKET_BIND:
-            errDesc =@"";
-            break;
-            
-        case UPNP_E_SOCKET_CONNECT:
-            errDesc =@"";
-            break;
-        default:
-            break;
-    }
+    const char* errMsg =UpnpGetErrorMessage(errorCode); 
     
+    NSString * errDesc = [[NSString alloc] initWithBytes:errMsg length:strlen(errMsg) encoding:NSUTF8StringEncoding];
     [userInfo setObject:errDesc forKey:NSLocalizedDescriptionKey];
-    
+    [errDesc release];
     self = [self initWithDomain:@"UPnP_Domain" code:errorCode userInfo:userInfo];
     return self;
 }

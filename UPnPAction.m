@@ -72,7 +72,7 @@
 {
     IXML_Document* actionNode = NULL;
     
-    IXML_Document* actionResp =ixmlDocument_createDocument();
+    IXML_Document* actionResp = NULL;//=ixmlDocument_createDocument();
     
     int ret =  [self getXmlDocForAction:&actionNode] ;
     if (ret != UPNP_E_SUCCESS)

@@ -545,6 +545,8 @@ SoapSendAction( IN char *action_url,
     size_t xml_end_len;
     size_t action_str_len;
 
+    //DEBUG
+    ixmlDocument_free(*response_node);
     *response_node = NULL;      /* init */
 
     err_code = UPNP_E_OUTOF_MEMORY; /* default error */
@@ -695,6 +697,8 @@ int SoapSendActionEx(
     size_t xml_end_len;
     off_t content_length;
 
+    //DEBUG
+    ixmlDocument_free(*response_node);
     *response_node = NULL;      /* init */
 
     err_code = UPNP_E_OUTOF_MEMORY; /* default error */

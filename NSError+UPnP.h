@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "upnp.h"
+#import "upnptools.h"
 
 @interface NSError (NSError_UPnP)
 
