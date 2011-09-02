@@ -8,11 +8,8 @@
 
 #import "ObjectClass.h"
 
-@interface ObjectClass() {
-}
 
--(BOOL) isItem:(NSString*) itemName;
-@end
+
 
 @implementation ObjectClass
 

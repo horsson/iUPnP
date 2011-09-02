@@ -21,5 +21,6 @@
 -(BOOL) isAudioItem;
 -(BOOL) isImageItem;
 -(BOOL) isContainer;
+-(BOOL) isItem:(NSString*) itemName;
 
 @end

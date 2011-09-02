@@ -23,6 +23,7 @@
     MediaRes*       _res;
 }
 -(id) initWithData:(NSData *)data;
+-(id) initWithString:(NSString*) xmlString;
 
 -(BOOL) parse;
 

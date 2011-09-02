@@ -15,6 +15,7 @@
 
 @protocol UPnPControlPointDelegate <NSObject>
 
+-(void) searchDidTimeout;
 -(void) errorDidReceive:    (NSError*) error;
 -(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice;
 -(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice; 

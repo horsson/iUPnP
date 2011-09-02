@@ -29,6 +29,12 @@
     return self;
 }
 
+-(id) initWithString:(NSString*) xmlString
+{
+    self = [self initWithData:[xmlString dataUsingEncoding:NSUTF8StringEncoding]];
+    return self;
+}
+
 -(BOOL) parse
 {
     return [_parser parse];
@@ -42,7 +48,7 @@
 
 -(NSArray*) mediaObjects
 {
-    return [_mediaObjects autorelease];
+    return [[_mediaObjects copy] autorelease];
 }
 
 - (void)dealloc {
@@ -60,9 +66,9 @@
         _mediaContainer = [[MediaContainer alloc] init];
         _mediaContainer.ID = [attributeDict objectForKey:@"id"];
         _mediaContainer.parentID = [attributeDict objectForKey:@"parentID"];
-        _mediaContainer.neverPlayable = [[attributeDict objectForKey:@"neverPlayable"] unsignedIntValue];
-        _mediaContainer.restricted = [[attributeDict objectForKey:@"restricted"] unsignedIntValue];
-        _mediaContainer.childCount = [[attributeDict objectForKey:@"childCount"] unsignedIntValue];
+        _mediaContainer.neverPlayable = [[attributeDict objectForKey:@"neverPlayable"] intValue];
+        _mediaContainer.restricted = [[attributeDict objectForKey:@"restricted"] intValue];
+        _mediaContainer.childCount = [[attributeDict objectForKey:@"childCount"] intValue];
         _currentTag = _mediaContainer;
     }
     else if ([@"item" isEqualToString:elementName])
@@ -71,8 +77,9 @@
         _mediaItem.ID = [attributeDict objectForKey:@"id"];
         _mediaItem.parentID = [attributeDict objectForKey:@"parentID"];
         _mediaItem.refID = [attributeDict objectForKey:@"refID"];
-        _mediaItem.neverPlayable = [[attributeDict objectForKey:@"neverPlayable"] unsignedIntValue];
-        _mediaItem.restricted = [[attributeDict objectForKey:@"restricted"] unsignedIntValue];
+        _mediaItem.neverPlayable = [[attributeDict objectForKey:@"neverPlayable"] intValue];
+        
+        _mediaItem.restricted = [[attributeDict objectForKey:@"restricted"] intValue];
         _currentTag = _mediaItem;
 
     } else if ([@"res" isEqualToString:elementName])
@@ -80,9 +87,9 @@
     {
         _res = [[MediaRes alloc] init];
         _res.duration = [attributeDict objectForKey:@"duration"];
-        _res.size = [[attributeDict objectForKey:@"size"] unsignedLongLongValue];
+        _res.size = [[attributeDict objectForKey:@"size"] longLongValue];
         _res.protocolInfo = [attributeDict objectForKey:@"protocolInfo"];
-        _res.bitrate = [[attributeDict objectForKey:@"bitrate"] unsignedIntValue];
+        _res.bitrate = [[attributeDict objectForKey:@"bitrate"] intValue];
         _res.resolution = [attributeDict objectForKey:@"resolution"];
     }
     
@@ -288,13 +295,14 @@
         [self freeString:_currentString];
     }
 
-    
+    /*
     // double check _contentString
     if (_currentString)
     {
         [_currentString release];
         _currentString = nil;
     }
+     */
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string

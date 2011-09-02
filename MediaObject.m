@@ -10,7 +10,7 @@
 #import "MediaContainer.h"
 
 @implementation MediaObject
-@synthesize ID,title,parentID,restricted,neverPlayable,clazz,creator,resList,actorList,genreList,artistList,authorList,directorList,playlistList,albumArtURIList,createClassList,searchClassList,writeStatusList,originalTrackNumber;
+@synthesize ID,title,parentID,restricted,neverPlayable,clazz,creator,resList,actorList,genreList,artistList,authorList,directorList,playlistList,albumArtURIList,createClassList,searchClassList,writeStatusList,originalTrackNumber,albumList;
 
 -(BOOL) isContainer
 {

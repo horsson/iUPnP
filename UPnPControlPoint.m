@@ -101,7 +101,7 @@ int upnp_callback_func(Upnp_EventType eventType, void *event, void *cookie)
         }
         case UPNP_DISCOVERY_SEARCH_TIMEOUT:
         {
-            NSLog(@"Search Timeout.");
+            //[[refToSelf delegate] searchDidTimeout];
             break;
         }
         case UPNP_DISCOVERY_ADVERTISEMENT_BYEBYE:

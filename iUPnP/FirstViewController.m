@@ -8,6 +8,7 @@
 
 #import "FirstViewController.h"
 #import "ixml.h"
+#import "DidlParser.h"
 
 @implementation FirstViewController
 @synthesize tableView;
@@ -70,7 +71,16 @@
             [uiAlert show];
             [uiAlert release];
             NSString* rrr = [action getArgumentStringVal:@"Result"];
-            NSLog(@"Result = %@",rrr);
+            DidlParser* didlParser = [[DidlParser alloc] initWithString:rrr];
+            if ([didlParser parse])
+            {
+                NSArray* objList = [[didlParser mediaObjects] retain];
+                for (MediaObject* anMediaObj in objList) {
+                    NSLog(@"The ID: %@",anMediaObj.ID);
+                }
+                [objList release];
+            }
+            [didlParser release];
         }
         else
         {
@@ -122,6 +132,18 @@
     NSLog(@"Device finish. The name is %@",upnpDevice.friendlyName);
     NSLog(@"Device ID is %@", upnpDevice.UDN);
     [_devices addObject:upnpDevice];
+
+}
+
+-(void) searchDidTimeout
+{
+    NSLog(@"Search Done.");
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        UIAlertView *uiAlert = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Search Done" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [uiAlert show];
+        [uiAlert release];
+    
+    });
 
 }
 

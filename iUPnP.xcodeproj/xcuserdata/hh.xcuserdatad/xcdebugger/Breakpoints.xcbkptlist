@@ -8,14 +8,14 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "soap/soap_ctrlpt.c"
-         timestampString = "336594042.359851"
+         filePath = "DidlParser.m"
+         timestampString = "336666289.197255"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "545"
-         endingLineNumber = "545"
-         landmarkName = "SoapSendAction()"
-         landmarkType = "7">
+         startingLineNumber = "78"
+         endingLineNumber = "78"
+         landmarkName = "-parser:didStartElement:namespaceURI:qualifiedName:attributes:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
