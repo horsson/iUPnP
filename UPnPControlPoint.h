@@ -17,8 +17,8 @@
 
 -(void) searchDidTimeout;
 -(void) errorDidReceive:    (NSError*) error;
--(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice;
--(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice; 
+-(void) upnpDeviceDidAdd:   (NSString*) upnpDevice;
+-(void) upnpDeviceDidLeave: (NSString*) upnpDevice; 
 
 @end
 
@@ -29,7 +29,7 @@
    // UpnpClient_Handle _clientHandle;
     dispatch_queue_t _controlPointQueue;
     NSLock* _globalLock;   
-
+    NSLock* _deviceListLock;
 }
 
 @property(nonatomic,assign) id<UPnPControlPointDelegate> delegate;
@@ -41,7 +41,7 @@
 -(void) searchTarget:(NSString*) target withMx:(NSUInteger) mx;
 -(void) stop;
 -(NSLock*) globalLock;
-//dispatch_queue_t should be passed by address???! Becuase it is a struct in fact.
+
 -(dispatch_queue_t) controlPointQueue;
 
 -(UPnPDevice*) getUPnPDeviceById:(NSString*) deviceID;

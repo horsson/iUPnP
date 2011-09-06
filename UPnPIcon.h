@@ -11,8 +11,8 @@
 @interface UPnPIcon : NSObject {
     
 }
-@property (nonatomic,retain)   NSString* mimetype;
-@property (nonatomic,retain)   NSString* url;
+@property (nonatomic,copy)   NSString* mimetype;
+@property (nonatomic,copy)   NSString* url;
 @property (nonatomic)           UInt16 width;
 @property (nonatomic)           UInt16 height;
 @property (nonatomic)           UInt8 depth;

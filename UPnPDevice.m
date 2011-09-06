@@ -12,13 +12,7 @@
 @implementation UPnPDevice
 @synthesize friendlyName,UDN, UPC,iconList,modelURL,serviceList,modelName,deviceType,modelNumber,manufacturer,manufacturerURL,presentationURL,modelDescription,delegate,controlPointHandle;
 
--(NSString*) getBaseUrlFrom:(NSString*) url
-{
-    NSURL *tempUrl = [[NSURL alloc] initWithString:url];
-    NSString* baseUrl = [NSString stringWithFormat:@"%@://%@:%@",[tempUrl scheme],[tempUrl host],[[tempUrl port] stringValue]];
-    [tempUrl release];
-    return baseUrl;
-}
+
 
 -(id) initWithLocationURL:(NSString*) locationURL timeout:(NSTimeInterval) timeout
 {
@@ -30,9 +24,14 @@
             [_locationURL release];
             _locationURL = nil;
         }
+        
         _locationURL = [locationURL copy];
-        _baseURL = [[self getBaseUrlFrom:locationURL] retain];
-        _upnpServiceLock = [[NSLock alloc] init];
+        
+        NSURL* tempUrl = [[NSURL alloc] initWithString:_locationURL];
+        
+        _baseURL = [[NSString alloc] initWithFormat:@"%@://%@:%@",[tempUrl scheme],[tempUrl host],[[tempUrl port] stringValue]];
+        
+        [tempUrl release];
         _timeout = timeout;
     }
     
@@ -88,6 +87,17 @@
 }
 
 #pragma XML-SAX callback.
+- (void)parserDidStartDocument:(NSXMLParser *)parser
+{
+    _currentContent = [[NSMutableString alloc] initWithCapacity:255];
+}
+
+- (void)parserDidEndDocument:(NSXMLParser *)parser
+{
+    [_currentContent release];
+    _currentContent = nil;
+}
+
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
 {
     if ([elementName isEqualToString:@"iconList"])
@@ -109,117 +119,85 @@
         _service.controlPointHandle = self.controlPointHandle;
         _service.delegate = self;
     }
-    else if ([elementName isEqualToString:@"deviceType"]        ||  [elementName isEqualToString:@"UDN"]            || 
-             [elementName isEqualToString:@"friendlyName"]      ||  [elementName isEqualToString:@"manufacturer"]   || 
-             [elementName isEqualToString:@"manufacturerURL"]   ||  [elementName isEqualToString:@"modelName"]      || 
-             [elementName isEqualToString:@"modelURL"]          ||  [elementName isEqualToString:@"modelDescription"] || 
-             [elementName isEqualToString:@"presentationURL"]   ||  [elementName isEqualToString:@"mimetype"]       ||
-             [elementName isEqualToString:@"height"]            ||  [elementName isEqualToString:@"width"]          ||
-             [elementName isEqualToString:@"depth"]             ||  [elementName isEqualToString:@"url"]            ||
-             [elementName isEqualToString:@"serviceType"]       ||  [elementName isEqualToString:@"serviceId"]      ||
-             [elementName isEqualToString:@"SCPDURL"]           ||  [elementName isEqualToString:@"eventSubURL"]    ||
-             [elementName isEqualToString:@"controlURL"]
-             )
-    {
-        if (_currentContent)
-        {
-            [_currentContent release];
-            _currentContent = nil;
-        }
-        _currentContent = [[NSMutableString alloc] init];
-    }
+    
+    [_currentContent setString:@""];
+
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    if ([elementName isEqualToString:@"deviceType"])
+    static  NSString* kDeviceType=@"deviceType";
+    static  NSString* kUDN = @"UDN";
+
+    
+    if ([elementName isEqualToString:kDeviceType])
     {
         self.deviceType = _currentContent;
-        [_currentContent release];
-        _currentContent = nil;
+        //[_currentContent release];
+        //_currentContent = nil;
     }
-    if ([elementName isEqualToString:@"UDN"])
+    if ([elementName isEqualToString:kUDN])
     {
         self.UDN = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
     }
     if ([elementName isEqualToString:@"friendlyName"])
     {
         self.friendlyName = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
+
     }
     if ([elementName isEqualToString:@"manufacturer"])
     {
         self.manufacturer = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
+
     }
     if ([elementName isEqualToString:@"manufacturerURL"])
     {
         self.manufacturerURL = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
     }
     if ([elementName isEqualToString:@"modelName"])
     {
         self.modelName = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
+
     }
     if ([elementName isEqualToString:@"modelURL"])
     {
        self.modelURL = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
     }
     if ([elementName isEqualToString:@"modelDescription"])
     {
         self.modelDescription = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
+
     }
     if ([elementName isEqualToString:@"presentationURL"])
     {
         self.presentationURL = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
     }
     if ([elementName isEqualToString:@"mimetype"])
     {
         _icon.mimetype = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
     }
 
     if ([elementName isEqualToString:@"height"])
     {
         _icon.height = [_currentContent intValue];
-        [_currentContent release];
-          _currentContent = nil;
     }
     
     if ([elementName isEqualToString:@"width"])
     {
        _icon.width = [_currentContent intValue];
-        [_currentContent release];
-          _currentContent = nil;
+
     }
     
     if ([elementName isEqualToString:@"depth"])
     {
         _icon.depth = [_currentContent intValue];
-        [_currentContent release];
-          _currentContent = nil;
+
     }
     if ([elementName isEqualToString:@"url"])
     {   
        NSString* fullUrl = [[NSString alloc] initWithFormat:@"%@%@",_baseURL ,_currentContent];
         _icon.url = fullUrl;
         [fullUrl release];
-        [_currentContent release];
-          _currentContent = nil;
     }
     
     if ([elementName isEqualToString:@"icon"])
@@ -232,54 +210,50 @@
     if ([elementName isEqualToString:@"serviceType"])
     {
         _service.serviceType = _currentContent;
-        [_currentContent release];
-          _currentContent = nil;
+
     }
     
     if ([elementName isEqualToString:@"serviceId"])
     {
         _service.serviceId = _currentContent;
-        [_currentContent release];
-        _currentContent = nil;
+
     }
     if ([elementName isEqualToString:@"SCPDURL"])
     {
          NSString* fullUrl = [[NSString alloc] initWithFormat:@"%@%@",_baseURL ,_currentContent];
         _service.SCPDURL = fullUrl;
         [fullUrl release];
-        [_currentContent release];
-        _currentContent = nil;
+
     }
     if ([elementName isEqualToString:@"eventSubURL"])
     {
          NSString* fullUrl = [[NSString alloc] initWithFormat:@"%@%@",_baseURL ,_currentContent];
         _service.eventSubURL = fullUrl;
         [fullUrl release];
-        [_currentContent release];
-        _currentContent = nil;
+
     }
     if ([elementName isEqualToString:@"controlURL"])
     {
          NSString* fullUrl = [[NSString alloc] initWithFormat:@"%@%@",_baseURL ,_currentContent];
         _service.controlURL = fullUrl;
         [fullUrl release];
-        [_currentContent release];
-        _currentContent = nil;
+
     }
     
     if ([elementName isEqualToString:@"service"])
     {
         [serviceList setObject:_service forKey:_service.serviceId];
         [_service release];
+        //NSLog(@"After release service retain count is %d.", [_service retainCount]);
         _service = nil;
     }
     
     if ([elementName isEqualToString:@"serviceList"])
     {
 
-        //dispatch_queue_t upnpServiceQueue = dispatch_queue_create("de.haohu.upnp.service", NULL);
-       dispatch_queue_t upnpServiceQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+       // dispatch_queue_t upnpServiceQueue = dispatch_queue_create("de.haohu.upnp.service", NULL);
        
+        dispatch_queue_t upnpServiceQueue = dispatch_get_global_queue(0, 0);
         _processingService =[[NSMutableArray alloc] initWithArray:[serviceList allKeys] copyItems:YES];
         /*
         [serviceList enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -291,14 +265,15 @@
         
         _tempServiceList =[serviceList allValues];
         size_t count = [_tempServiceList count];
+        __block UPnPService * tempService;
         
         dispatch_apply(count, upnpServiceQueue, ^(size_t i) {
-            UPnPService * tempService = [_tempServiceList objectAtIndex:i];
+            tempService = [_tempServiceList objectAtIndex:i];
             [tempService startParsing];
         });
+        
         //dispatch_release(upnpServiceQueue);
     }
-    
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -314,16 +289,16 @@
 -(BOOL) isFinishParsing:(UPnPService*) upnpService
 {
     NSString* serviceId = upnpService.serviceId;
-    [_upnpServiceLock lock];
+
     [_processingService removeObject:serviceId];
     if ([_processingService count] == 0)
     {
-        [_upnpServiceLock unlock];
+
         return YES;
     }
     else
     {
-        [_upnpServiceLock unlock];
+
         return NO;
     }
     
@@ -342,6 +317,8 @@
     }
     if ([self isFinishParsing:upnpService])
     {
+        [_processingService release];
+        _processingService = nil;
         [delegate upnpDeviceDidFinishParsing:self];
     }
 }
@@ -361,9 +338,9 @@
 #pragma dealloc and clean code.
 - (void)dealloc {
 
+    NSLog(@"UPnPDevice %@ dealloc", self.friendlyName);
     [_baseURL release];
     [_locationURL release];
-    [_upnpServiceLock release];
     [deviceType release];
     [friendlyName release];
     [manufacturer release];

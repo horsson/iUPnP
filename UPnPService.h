@@ -29,11 +29,11 @@
     NSString* _currentElement;
     NSTimeInterval _timeout;
 }
-@property(nonatomic,retain) NSString* serviceType;
-@property(nonatomic,retain) NSString* serviceId;
-@property(nonatomic,retain) NSString* SCPDURL;
-@property(nonatomic,retain) NSString* eventSubURL;
-@property(nonatomic,retain) NSString* controlURL;
+@property(nonatomic,copy) NSString* serviceType;
+@property(nonatomic,copy) NSString* serviceId;
+@property(nonatomic,copy) NSString* SCPDURL;
+@property(nonatomic,copy) NSString* eventSubURL;
+@property(nonatomic,copy) NSString* controlURL;
 @property(retain)           NSMutableArray* actionList;
 @property(nonatomic,assign) UpnpClient_Handle controlPointHandle;
 @property(nonatomic,assign) id<UPnPServiceParserDelegate> delegate;

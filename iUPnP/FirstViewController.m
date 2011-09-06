@@ -106,7 +106,13 @@
 -(IBAction) btnSearchClicked:(id) sender
 {
     [controlPoint searchTarget:@"upnp:rootdevice" withMx:5];
+    NSLog(@"CP retain count is %d", [controlPoint retainCount]);
 
+}
+-(IBAction) btnReleaseClicked:(id) sender
+{
+    [controlPoint stop];
+    [controlPoint release];
 }
 
 #pragma UPnPDevice delegate method.
@@ -127,11 +133,10 @@
     
 }
 
--(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice
+-(void) upnpDeviceDidAdd:   (NSString*) upnpDevice
 {
-    NSLog(@"Device finish. The name is %@",upnpDevice.friendlyName);
-    NSLog(@"Device ID is %@", upnpDevice.UDN);
-    [_devices addObject:upnpDevice];
+   // NSLog(@"Device finish. The name is %@",upnpDevice.friendlyName);
+    //NSLog(@"Device ID is %@", upnpDevice.UDN);
 
 }
 
@@ -147,7 +152,7 @@
 
 }
 
--(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice
+-(void) upnpDeviceDidLeave: (NSString*) upnpDevice
 {
     [tableView reloadData];
 }

@@ -8,13 +8,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "DidlParser.m"
-         timestampString = "336666289.197255"
+         filePath = "UPnPDevice.m"
+         timestampString = "337007886.244129"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "78"
-         endingLineNumber = "78"
-         landmarkName = "-parser:didStartElement:namespaceURI:qualifiedName:attributes:"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
+         landmarkName = "-parser:didEndElement:namespaceURI:qualifiedName:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

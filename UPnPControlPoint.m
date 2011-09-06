@@ -7,6 +7,7 @@
 //
 
 #import "UPnPControlPoint.h"
+//#define DEBUG_THREAD
 
 @implementation UPnPControlPoint
 @synthesize delegate;
@@ -47,7 +48,10 @@ id refToSelf = nil;
 
 -(UPnPDevice*) getUPnPDeviceById:(NSString*) deviceID
 {
-    return [_devices objectForKey:deviceID];
+    [_deviceListLock lock];
+    UPnPDevice* deviceToReturn = [[[_devices objectForKey:deviceID] retain]autorelease];
+    [_deviceListLock unlock];
+    return deviceToReturn;
 }
 
 
@@ -78,7 +82,7 @@ id refToSelf = nil;
         _globalLock =[[NSLock alloc] init];
         _controlPointQueue = dispatch_queue_create("de.haohu.upnp.controlpoint", NULL);
         deviceIDSet = [[NSMutableSet alloc] init];
-       
+        _deviceListLock = [[NSLock alloc] init];
     }
     return self;
 }
@@ -91,6 +95,19 @@ int upnp_callback_func(Upnp_EventType eventType, void *event, void *cookie)
     NSLock* lock = [refToSelf globalLock];
     [lock lock];
     NSAutoreleasePool *pool =[[NSAutoreleasePool alloc] init];
+#ifdef DEBUG_THREAD
+    static int idForThread = 0;
+    NSThread* thread = [NSThread currentThread];
+    NSString* threadName = [thread name];
+    if (threadName == nil)
+    {
+        idForThread++;
+        [thread setName:[NSString stringWithFormat:@"ID:%d",idForThread]];
+    }
+    NSLog(@"Thread name is %@",[thread name]);
+#endif
+    
+    
     switch(eventType)
     {
         case UPNP_DISCOVERY_SEARCH_RESULT:
@@ -101,7 +118,8 @@ int upnp_callback_func(Upnp_EventType eventType, void *event, void *cookie)
         }
         case UPNP_DISCOVERY_SEARCH_TIMEOUT:
         {
-            //[[refToSelf delegate] searchDidTimeout];
+            NSLog(@"Timeout.");
+            [[refToSelf delegate] searchDidTimeout];
             break;
         }
         case UPNP_DISCOVERY_ADVERTISEMENT_BYEBYE:
@@ -126,43 +144,44 @@ int upnp_callback_func(Upnp_EventType eventType, void *event, void *cookie)
 void handle_discovery_message(void* event)
 {
 
-   // NSAutoreleasePool *pool =[[NSAutoreleasePool alloc] init];
     struct Upnp_Discovery *discovery = (struct Upnp_Discovery*) event;
+
     NSString *deviceID = [NSString stringWithCString:discovery->DeviceId encoding:NSUTF8StringEncoding];
   
     if ([[refToSelf deviceIDSet] containsObject:deviceID])
     {
        // NSLog(@"Device is in, ignore.");
         return;
-
     }
     else
     {
         [[refToSelf deviceIDSet] addObject:deviceID];
     }
-
-    
-    NSString* locationURL = [NSString stringWithCString:discovery->Location encoding:NSUTF8StringEncoding];
-    UPnPStack* upnpStack = [UPnPStack sharedUPnPStack];
-    UPnPDevice *device = [[UPnPDevice alloc] initWithLocationURL:locationURL timeout:[upnpStack defaultTimeoutForXmlParsing]];
+    NSString* locationURL = [[NSString alloc] initWithCString:discovery->Location encoding:NSUTF8StringEncoding];
+    __block UPnPDevice *device = [[UPnPDevice alloc] initWithLocationURL:locationURL timeout:4.0];
+    [locationURL release];
     device.controlPointHandle = [refToSelf clientHandle];
     device.UDN = deviceID;
     device.delegate = refToSelf;
+  //  NSLog(@"UPnPDevice before the queue retain count is %d",[device retainCount]);
     dispatch_async([refToSelf controlPointQueue], ^{
         [device startParsing];
     });
-    //[pool drain];
+    
+    // NSLog(@"UPnPDevice after the queue retain count is %d",[device retainCount]);
 }
 
 void handle_byebye_message(void* event)
 {
     struct Upnp_Discovery* discovery = (struct Upnp_Discovery*) event;
     NSString* deviceId = [NSString stringWithCString:discovery->DeviceId encoding:NSUTF8StringEncoding];
-    UPnPDevice *device = [[[[refToSelf devices] objectForKey:deviceId] retain] autorelease];
     [[refToSelf devices] removeObjectForKey:deviceId];
     [[refToSelf deviceIDSet] removeObject:deviceId];
     if ([refToSelf delegate])
-        [[refToSelf delegate] upnpDeviceDidLeave:device];
+    {
+        NSString* udn = [[deviceId copy] autorelease];
+        [[refToSelf delegate] upnpDeviceDidLeave:udn];
+    }
 }
 
 
@@ -191,12 +210,14 @@ void handle_byebye_message(void* event)
 #pragma UPnPDevice callback
 -(void) upnpDeviceDidFinishParsing:(UPnPDevice*) upnpDevice
 {
-    NSLog(@"Finish parsing.");
+    //NSLog(@"Finish parsing.");
+    [_deviceListLock lock];
     [_devices setObject:upnpDevice forKey:upnpDevice.UDN];
-    [delegate upnpDeviceDidAdd:upnpDevice];
+    NSString* udn = [[upnpDevice.UDN copy] autorelease];
+    [delegate upnpDeviceDidAdd:udn];
     [upnpDevice release];
-    
-    
+    NSLog(@"UPNPDevice retain count is %d", [upnpDevice retainCount]);
+    [_deviceListLock unlock];
 }
 
 -(void) upnpDeviceDidReceiveError:(UPnPDevice*)  withError:(NSError*) error;
@@ -206,9 +227,11 @@ void handle_byebye_message(void* event)
 
 -(void) dealloc
 {
+    NSLog(@"UPnPControlPoint dealloc.");
     [deviceIDSet release];
     dispatch_release(_controlPointQueue);
     [_globalLock release];
+    [_deviceListLock release];
     [_devices release];
     [delegate release];
     [super dealloc];

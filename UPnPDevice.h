@@ -32,23 +32,22 @@
     NSMutableArray* _processingService;
     NSArray* _tempServiceList;
     
-    NSLock* _upnpServiceLock;
     NSString* _locationURL;
     NSTimeInterval _timeout;
     
 }
 
-@property(nonatomic,retain) NSString* deviceType;
-@property(nonatomic,retain) NSString* friendlyName;
-@property(nonatomic,retain) NSString* manufacturer;
-@property(nonatomic,retain) NSString* manufacturerURL;
-@property(nonatomic,retain) NSString* modelDescription;
-@property(nonatomic,retain) NSString* modelName;
-@property(nonatomic,retain) NSString* modelURL;
-@property(nonatomic,retain) NSString* modelNumber;
-@property(nonatomic,retain) NSString* UDN;
-@property(nonatomic,retain) NSString* UPC;
-@property(nonatomic,retain) NSString* presentationURL;
+@property(nonatomic,copy) NSString* deviceType;
+@property(nonatomic,copy) NSString* friendlyName;
+@property(nonatomic,copy) NSString* manufacturer;
+@property(nonatomic,copy) NSString* manufacturerURL;
+@property(nonatomic,copy) NSString* modelDescription;
+@property(nonatomic,copy) NSString* modelName;
+@property(nonatomic,copy) NSString* modelURL;
+@property(nonatomic,copy) NSString* modelNumber;
+@property(nonatomic,copy) NSString* UDN;
+@property(nonatomic,copy) NSString* UPC;
+@property(nonatomic,copy) NSString* presentationURL;
 @property(nonatomic,retain) NSMutableArray* iconList;
 @property(nonatomic,retain) NSMutableDictionary* serviceList;
 @property(nonatomic,assign) id<UPnPDDeviceDelegate> delegate;

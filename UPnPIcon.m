@@ -13,6 +13,7 @@
 @synthesize mimetype,url,width,height,depth;
 
 - (void)dealloc {
+    NSLog(@"UPnPIcon dealloc.");
     [mimetype release];
     [url release];
     [super dealloc];

@@ -68,7 +68,7 @@
 
 -(void) dealloc
 {
-    
+    NSLog(@"UPnPService %@ dealloc.", self.serviceId);
     [actionList release];
     [serviceId release];
     [serviceType release];
@@ -80,6 +80,18 @@
 
 
 #pragma XML SAX callback handler
+
+-(void) parserDidStartDocument:(NSXMLParser *)parser
+{
+    _currentContent = [[NSMutableString alloc] initWithCapacity:255];
+}
+
+-(void) parserDidEndDocument:(NSXMLParser *)parser
+{
+    [_currentContent release];
+    _currentContent = nil;
+}
+
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
 {
     _lastElement = _currentElement;
@@ -109,10 +121,8 @@
         _argument = [[UPnPArgument alloc] init];
     }
     
-    if ([elementName isEqualToString:@"name"] || [elementName isEqualToString:@"direction"] || [elementName isEqualToString:@"relatedStateVariable"])
-    {
-        _currentContent = [[NSMutableString alloc] init];
-    }
+    
+    [_currentContent setString:@""];
 }
 
 
@@ -131,14 +141,11 @@
         if ([_lastElement isEqualToString:@"argument"])
         {
             _argument.name = _currentContent;
-            [_currentContent release];
-            _currentContent = nil;
         }
         else  if ([_lastElement isEqualToString:@"action"])
         {
             _action.name = _currentContent;
-            [_currentContent release];
-            _currentContent = nil;
+
         }
         
     }
@@ -153,15 +160,13 @@
         {
             _argument.direction = UPnPArgumentDirectionIn;
         }
-        [_currentContent release];
-        _currentContent = nil;
+
     }
     
     if ([elementName isEqualToString:@"relatedStateVariable"])
     {
         _argument.relatedStateVariable = _currentContent;
-        [_currentContent release];
-        _currentContent = nil;
+
     }
     
     if ([elementName isEqualToString:@"argument"])
@@ -169,11 +174,6 @@
         [_action.argumentList addObject:_argument];
         [_argument release];
         _argument = nil;
-    }
-    if (_currentContent)
-    {
-        [_currentContent release];
-        _currentContent = nil;
     }
 }
 

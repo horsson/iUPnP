@@ -295,14 +295,14 @@
         [self freeString:_currentString];
     }
 
-    /*
+    
     // double check _contentString
     if (_currentString)
     {
         [_currentString release];
         _currentString = nil;
     }
-     */
+     
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
