@@ -28,8 +28,7 @@
     //UPnP client handle, which is used in the entire Control Point life.
    // UpnpClient_Handle _clientHandle;
     dispatch_queue_t _controlPointQueue;
-    NSLock* _globalLock;   
-    NSLock* _deviceListLock;
+    NSLock* _globalLock;  
 }
 
 @property(nonatomic,assign) id<UPnPControlPointDelegate> delegate;

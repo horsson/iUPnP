@@ -8,10 +8,7 @@
 
 #import "DidlParser.h"
 
-@interface DidlParser()
--(void) freeString:(NSString*) string;
 
-@end;
 
 @implementation DidlParser
 
@@ -40,11 +37,6 @@
     return [_parser parse];
 }
 
--(void) freeString:(NSString*) string
-{
-    [string release];
-    string = nil;
-}
 
 -(NSArray*) mediaObjects
 {
@@ -60,6 +52,18 @@
 
 
 #pragma NSXMLParserDelegate
+
+-(void) parserDidStartDocument:(NSXMLParser *)parser
+{
+    _currentString = [[NSMutableString alloc] init];
+}
+
+-(void) parserDidEndDocument:(NSXMLParser *)parser
+{
+    [_currentString release];
+    _currentString = nil;
+}
+
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
 {
     if ([@"container" isEqualToString:elementName]) {
@@ -85,6 +89,11 @@
     } else if ([@"res" isEqualToString:elementName])
     
     {
+        if (_currentTag.resList == nil) {
+            NSMutableArray* array = [[NSMutableArray alloc] init];
+            _currentTag.resList = array;
+            [array release];
+        }   
         _res = [[MediaRes alloc] init];
         _res.duration = [attributeDict objectForKey:@"duration"];
         _res.size = [[attributeDict objectForKey:@"size"] longLongValue];
@@ -198,7 +207,7 @@
         }
     }
 
-    _currentString = [[NSMutableString alloc] init];
+    [_currentString setString:@""];
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
@@ -220,14 +229,12 @@
     else if ([@"upnp:searchClass" isEqualToString:elementName])
     {
         ObjectClass* oc = [[ObjectClass alloc] initWithString:_currentString];
-        [self freeString:_currentString];
         [_currentTag.searchClassList addObject:oc];
         [oc release];
     }
     else if ([@"upnp:createClass" isEqualToString:elementName])
     {
         ObjectClass* oc = [[ObjectClass alloc] initWithString:_currentString];
-        [self freeString:_currentString];
         [_currentTag.createClassList addObject:oc];
         [oc release];
     }
@@ -235,73 +242,56 @@
     else if ([@"upnp:class" isEqualToString:elementName])
     {
         ObjectClass* oc = [[ObjectClass alloc] initWithString:_currentString];
-       [self freeString:_currentString];
         _currentTag.clazz = oc;
         [oc release];
     }
     else if ([@"res" isEqualToString:elementName])
     {
         _res.resUrl = _currentString;
-        [self freeString:_currentString];    
+        [_currentTag.resList addObject:_res];
+        [_res release];
     }
     else if ([@"upnp:writeStatus" isEqualToString:elementName])
     {
         [_currentTag.writeStatusList addObject:_currentString];
-        [self freeString:_currentString];
     }
     else if ([@"upnp:originalTrackNumber" isEqualToString:elementName])
     {
         _currentTag.originalTrackNumber = [_currentString intValue];
-        [self freeString:_currentString];
     }
     else if ([@"upnp:artist" isEqualToString:elementName])
     {
         [_currentTag.artistList addObject:_currentString];
-        [self freeString:_currentString];
     }
     else if ([@"upnp:actor" isEqualToString:elementName])
     {
         [_currentTag.actorList addObject:_currentString];
-        [self freeString:_currentString];
     }
     else if ([@"upnp:author" isEqualToString:elementName])
     {
         [_currentTag.authorList addObject:_currentString];
-        [self freeString:_currentString];
     }
     else if ([@"upnp:director" isEqualToString:elementName])
     {
         [_currentTag.directorList addObject:_currentString];
-        [self freeString:_currentString];
     }
     else if ([@"upnp:genre" isEqualToString:elementName])
     {
         [_currentTag.genreList addObject:_currentString];
-        [self freeString:_currentString];
     }
     else if ([@"upnp:playlist" isEqualToString:elementName])
     {
         [_currentTag.playlistList addObject:_currentString];
-        [self freeString:_currentString];
     }
     else if ([@"upnp:albumArtURI" isEqualToString:elementName])
     {
         [_currentTag.albumArtURIList addObject:_currentString];
-        [self freeString:_currentString];
     }
     else if ([@"upnp:album" isEqualToString:elementName])
     {
         [_currentTag.albumList addObject:_currentString];
-        [self freeString:_currentString];
     }
 
-    
-    // double check _contentString
-    if (_currentString)
-    {
-        [_currentString release];
-        _currentString = nil;
-    }
      
 }
 

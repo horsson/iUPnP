@@ -15,7 +15,7 @@
 
     UPnPDevice* _upnpDevice;
     UPnPControlPoint* controlPoint;
-    NSArray* _devices;
+    NSMutableArray* _devices;
 }
 
 @property(nonatomic,retain)IBOutlet UITableView* tableView;

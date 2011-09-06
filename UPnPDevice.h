@@ -29,12 +29,14 @@
     UPnPService* _service;
   
     NSString* _baseURL;
-    NSMutableArray* _processingService;
-    NSArray* _tempServiceList;
+   // NSArray* _tempServiceList;
     
     NSString* _locationURL;
     NSTimeInterval _timeout;
+    dispatch_queue_t serviceParseQueue;
     
+    NSUInteger serviceCounter;
+    NSUInteger numberOfService;
 }
 
 @property(nonatomic,copy) NSString* deviceType;

@@ -45,6 +45,8 @@
 {
     [super viewDidUnload];
 
+    [_devices release];
+    [controlPoint release];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -137,6 +139,8 @@
 {
    // NSLog(@"Device finish. The name is %@",upnpDevice.friendlyName);
     //NSLog(@"Device ID is %@", upnpDevice.UDN);
+    UPnPDevice* upnpDevicee = [controlPoint getUPnPDeviceById:upnpDevice];
+    [_devices addObject:upnpDevicee];
 
 }
 
@@ -179,8 +183,7 @@
 
 - (void)dealloc
 {
-    [_devices release];
-    [controlPoint release];
+  
     [super dealloc];
 }
 

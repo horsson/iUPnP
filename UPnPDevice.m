@@ -33,6 +33,7 @@
         
         [tempUrl release];
         _timeout = timeout;
+        serviceParseQueue = dispatch_queue_create("de.haohu.iupnp.service", NULL);
     }
     
     return self;
@@ -94,6 +95,9 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
+    if (_icon) {
+        NSLog(@"ICON is still alive!");
+    }
     [_currentContent release];
     _currentContent = nil;
 }
@@ -244,35 +248,21 @@
     {
         [serviceList setObject:_service forKey:_service.serviceId];
         [_service release];
-        //NSLog(@"After release service retain count is %d.", [_service retainCount]);
+       // NSLog(@"Before service retain count is %d.", [_service retainCount]);
+        __block UPnPService* tempService = _service;
+        dispatch_async(serviceParseQueue, ^(void) {
+            [tempService startParsing];
+        });
+        
+       // NSLog(@"After release service retain count is %d.", [_service retainCount]);
         _service = nil;
     }
     
     if ([elementName isEqualToString:@"serviceList"])
     {
 
-       // dispatch_queue_t upnpServiceQueue = dispatch_queue_create("de.haohu.upnp.service", NULL);
-       
-        dispatch_queue_t upnpServiceQueue = dispatch_get_global_queue(0, 0);
-        _processingService =[[NSMutableArray alloc] initWithArray:[serviceList allKeys] copyItems:YES];
-        /*
-        [serviceList enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            UPnPService* service = obj;
-                [service startParsing]; 
-        }];
-        */
-        
-        
-        _tempServiceList =[serviceList allValues];
-        size_t count = [_tempServiceList count];
-        __block UPnPService * tempService;
-        
-        dispatch_apply(count, upnpServiceQueue, ^(size_t i) {
-            tempService = [_tempServiceList objectAtIndex:i];
-            [tempService startParsing];
-        });
-        
-        //dispatch_release(upnpServiceQueue);
+        numberOfService = [serviceList count];
+
     }
 }
 
@@ -286,23 +276,7 @@
     [delegate upnpDeviceDidReceiveError:self :parseError];
 }
 
--(BOOL) isFinishParsing:(UPnPService*) upnpService
-{
-    NSString* serviceId = upnpService.serviceId;
 
-    [_processingService removeObject:serviceId];
-    if ([_processingService count] == 0)
-    {
-
-        return YES;
-    }
-    else
-    {
-
-        return NO;
-    }
-    
-}
 
 #pragma UPnPService callback delegate
 -(void) parseDidReceiveError:(UPnPService*) upnpService withError:(NSError*) error
@@ -315,21 +289,21 @@
     {
         NSLog(@"%@",[error localizedDescription]);
     }
-    if ([self isFinishParsing:upnpService])
+    serviceCounter++;
+    
+    if (serviceCounter == numberOfService)
     {
-        [_processingService release];
-        _processingService = nil;
         [delegate upnpDeviceDidFinishParsing:self];
     }
 }
 
 -(void) parseDidFinish:(UPnPService*)  upnpService
 {
-    //NSLog(@"Parser done at %@",upnpService.serviceId);
-    if ([self isFinishParsing:upnpService])
+    serviceCounter++;
+    if (serviceCounter == numberOfService)
+
     {
-        [_processingService release];
-        _processingService = nil;
+
         [delegate upnpDeviceDidFinishParsing:self];
     }
 }
@@ -354,7 +328,7 @@
     [presentationURL release];
     [iconList release];
     [serviceList release];
-
+    dispatch_release(serviceParseQueue);
     [super dealloc];
 }
 
