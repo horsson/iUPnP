@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E73F113F14178D7D0033A282 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E73F113E14178D7D0033A282 /* EventParser.m */; };
 		E78E96C2140D91FC000BB196 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E96C1140D91FC000BB196 /* UIKit.framework */; };
 		E78E96C4140D91FC000BB196 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E96C3140D91FC000BB196 /* Foundation.framework */; };
 		E78E96C6140D91FC000BB196 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78E96C5140D91FC000BB196 /* CoreGraphics.framework */; };
@@ -152,6 +153,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E73F113D14178D7C0033A282 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
+		E73F113E14178D7D0033A282 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
 		E78E96BD140D91FC000BB196 /* iUPnP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iUPnP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78E96C1140D91FC000BB196 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E78E96C3140D91FC000BB196 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -679,6 +682,8 @@
 				E78E97E8140D946C000BB196 /* UPnPService.m */,
 				E78E97E9140D946C000BB196 /* UPnPStack.h */,
 				E78E97EA140D946C000BB196 /* UPnPStack.m */,
+				E73F113D14178D7C0033A282 /* EventParser.h */,
+				E73F113E14178D7D0033A282 /* EventParser.m */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -881,6 +886,7 @@
 				E7E06BCA1410D8BA002362D0 /* MediaRes.m in Sources */,
 				E7E06BCE1410E07A002362D0 /* ObjectClass.m in Sources */,
 				E7E06BD11410F849002362D0 /* DidlParser.m in Sources */,
+				E73F113F14178D7D0033A282 /* EventParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

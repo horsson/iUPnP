@@ -8,7 +8,16 @@
 
 #import "UPnPControlPoint.h"
 #import "NSError+UPnP.h"
+#import "EventParser.h"
+
 //#define DEBUG_THREAD
+
+//==================================ControlPoint private methods=========================================
+@interface UPnPControlPoint() 
+
+
+@end
+//========================================================================================================
 
 @implementation UPnPControlPoint
 
@@ -20,6 +29,7 @@
 int upnp_callback_func(Upnp_EventType, void *, void *);
 void handle_discovery_message(void*);
 void handle_byebye_message(void*);
+void handle_event_received(void*);
 //=======================================================================================================
 id refToSelf = nil;
 
@@ -79,6 +89,8 @@ id refToSelf = nil;
         _devices = [[NSMutableDictionary alloc] init];
         _globalLock =[[NSLock alloc] init];
         deviceIDSet = [[NSMutableSet alloc] init];
+        subscriptions = [[NSMutableDictionary alloc] initWithCapacity:5];
+        eventParserQueue = dispatch_queue_create("de.haohu.iupnp.eventparser", NULL);
         //==================================================================================================
     }
     return self;
@@ -125,6 +137,11 @@ int upnp_callback_func(Upnp_EventType eventType, void *event, void *cookie)
             break;
         }
             
+        case UPNP_EVENT_RECEIVED:
+        {
+            
+            break;
+        }
         default:
         {
             NSLog(@"Unknown eventType");
@@ -181,6 +198,26 @@ void handle_byebye_message(void* event)
     [[refToSelf delegate] upnpDeviceDidLeave:upnpDevice];
     
 }
+
+void handle_event_received(void* event)
+{
+    struct Upnp_Event* upnpEvent = (struct Upnp_Event*) event;
+    char* ssid = upnpEvent->Sid;
+    int eventKey = upnpEvent->EventKey;
+    IXML_Document* doc = upnpEvent->ChangedVariables;
+    NSString* strSSID = [NSString stringWithCString:ssid encoding:NSUTF8StringEncoding];
+    NSString* xmlDocString = [[NSString alloc] initWithCString:ixmlDocumenttoString(doc) encoding:NSUTF8StringEncoding];
+    EventParser* eventParser = [[EventParser alloc] initWithXMLString:xmlDocString];
+    [eventParser parse];
+    NSDictionary* varValueDict =[eventParser.varValueDict retain];
+    [xmlDocString release];
+    [eventParser release];
+    [varValueDict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [[refToSelf delegate] eventNotifyDidReceiveWithSSID:strSSID eventKey:eventKey varName:key value:obj];
+    }];
+    
+    
+}
 //================================================================================================================================
 
 -(void) searchTarget:(NSString*) target withMx:(NSUInteger) mx
@@ -202,17 +239,28 @@ void handle_byebye_message(void* event)
 
 -(BOOL) subscribeService:(UPnPService*) service
 {
-    return YES;
+    return [self subscribeService:service withTimeout:UPNP_INFINITE];;
 }
 
 -(BOOL) subscribeService:(UPnPService *)service withTimeout:(NSInteger) timeout
 {
     const char* subsURL = [service.eventSubURL UTF8String];
     Upnp_SID ssid;
+    if (timeout == UPNP_INFINITE)
+    {
+        timeout = -1;
+    }
     int ret = UpnpSubscribe(self.clientHandle, subsURL, &timeout, ssid);
     
     if (ret == UPNP_E_SUCCESS)
+    {
+        NSString* ssidAsKey = [[NSString alloc] initWithCString:ssid encoding:NSUTF8StringEncoding];
+        NSNumber* timeoutAsVal = [[NSNumber alloc] initWithInt:timeout];
+        [subscriptions setObject:timeoutAsVal forKey:ssidAsKey];
+        [timeoutAsVal release];
+        [ssidAsKey release];
         return YES;
+    }
     else
     {
         NSError* temp = [[NSError alloc] initWithUPnPError:ret];
@@ -234,7 +282,6 @@ void handle_byebye_message(void* event)
     NSLog(@"%@ Finish parsing.", upnpDevice.UDN);
     UPnPDevice* upnpDeviceRet = [[upnpDevice retain] autorelease];
     [delegate upnpDeviceDidAdd:upnpDeviceRet];
-    //Hao: Fixeme
     [upnpDevice release];
 }
 
@@ -243,13 +290,19 @@ void handle_byebye_message(void* event)
     
 }
 
+-(void) eventParser:(EventParser*) parser didFinishWithResult:(NSDictionary*) varValues
+{
+    
+}
+
 -(void) dealloc
 {
     NSLog(@"UPnPControlPoint dealloc.");
+    dispatch_release(eventParserQueue);
+    [subscriptions release];
     [deviceIDSet release];
     [_globalLock release];
     [_devices release];
-    [delegate release];
     [super dealloc];
 }
 @end

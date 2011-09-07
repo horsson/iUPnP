@@ -13,22 +13,29 @@
 
 
 
-@protocol UPnPControlPointDelegate <NSObject>
+@protocol UPnPControlPointDelegate
 
+@optional
 -(void) searchDidTimeout;
 -(void) errorDidReceive:    (NSError*) error;
 -(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice;
--(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice; 
+-(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice;
+-(void) eventNotifyDidReceiveWithSSID:(NSString*) ssid 
+                             eventKey:(NSUInteger) eventKey 
+                              varName:(NSString*)varName 
+                                value:(NSString*)value; 
 
 @end
 
 //One UPnPControlPoint is a cooresponding UPnP Client in libupnp.
 @interface UPnPControlPoint : NSObject<UPnPDDeviceDelegate> {
     @private
-    //UPnP client handle, which is used in the entire Control Point life.
-   // UpnpClient_Handle _clientHandle;
-   // dispatch_queue_t _controlPointQueue;
-    NSLock* _globalLock;  
+    NSLock* _globalLock;
+    //It stores the subscriptions and manages automatically(renew).
+    //The key is the ssid and the value is the timeout.
+    NSMutableDictionary* subscriptions;
+    
+    dispatch_queue_t eventParserQueue;
 }
 
 @property(nonatomic,assign) id<UPnPControlPointDelegate> delegate;
@@ -47,5 +54,6 @@
 -(BOOL) subscribeService:(UPnPService*) service;
 
 -(BOOL) subscribeService:(UPnPService *)service withTimeout:(NSInteger) timeout;
+
 
 @end
