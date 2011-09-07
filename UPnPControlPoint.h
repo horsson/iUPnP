@@ -30,12 +30,11 @@
 //One UPnPControlPoint is a cooresponding UPnP Client in libupnp.
 @interface UPnPControlPoint : NSObject<UPnPDDeviceDelegate> {
     @private
-    NSLock* _globalLock;
     //It stores the subscriptions and manages automatically(renew).
     //The key is the ssid and the value is the timeout.
     NSMutableDictionary* subscriptions;
     
-    dispatch_queue_t eventParserQueue;
+    dispatch_queue_t eventHandlerQueue;
 }
 
 @property(nonatomic,assign) id<UPnPControlPointDelegate> delegate;
@@ -47,7 +46,6 @@
 -(id) initWithHostAddress:(NSString*) address andPort:(UInt16) port;
 -(void) searchTarget:(NSString*) target withMx:(NSUInteger) mx;
 -(void) stop;
--(NSLock*) globalLock;
 
 -(UPnPDevice*) getUPnPDeviceById:(NSString*) deviceID;
 
@@ -55,5 +53,6 @@
 
 -(BOOL) subscribeService:(UPnPService *)service withTimeout:(NSInteger) timeout;
 
+-(dispatch_queue_t) eventHandlerQueue;
 
 @end
