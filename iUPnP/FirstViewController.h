@@ -11,7 +11,7 @@
 #import "UPnPAction.h"
 #import "UPnPControlPoint.h"
 
-@interface FirstViewController : UIViewController<UPnPDDeviceDelegate,UPnPControlPointDelegate,UITableViewDataSource> {
+@interface FirstViewController : UIViewController<UPnPControlPointDelegate,UITableViewDataSource> {
 
     UPnPDevice* _upnpDevice;
     UPnPControlPoint* controlPoint;

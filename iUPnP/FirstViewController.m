@@ -108,7 +108,6 @@
 -(IBAction) btnSearchClicked:(id) sender
 {
     [controlPoint searchTarget:@"upnp:rootdevice" withMx:5];
-    NSLog(@"CP retain count is %d", [controlPoint retainCount]);
 
 }
 -(IBAction) btnReleaseClicked:(id) sender
@@ -117,16 +116,6 @@
     [controlPoint release];
 }
 
-#pragma UPnPDevice delegate method.
--(void) upnpDeviceDidFinishParsing:(UPnPDevice*) upnpDevice
-{
-       
-}
-
--(void) upnpDeviceDidReceiveError:(UPnPDevice*)  withError:(NSError*) error
-{
-    
-}
 
 #pragma UPnPControlPoint callback
 
@@ -135,13 +124,15 @@
     
 }
 
--(void) upnpDeviceDidAdd:   (NSString*) upnpDevice
+-(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice
 {
    // NSLog(@"Device finish. The name is %@",upnpDevice.friendlyName);
     //NSLog(@"Device ID is %@", upnpDevice.UDN);
-    UPnPDevice* upnpDevicee = [controlPoint getUPnPDeviceById:upnpDevice];
-    [_devices addObject:upnpDevicee];
-
+    [_devices addObject:upnpDevice];
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [tableView reloadData];
+    });
+    
 }
 
 -(void) searchDidTimeout
@@ -156,7 +147,7 @@
 
 }
 
--(void) upnpDeviceDidLeave: (NSString*) upnpDevice
+-(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice
 {
     [tableView reloadData];
 }

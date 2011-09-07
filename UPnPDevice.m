@@ -95,9 +95,7 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
-    if (_icon) {
-        NSLog(@"ICON is still alive!");
-    }
+  
     [_currentContent release];
     _currentContent = nil;
 }

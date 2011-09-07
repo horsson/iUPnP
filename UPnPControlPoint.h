@@ -17,8 +17,8 @@
 
 -(void) searchDidTimeout;
 -(void) errorDidReceive:    (NSError*) error;
--(void) upnpDeviceDidAdd:   (NSString*) upnpDevice;
--(void) upnpDeviceDidLeave: (NSString*) upnpDevice; 
+-(void) upnpDeviceDidAdd:   (UPnPDevice*) upnpDevice;
+-(void) upnpDeviceDidLeave: (UPnPDevice*) upnpDevice; 
 
 @end
 
@@ -27,7 +27,7 @@
     @private
     //UPnP client handle, which is used in the entire Control Point life.
    // UpnpClient_Handle _clientHandle;
-    dispatch_queue_t _controlPointQueue;
+   // dispatch_queue_t _controlPointQueue;
     NSLock* _globalLock;  
 }
 
@@ -35,15 +35,17 @@
 @property(retain) NSMutableDictionary* devices;
 @property(retain,readonly)  NSMutableSet* deviceIDSet;
 @property(assign,readonly) UpnpClient_Handle clientHandle;
+@property(nonatomic, retain)   NSError* lastError;
 
 -(id) initWithHostAddress:(NSString*) address andPort:(UInt16) port;
 -(void) searchTarget:(NSString*) target withMx:(NSUInteger) mx;
 -(void) stop;
 -(NSLock*) globalLock;
 
--(dispatch_queue_t) controlPointQueue;
-
 -(UPnPDevice*) getUPnPDeviceById:(NSString*) deviceID;
 
+-(BOOL) subscribeService:(UPnPService*) service;
+
+-(BOOL) subscribeService:(UPnPService *)service withTimeout:(NSInteger) timeout;
 
 @end
