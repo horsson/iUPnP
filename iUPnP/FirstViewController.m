@@ -53,16 +53,16 @@
 
 -(IBAction) btnSendAction:(id) sender
 {
-    //UDN: uuid:55076f6e-6b79-4d65-64ec-e0f84719a20c
+    //UDN: uuid:00113206-57d7-0011-d757-d75706321100
 
-    UPnPDevice* device = [controlPoint getUPnPDeviceById:@"uuid:55076f6e-6b79-4d65-64ec-e0f84719a20c"];
+    UPnPDevice* device = [controlPoint getUPnPDeviceById:@"uuid:00113206-57d7-0011-d757-d75706321100"];
     UPnPAction* action = [device getActionByName:@"Browse"];
     
-    [action setArgumentStringVal:@"0$1$8" forName:@"ObjectID"];
+    [action setArgumentStringVal:@"0" forName:@"ObjectID"];
     [action setArgumentStringVal:@"BrowseDirectChildren" forName:@"BrowseFlag"];
     [action setArgumentStringVal:@"*" forName:@"Filter"];
     [action setArgumentStringVal:@"0" forName:@"StartingIndex"];
-    [action setArgumentStringVal:@"11" forName:@"RequestedCount"];
+    [action setArgumentStringVal:@"0" forName:@"RequestedCount"];
     [action setArgumentStringVal:@"" forName:@"SortCriteria"];
     if (action)
     {

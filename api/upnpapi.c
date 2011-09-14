@@ -2437,9 +2437,8 @@ int UpnpSendAction(
     if( ActionURL == NULL ) {
         return UPNP_E_INVALID_PARAM;
     }
-
-    //FIXME:Bugs, check the RespNodePtr is bug?!
-    if( ServiceType == NULL || Action == NULL //|| RespNodePtr == NULL
+    
+    if( ServiceType == NULL || Action == NULL || RespNodePtr == NULL
         || DevUDN_const != NULL ) {
 
         return UPNP_E_INVALID_PARAM;

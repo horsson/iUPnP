@@ -72,8 +72,8 @@
 {
     IXML_Document* actionNode = NULL;
     
-    IXML_Document* actionResp = NULL;//=ixmlDocument_createDocument();
-    
+    IXML_Document* actionResp = NULL;
+
     int ret =  [self getXmlDocForAction:&actionNode] ;
     if (ret != UPNP_E_SUCCESS)
     {
@@ -84,7 +84,6 @@
     const char* pcharServiceType = [serviceType cStringUsingEncoding:NSUTF8StringEncoding];
     const char* pcharUDN = [deviceUDN cStringUsingEncoding:NSUTF8StringEncoding];
     int result = UpnpSendAction(controlPointHandle, pcharActonurl, pcharServiceType, pcharUDN, actionNode, &actionResp);
-    
     
     if (result != UPNP_E_SUCCESS)
     {
