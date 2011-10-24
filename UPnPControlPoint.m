@@ -161,17 +161,19 @@ void handle_discovery_message(void* event)
       
         struct Upnp_Discovery *discovery = (struct Upnp_Discovery*) event;
         
-        NSString *deviceID = [NSString stringWithCString:discovery->DeviceId encoding:NSUTF8StringEncoding];
+        NSString *deviceID = [NSString stringWithCString:discovery->DeviceId encoding:NSASCIIStringEncoding];
+       /*
         if (deviceID == nil)
         {
             NSLog(@"%s", discovery->DeviceId);
             NSLog(@"Found a deviceID is null.");
             return;
         }
+        */
         
         if ([[refToSelf deviceIDSet] containsObject:deviceID])
         {
-            //NSLog(@"Device is in, ignore.");
+            NSLog(@"Device is already found, ignore.");
             return;
         }
         else
@@ -179,7 +181,16 @@ void handle_discovery_message(void* event)
            // NSLog(@"DeviceID = %@",deviceID);
             [[refToSelf deviceIDSet] addObject:deviceID];
         }
-        NSString* locationURL = [[NSString alloc] initWithCString:discovery->Location encoding:NSUTF8StringEncoding];
+        
+        NSString* locationURL = [[NSString alloc] initWithCString:discovery->Location encoding:NSASCIIStringEncoding];
+        
+        /*
+        if (locationURL == nil)
+        {
+            NSLog(@"The location url is nil, the deviceId is %s.", discovery->DeviceId);
+        }
+         */
+        
         UPnPDevice *device = [[UPnPDevice alloc] initWithLocationURL:locationURL timeout:4.0];
         device.controlPointHandle = [refToSelf clientHandle];
         device.UDN = deviceID;
@@ -196,16 +207,12 @@ void handle_byebye_message(void* event)
 {
 
     dispatch_async([refToSelf discoveryQueue], ^(void) {
-        
-
-       // @autoreleasepool {
         struct Upnp_Discovery* discovery = (struct Upnp_Discovery*) event;
-        NSString* deviceId = [NSString stringWithCString:discovery->DeviceId encoding:NSUTF8StringEncoding];
+        NSString* deviceId = [NSString stringWithCString:discovery->DeviceId encoding:NSASCIIStringEncoding];
         UPnPDevice* upnpDevice = [[refToSelf devices] objectForKey:deviceId];
         [[refToSelf devices] removeObjectForKey:deviceId];
         [[refToSelf deviceIDSet] removeObject:deviceId];
         [[refToSelf delegate] upnpDeviceDidLeave:upnpDevice];
-       // }
     });
     
        
@@ -215,21 +222,19 @@ void handle_event_received(void* event)
 {
 
     dispatch_async([refToSelf eventHandlerQueue], ^(void) {
-        //@autoreleasepool {
+
             struct Upnp_Event* upnpEvent = (struct Upnp_Event*) event;
             char* ssid = upnpEvent->Sid;
             int eventKey = upnpEvent->EventKey;
             IXML_Document* doc = upnpEvent->ChangedVariables;
-            NSString* strSSID = [NSString stringWithCString:ssid encoding:NSUTF8StringEncoding];
-            NSString* xmlDocString = [[NSString alloc] initWithCString:ixmlDocumenttoString(doc) encoding:NSUTF8StringEncoding];
+            NSString* strSSID = [NSString stringWithCString:ssid encoding:NSASCIIStringEncoding];
+            NSString* xmlDocString = [[NSString alloc] initWithCString:ixmlDocumenttoString(doc) encoding:NSASCIIStringEncoding];
             EventParser* eventParser = [[EventParser alloc] initWithXMLString:xmlDocString];
             [eventParser parse];
             NSDictionary* varValueDict =eventParser.varValueDict;
             [varValueDict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
                 [[refToSelf delegate] eventNotifyDidReceiveWithSSID:strSSID eventKey:eventKey varName:key value:obj];
             }];
-
-        //}
     });
        
     
@@ -238,7 +243,7 @@ void handle_event_received(void* event)
 
 -(void) searchTarget:(NSString*) target withMx:(NSUInteger) mx
 {
-    UpnpSearchAsync(clientHandle, mx, [target cStringUsingEncoding:NSUTF8StringEncoding], NULL);
+    UpnpSearchAsync(clientHandle, mx, [target cStringUsingEncoding:NSASCIIStringEncoding], NULL);
 }
 
 
@@ -270,7 +275,7 @@ void handle_event_received(void* event)
     
     if (ret == UPNP_E_SUCCESS)
     {
-        NSString* ssidAsKey = [[NSString alloc] initWithCString:ssid encoding:NSUTF8StringEncoding];
+        NSString* ssidAsKey = [[NSString alloc] initWithCString:ssid encoding:NSASCIIStringEncoding];
         NSNumber* timeoutAsVal = [[NSNumber alloc] initWithInt:timeout];
         [subscriptions setObject:timeoutAsVal forKey:ssidAsKey];
         return YES;

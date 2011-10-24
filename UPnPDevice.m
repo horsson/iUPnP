@@ -26,8 +26,9 @@
         
         _locationURL = [locationURL copy];
         
+        NSLog(@"Device URL parsing begin");
         NSURL* tempUrl = [[NSURL alloc] initWithString:_locationURL];
-        
+        NSLog(@"Device URL parsing end");
         _baseURL = [[NSString alloc] initWithFormat:@"%@://%@:%@",[tempUrl scheme],[tempUrl host],[[tempUrl port] stringValue]];
         
         _timeout = timeout;
