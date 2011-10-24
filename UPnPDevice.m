@@ -21,7 +21,6 @@
     {
         if (_locationURL)
         {
-            [_locationURL release];
             _locationURL = nil;
         }
         
@@ -31,7 +30,6 @@
         
         _baseURL = [[NSString alloc] initWithFormat:@"%@://%@:%@",[tempUrl scheme],[tempUrl host],[[tempUrl port] stringValue]];
         
-        [tempUrl release];
         _timeout = timeout;
         serviceParseQueue = dispatch_queue_create("de.haohu.iupnp.service", NULL);
     }
@@ -43,10 +41,8 @@
 {
     NSURL* nsurl = [[NSURL alloc] initWithString:_locationURL];
     NSURLRequest* urlRequest = [[NSURLRequest alloc] initWithURL:nsurl cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:_timeout];
-    [nsurl release];
     NSURLResponse* resp = NULL;
     _xmlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&resp error:NULL];
-    [urlRequest release];
     NSHTTPURLResponse* httpResp = (NSHTTPURLResponse*) resp;
     
     if (_xmlData == nil)
@@ -59,7 +55,6 @@
         _xmlParser = [[NSXMLParser alloc] initWithData:_xmlData];
         [_xmlParser setDelegate:self];
         [_xmlParser parse];
-        [_xmlParser release];
         _xmlParser = nil;
 
     }
@@ -96,7 +91,6 @@
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
   
-    [_currentContent release];
     _currentContent = nil;
 }
 
@@ -199,13 +193,11 @@
     {   
        NSString* fullUrl = [[NSString alloc] initWithFormat:@"%@%@",_baseURL ,_currentContent];
         _icon.url = fullUrl;
-        [fullUrl release];
     }
     
     if ([elementName isEqualToString:@"icon"])
     {
        [iconList addObject:_icon];
-        [_icon release];
         _icon = nil;
     }
     
@@ -224,30 +216,26 @@
     {
          NSString* fullUrl = [[NSString alloc] initWithFormat:@"%@%@",_baseURL ,_currentContent];
         _service.SCPDURL = fullUrl;
-        [fullUrl release];
 
     }
     if ([elementName isEqualToString:@"eventSubURL"])
     {
          NSString* fullUrl = [[NSString alloc] initWithFormat:@"%@%@",_baseURL ,_currentContent];
         _service.eventSubURL = fullUrl;
-        [fullUrl release];
 
     }
     if ([elementName isEqualToString:@"controlURL"])
     {
          NSString* fullUrl = [[NSString alloc] initWithFormat:@"%@%@",_baseURL ,_currentContent];
         _service.controlURL = fullUrl;
-        [fullUrl release];
 
     }
     
     if ([elementName isEqualToString:@"service"])
     {
         [serviceList setObject:_service forKey:_service.serviceId];
-        [_service release];
        // NSLog(@"Before service retain count is %d.", [_service retainCount]);
-        __block UPnPService* tempService = _service;
+        __weak UPnPService* tempService = _service;
         dispatch_async(serviceParseQueue, ^(void) {
             [tempService startParsing];
         });
@@ -311,23 +299,7 @@
 - (void)dealloc {
 
     NSLog(@"UPnPDevice %@ dealloc", self.friendlyName);
-    [_baseURL release];
-    [_locationURL release];
-    [deviceType release];
-    [friendlyName release];
-    [manufacturer release];
-    [manufacturerURL release];
-    [modelDescription release];
-    [modelName release];
-    [modelNumber release];
-    [modelURL release];
-    [UDN release];
-    [UPC release];
-    [presentationURL release];
-    [iconList release];
-    [serviceList release];
     dispatch_release(serviceParseQueue);
-    [super dealloc];
 }
 
 

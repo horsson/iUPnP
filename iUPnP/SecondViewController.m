@@ -49,7 +49,6 @@ NSString* const kDeviceURL = @"http://192.168.200.150:9000/TMSDeviceDescription.
 {
     if (_upnpDevice)
     {
-        [_upnpDevice release];
         _upnpDevice = nil;
     }
     _upnpDevice = [[UPnPDevice alloc] initWithLocationURL:kDeviceURL timeout:4.0];
@@ -64,10 +63,6 @@ NSString* const kDeviceURL = @"http://192.168.200.150:9000/TMSDeviceDescription.
 }
 
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 #pragma  DEBUG helper
 -(void) assertEqual:(BOOL) expression withDescription:(NSString*) description
@@ -76,13 +71,11 @@ NSString* const kDeviceURL = @"http://192.168.200.150:9000/TMSDeviceDescription.
     {
         UIAlertView * uiView = [[UIAlertView alloc] initWithTitle:description message:@"Test Passed" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [uiView show];
-        [uiView release];
     }
     else
     {
         UIAlertView * uiView = [[UIAlertView alloc] initWithTitle:description message:@"Test Fail" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [uiView show];
-        [uiView release];
     }
 }
 
@@ -121,7 +114,6 @@ NSString* const kDeviceURL = @"http://192.168.200.150:9000/TMSDeviceDescription.
 {
     UIAlertView * uiView = [[UIAlertView alloc] initWithTitle:@"Fail" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [uiView show];
-    [uiView release];
 }
 
 @end

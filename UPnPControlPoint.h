@@ -35,13 +35,16 @@
     NSMutableDictionary* subscriptions;
     
     dispatch_queue_t eventHandlerQueue;
+    dispatch_queue_t discoveryQueue;
+    
+    NSLock* deviceLock;
 }
 
-@property(nonatomic,assign) id<UPnPControlPointDelegate> delegate;
-@property(retain) NSMutableDictionary* devices;
-@property(retain,readonly)  NSMutableSet* deviceIDSet;
+@property(nonatomic,unsafe_unretained) id<UPnPControlPointDelegate> delegate;
+@property(strong) NSMutableDictionary* devices;
+@property(strong,readonly)  NSMutableSet* deviceIDSet;
 @property(assign,readonly) UpnpClient_Handle clientHandle;
-@property(nonatomic, retain)   NSError* lastError;
+@property(nonatomic, strong)   NSError* lastError;
 
 -(id) initWithHostAddress:(NSString*) address andPort:(UInt16) port;
 -(void) searchTarget:(NSString*) target withMx:(NSUInteger) mx;
@@ -54,5 +57,6 @@
 -(BOOL) subscribeService:(UPnPService *)service withTimeout:(NSInteger) timeout;
 
 -(dispatch_queue_t) eventHandlerQueue;
+-(dispatch_queue_t) discoveryQueue;
 
 @end

@@ -16,19 +16,8 @@
 -(void) releaseMetadata
 {
     
-    [metadata release];
     metadata = nil;
 }
 
-- (void)dealloc {
-    
-    [refID release];
-    if (metadata)
-    {
-        [metadata release];
-        metadata = nil;
-    }
-    [super dealloc];
-}
 
 @end

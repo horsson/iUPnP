@@ -22,23 +22,4 @@
         return NO;
 }
 
-- (void)dealloc {
-    [ID release];
-    [title release];
-    [parentID release];
-    [clazz release];
-    [createClassList release];
-    [creator release];
-    [resList release];
-    [actorList release];
-    [genreList release];
-    [artistList release];
-    [authorList release];
-    [directorList release];
-    [playlistList release];
-    [albumArtURIList release];
-    [searchClassList release];
-    [writeStatusList release];
-    [super dealloc];
-}
 @end

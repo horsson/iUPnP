@@ -45,8 +45,6 @@
 {
     [super viewDidUnload];
 
-    [_devices release];
-    [controlPoint release];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -71,25 +69,21 @@
         {
             UIAlertView *uiAlert = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Success" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [uiAlert show];
-            [uiAlert release];
             NSString* rrr = [action getArgumentStringVal:@"Result"];
             DidlParser* didlParser = [[DidlParser alloc] initWithString:rrr];
             if ([didlParser parse])
             {
-                NSArray* objList = [[didlParser mediaObjects] retain];
+                NSArray* objList = [didlParser mediaObjects];
                 for (MediaObject* anMediaObj in objList) {
                     NSLog(@"The ID: %@",anMediaObj.ID);
                 }
-                [objList release];
             }
-            [didlParser release];
         }
         else
         {
             NSString* errMsg = [NSString stringWithFormat:@"Error code=%d.",ret];
             UIAlertView *uiAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:errMsg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [uiAlert show];
-            [uiAlert release];
         }
     }
     
@@ -113,7 +107,6 @@
 -(IBAction) btnReleaseClicked:(id) sender
 {
     [controlPoint stop];
-    [controlPoint release];
 }
 
 
@@ -141,7 +134,6 @@
     dispatch_sync(dispatch_get_main_queue(), ^{
         UIAlertView *uiAlert = [[UIAlertView alloc] initWithTitle:@"Info" message:@"Search Done" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [uiAlert show];
-        [uiAlert release];
     
     });
 
@@ -159,7 +151,7 @@
     UITableViewCell* cell = [tableVieww dequeueReusableCellWithIdentifier:deviceCellId];
     if (cell == nil)
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:deviceCellId] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:deviceCellId];
         NSUInteger row = [indexPath row];
         UPnPDevice* upnpDevice = [_devices objectAtIndex:row];
         cell.textLabel.text = upnpDevice.friendlyName;
@@ -172,10 +164,5 @@
     return [_devices count];
 }
 
-- (void)dealloc
-{
-  
-    [super dealloc];
-}
 
 @end

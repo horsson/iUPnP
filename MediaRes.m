@@ -12,11 +12,4 @@
 @implementation MediaRes
 @synthesize size,resUrl,bitrate,duration,resolution,protocolInfo;
 
-- (void)dealloc {
-    [resUrl release];
-    [duration release];
-    [resolution release];
-    [protocolInfo release];
-    [super dealloc];
-}
 @end

@@ -18,18 +18,15 @@
 
 -(void) setServiceType:(NSString*) newServiceType
 {
-    [serviceType release];
     serviceType = [newServiceType copy];
 }
 
 -(void) setControlURL:(NSString*) newControlURL
 {
-    [controlURL release];
     controlURL = [newControlURL copy];
 }
 -(void) setDeviceUDN:(NSString*) newDeviceUDN
 {
-    [deviceUDN release];
     deviceUDN = [newDeviceUDN copy];
 }
 
@@ -107,10 +104,8 @@
     NSData* respData = [[NSData alloc] initWithBytes:pcharResult length:strlen(pcharResult)];
     free(pcharResult);
     NSXMLParser* respParser = [[NSXMLParser alloc] initWithData:respData];
-    [respData release];
     [respParser setDelegate:self];
     [respParser parse];
-    [respParser release];
     return result;
 }
 
@@ -137,14 +132,6 @@
 }
 
 
-- (void)dealloc {
-    [controlURL release];
-    [deviceUDN release];
-    [serviceType release];
-    [argumentList release];
-    [name release];
-    [super dealloc];
-}
 
 
 #pragma NSXMLParser delegate method.
@@ -153,7 +140,6 @@
     //DEBUG
     if (_contentStr)
     {
-        [_contentStr release];
         _contentStr = nil;
     }
     _contentStr = [[NSMutableString alloc] init];
@@ -166,12 +152,10 @@
     if (arg)
     {
         arg.strValue = _contentStr;
-        [_contentStr release];
         _contentStr = nil;
     }
     
     if (_contentStr) {
-        [_contentStr release];
         _contentStr = nil;
     }
 }

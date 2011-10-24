@@ -18,10 +18,4 @@
 }
 
 
-- (void)dealloc {
-    [strValue release];
-    [name release];
-    [relatedStateVariable release];
-    [super dealloc];
-}
 @end

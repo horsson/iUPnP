@@ -19,7 +19,6 @@
     
     NSString * errDesc = [[NSString alloc] initWithBytes:errMsg length:strlen(errMsg) encoding:NSUTF8StringEncoding];
     [userInfo setObject:errDesc forKey:NSLocalizedDescriptionKey];
-    [errDesc release];
     self = [self initWithDomain:@"UPnP_Domain" code:errorCode userInfo:userInfo];
     return self;
 }

@@ -14,8 +14,5 @@
 
 - (void)dealloc {
     NSLog(@"UPnPIcon dealloc.");
-    [mimetype release];
-    [url release];
-    [super dealloc];
 }
 @end

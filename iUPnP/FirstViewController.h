@@ -18,7 +18,7 @@
     NSMutableArray* _devices;
 }
 
-@property(nonatomic,retain)IBOutlet UITableView* tableView;
+@property(nonatomic,strong)IBOutlet UITableView* tableView;
 -(IBAction) btnSendAction:(id) sender;
 -(IBAction) btnSearchClicked:(id) sender;
 -(IBAction) btnReloadClicked:(id) sender;

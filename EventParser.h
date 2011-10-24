@@ -16,7 +16,7 @@
     NSMutableString* _currentString;
 }
 @property(nonatomic,copy) NSString* XMLString;
-@property(nonatomic,retain)  NSMutableDictionary* varValueDict;
+@property(nonatomic,strong)  NSMutableDictionary* varValueDict;
 
 -(id) initWithXMLString:(NSString*) xmlString;
 -(BOOL) parse;

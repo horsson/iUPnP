@@ -50,9 +50,9 @@
 @property(nonatomic,copy) NSString* UDN;
 @property(nonatomic,copy) NSString* UPC;
 @property(nonatomic,copy) NSString* presentationURL;
-@property(nonatomic,retain) NSMutableArray* iconList;
-@property(nonatomic,retain) NSMutableDictionary* serviceList;
-@property(nonatomic,assign) id<UPnPDDeviceDelegate> delegate;
+@property(nonatomic,strong) NSMutableArray* iconList;
+@property(nonatomic,strong) NSMutableDictionary* serviceList;
+@property(nonatomic,unsafe_unretained) id<UPnPDDeviceDelegate> delegate;
 @property(nonatomic,assign) UpnpClient_Handle controlPointHandle;
 
 -(id) initWithLocationURL:(NSString*) locationURL timeout:(NSTimeInterval) timeout;

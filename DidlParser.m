@@ -40,14 +40,9 @@
 
 -(NSArray*) mediaObjects
 {
-    return [[_mediaObjects copy] autorelease];
+    return [_mediaObjects copy];
 }
 
-- (void)dealloc {
-    [_mediaObjects release];
-    [_parser release];
-    [super dealloc];
-}
 
 
 
@@ -60,7 +55,6 @@
 
 -(void) parserDidEndDocument:(NSXMLParser *)parser
 {
-    [_currentString release];
     _currentString = nil;
 }
 
@@ -92,7 +86,6 @@
         if (_currentTag.resList == nil) {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.resList = array;
-            [array release];
         }   
         _res = [[MediaRes alloc] init];
         _res.duration = [attributeDict objectForKey:@"duration"];
@@ -108,7 +101,6 @@
         {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.searchClassList = array;
-            [array release];
         }
     }
     else if ([@"upnp:createClass" isEqualToString:elementName])
@@ -116,7 +108,6 @@
         if (_currentTag.createClassList == nil) {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.createClassList = array;
-            [array release];
         }
     }
     else if ([@"upnp:writeStatus" isEqualToString:elementName])
@@ -125,7 +116,6 @@
         {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.writeStatusList = array;
-            [array release];
         }
         
     }
@@ -134,7 +124,6 @@
         if (_currentTag.artistList == nil) {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.artistList = array;
-            [array release];
         }
     }
     else if ([@"upnp:actor" isEqualToString:elementName])
@@ -143,7 +132,6 @@
         {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.actorList = array;
-            [array release];
 
         }
     }
@@ -153,7 +141,6 @@
         {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.authorList = array;
-            [array release];
         }
     }
     else if ([@"upnp:producer" isEqualToString:elementName])
@@ -166,7 +153,6 @@
         {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.directorList = array;
-            [array release];
         }
     }
     else if ([@"upnp:genre" isEqualToString:elementName])
@@ -175,7 +161,6 @@
         {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.genreList = array;
-            [array release];
         }
     }
     else if ([@"upnp:playlist" isEqualToString:elementName])
@@ -185,7 +170,6 @@
         {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.playlistList = array;
-            [array release];
         }
 
     }
@@ -194,7 +178,6 @@
         if (_currentTag.albumArtURIList) {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.albumArtURIList = array;
-            [array release];
         }
 
     }
@@ -203,7 +186,6 @@
         if (_currentTag.albumList) {
             NSMutableArray* array = [[NSMutableArray alloc] init];
             _currentTag.albumList = array;
-            [array release];
         }
     }
 
@@ -215,14 +197,12 @@
     if ([@"container" isEqualToString:elementName])
     {
         [_mediaObjects addObject:_mediaContainer];
-        [_mediaContainer release];
         _mediaContainer = nil;
         _currentTag = nil;
     }
     else if ([@"item" isEqualToString:elementName])
     {
         [_mediaObjects addObject:_mediaItem];
-        [_mediaItem release];
         _mediaItem = nil;
         _currentTag = nil;
     }
@@ -230,26 +210,22 @@
     {
         ObjectClass* oc = [[ObjectClass alloc] initWithString:_currentString];
         [_currentTag.searchClassList addObject:oc];
-        [oc release];
     }
     else if ([@"upnp:createClass" isEqualToString:elementName])
     {
         ObjectClass* oc = [[ObjectClass alloc] initWithString:_currentString];
         [_currentTag.createClassList addObject:oc];
-        [oc release];
     }
     
     else if ([@"upnp:class" isEqualToString:elementName])
     {
         ObjectClass* oc = [[ObjectClass alloc] initWithString:_currentString];
         _currentTag.clazz = oc;
-        [oc release];
     }
     else if ([@"res" isEqualToString:elementName])
     {
         _res.resUrl = _currentString;
         [_currentTag.resList addObject:_res];
-        [_res release];
     }
     else if ([@"upnp:writeStatus" isEqualToString:elementName])
     {

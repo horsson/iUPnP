@@ -65,8 +65,4 @@
 }
 
 
-- (void)dealloc {
-    [_className release];
-    [super dealloc];
-}
 @end

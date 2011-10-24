@@ -23,30 +23,30 @@
 //dc:title
 @property(nonatomic,copy)   NSString* title;
 //didl-lite:res
-@property(nonatomic,retain) NSMutableArray* resList;
+@property(nonatomic,strong) NSMutableArray* resList;
 //upnp:class
-@property(nonatomic,retain) ObjectClass* clazz;
+@property(nonatomic,strong) ObjectClass* clazz;
 //createClass, a list of ObjectClass
-@property(nonatomic,retain) NSMutableArray* createClassList;
+@property(nonatomic,strong) NSMutableArray* createClassList;
 //searchClass, a list of ObjectClass
-@property(nonatomic,retain) NSMutableArray* searchClassList;
+@property(nonatomic,strong) NSMutableArray* searchClassList;
 //writeStatus
 //writeStatus is an enum, it can be WRITABLE,PROTECTED,NOT_WRITABLE,UNKNOWN,MIXED
-@property(nonatomic,retain) NSMutableArray* writeStatusList;
+@property(nonatomic,strong) NSMutableArray* writeStatusList;
 //artist(It should be personWithRole type)
-@property(nonatomic,retain) NSMutableArray* artistList;
+@property(nonatomic,strong) NSMutableArray* artistList;
 //actor(It should be personWithRole type)
-@property(nonatomic,retain) NSMutableArray* actorList;
+@property(nonatomic,strong) NSMutableArray* actorList;
 //author(It should be personWithRole type)
-@property(nonatomic,retain) NSMutableArray* authorList;
+@property(nonatomic,strong) NSMutableArray* authorList;
 //director
-@property(nonatomic,retain) NSMutableArray* directorList;
+@property(nonatomic,strong) NSMutableArray* directorList;
 //genre
-@property(nonatomic,retain) NSMutableArray* genreList;
+@property(nonatomic,strong) NSMutableArray* genreList;
 //playList
-@property(nonatomic,retain) NSMutableArray* playlistList;
+@property(nonatomic,strong) NSMutableArray* playlistList;
 //albumArtURI
-@property(nonatomic,retain) NSMutableArray* albumArtURIList;
+@property(nonatomic,strong) NSMutableArray* albumArtURIList;
 //originalTrackNumber
 @property(nonatomic,assign)   NSUInteger originalTrackNumber;
 //creator

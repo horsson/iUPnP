@@ -32,10 +32,8 @@
         _timeout = [[UPnPStack sharedUPnPStack] defaultTimeoutForXmlParsing];
     }
     NSURLRequest* urlRequest = [[NSURLRequest alloc] initWithURL:nsurl cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:_timeout];
-    [nsurl release];
     NSURLResponse* resp = nil;
     _xmlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&resp error:NULL];
-    [urlRequest release];
     NSHTTPURLResponse* httpResp = (NSHTTPURLResponse*) resp;
     if (_xmlData == nil)
     {
@@ -54,7 +52,6 @@
         {
             [delegate parseDidReceiveError:self withError:[_xmlParser parserError]];  
         }
-        [_xmlParser release];
         _xmlParser = nil;
     }
 }
@@ -69,13 +66,6 @@
 -(void) dealloc
 {
     NSLog(@"UPnPService %@ dealloc.", self.serviceId);
-    [actionList release];
-    [serviceId release];
-    [serviceType release];
-    [SCPDURL release];
-    [controlURL release];
-    [eventSubURL release];
-    [super dealloc];
 }
 
 
@@ -88,7 +78,6 @@
 
 -(void) parserDidEndDocument:(NSXMLParser *)parser
 {
-    [_currentContent release];
     _currentContent = nil;
 }
 
@@ -100,7 +89,6 @@
     {
         NSMutableArray *tempArray = [[NSMutableArray alloc] init];
         self.actionList = tempArray;
-        [tempArray release];
     }
     
     if ([elementName isEqualToString:@"action"])
@@ -113,7 +101,6 @@
     {
         NSMutableArray *argumentList = [[NSMutableArray alloc] init];
         _action.argumentList = argumentList;
-        [argumentList release];
     }
     
     if ([elementName isEqualToString:@"argument"])
@@ -132,7 +119,6 @@
    if ([elementName isEqualToString:@"action"])
     {
         [actionList addObject:_action];
-        [_action release];
         _action = nil;
     }
     
@@ -172,7 +158,6 @@
     if ([elementName isEqualToString:@"argument"])
     {
         [_action.argumentList addObject:_argument];
-        [_argument release];
         _argument = nil;
     }
 }

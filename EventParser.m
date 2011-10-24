@@ -45,7 +45,6 @@ static  NSString* kEPProperty = @"e:property";
 
 -(void) parserDidEndDocument:(NSXMLParser *)parser
 {
-    [_currentString release];
     _currentString = nil;
 }
 
@@ -63,8 +62,6 @@ static  NSString* kEPProperty = @"e:property";
     NSString* varName = [elementName copy];
     NSString* value = [_currentString copy];
     [varValueDict setObject:value forKey:varName];
-    [varName release];
-    [value release];
 }
 
 -(void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -72,10 +69,4 @@ static  NSString* kEPProperty = @"e:property";
     [_currentString appendString:string];
 }
 
-- (void)dealloc {
-    [varValueDict release];
-    [self.XMLString release];
-    [_xmlParser release];
-    [super dealloc];
-}
 @end
