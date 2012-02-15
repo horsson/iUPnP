@@ -1,0 +1,1048 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E7C0E3A614EBD0A3004D7388 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C0E3A514EBD0A3004D7388 /* Foundation.framework */; };
+		E7C0E46714EBD11E004D7388 /* DidlParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3BB14EBD11E004D7388 /* DidlParser.h */; };
+		E7C0E46814EBD11E004D7388 /* DidlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3BC14EBD11E004D7388 /* DidlParser.m */; };
+		E7C0E46914EBD11E004D7388 /* DidlResult.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3BD14EBD11E004D7388 /* DidlResult.h */; };
+		E7C0E46A14EBD11E004D7388 /* DidlResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3BE14EBD11E004D7388 /* DidlResult.m */; };
+		E7C0E46B14EBD11E004D7388 /* MediaContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3BF14EBD11E004D7388 /* MediaContainer.h */; };
+		E7C0E46C14EBD11E004D7388 /* MediaContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3C014EBD11E004D7388 /* MediaContainer.m */; };
+		E7C0E46D14EBD11E004D7388 /* MediaItem.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3C114EBD11E004D7388 /* MediaItem.h */; };
+		E7C0E46E14EBD11E004D7388 /* MediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3C214EBD11E004D7388 /* MediaItem.m */; };
+		E7C0E46F14EBD11E004D7388 /* MediaObject.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3C314EBD11E004D7388 /* MediaObject.h */; };
+		E7C0E47014EBD11E004D7388 /* MediaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3C414EBD11E004D7388 /* MediaObject.m */; };
+		E7C0E47114EBD11E004D7388 /* MediaRes.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3C514EBD11E004D7388 /* MediaRes.h */; };
+		E7C0E47214EBD11E004D7388 /* MediaRes.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3C614EBD11E004D7388 /* MediaRes.m */; };
+		E7C0E47314EBD11E004D7388 /* ObjectClass.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3C714EBD11E004D7388 /* ObjectClass.h */; };
+		E7C0E47414EBD11E004D7388 /* ObjectClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3C814EBD11E004D7388 /* ObjectClass.m */; };
+		E7C0E47514EBD11E004D7388 /* UPnPArtist.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3C914EBD11E004D7388 /* UPnPArtist.h */; };
+		E7C0E47614EBD11E004D7388 /* UPnPArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3CA14EBD11E004D7388 /* UPnPArtist.m */; };
+		E7C0E47714EBD11E004D7388 /* LastChange.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3CB14EBD11E004D7388 /* LastChange.h */; };
+		E7C0E47814EBD11E004D7388 /* LastChange.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3CC14EBD11E004D7388 /* LastChange.m */; };
+		E7C0E47B14EBD11E004D7388 /* MUPnPMediaRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3CF14EBD11E004D7388 /* MUPnPMediaRenderer.h */; };
+		E7C0E47C14EBD11E004D7388 /* MUPnPMediaRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3D014EBD11E004D7388 /* MUPnPMediaRenderer.m */; };
+		E7C0E47D14EBD11E004D7388 /* PositionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3D114EBD11E004D7388 /* PositionInfo.h */; };
+		E7C0E47E14EBD11E004D7388 /* PositionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3D214EBD11E004D7388 /* PositionInfo.m */; };
+		E7C0E47F14EBD11E004D7388 /* RelExp.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3D314EBD11E004D7388 /* RelExp.h */; };
+		E7C0E48014EBD11E004D7388 /* RelExp.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3D414EBD11E004D7388 /* RelExp.m */; };
+		E7C0E48114EBD11E004D7388 /* SearchCriteria.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3D514EBD11E004D7388 /* SearchCriteria.h */; };
+		E7C0E48214EBD11E004D7388 /* SearchCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3D614EBD11E004D7388 /* SearchCriteria.m */; };
+		E7C0E48314EBD11E004D7388 /* TransportInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3D714EBD11E004D7388 /* TransportInfo.h */; };
+		E7C0E48414EBD11E004D7388 /* TransportInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3D814EBD11E004D7388 /* TransportInfo.m */; };
+		E7C0E48514EBD11E004D7388 /* EventParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3DA14EBD11E004D7388 /* EventParser.h */; };
+		E7C0E48614EBD11E004D7388 /* EventParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3DB14EBD11E004D7388 /* EventParser.m */; };
+		E7C0E48714EBD11E004D7388 /* MSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3DC14EBD11E004D7388 /* MSubscription.h */; };
+		E7C0E48814EBD11E004D7388 /* MSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3DD14EBD11E004D7388 /* MSubscription.m */; };
+		E7C0E48914EBD11E004D7388 /* MUPnPAction.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3DE14EBD11E004D7388 /* MUPnPAction.h */; };
+		E7C0E48A14EBD11E004D7388 /* MUPnPAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3DF14EBD11E004D7388 /* MUPnPAction.m */; };
+		E7C0E48B14EBD11E004D7388 /* MUPnPArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3E014EBD11E004D7388 /* MUPnPArgument.h */; };
+		E7C0E48C14EBD11E004D7388 /* MUPnPArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3E114EBD11E004D7388 /* MUPnPArgument.m */; };
+		E7C0E48D14EBD11E004D7388 /* MUPnPControlPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3E214EBD11E004D7388 /* MUPnPControlPoint.h */; };
+		E7C0E48E14EBD11E004D7388 /* MUPnPControlPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3E314EBD11E004D7388 /* MUPnPControlPoint.m */; };
+		E7C0E48F14EBD11E004D7388 /* MUPnPDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3E414EBD11E004D7388 /* MUPnPDevice.h */; };
+		E7C0E49014EBD11E004D7388 /* MUPnPDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3E514EBD11E004D7388 /* MUPnPDevice.m */; };
+		E7C0E49114EBD11E004D7388 /* MUPnPIcon.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3E614EBD11E004D7388 /* MUPnPIcon.h */; };
+		E7C0E49214EBD11E004D7388 /* MUPnPIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3E714EBD11E004D7388 /* MUPnPIcon.m */; };
+		E7C0E49314EBD11E004D7388 /* MUPnPMediaServer.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3E814EBD11E004D7388 /* MUPnPMediaServer.h */; };
+		E7C0E49414EBD11E004D7388 /* MUPnPMediaServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3E914EBD11E004D7388 /* MUPnPMediaServer.m */; };
+		E7C0E49514EBD11E004D7388 /* MUPnPService.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3EA14EBD11E004D7388 /* MUPnPService.h */; };
+		E7C0E49614EBD11E004D7388 /* MUPnPService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3EB14EBD11E004D7388 /* MUPnPService.m */; };
+		E7C0E49714EBD11E004D7388 /* MUPnPStack.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3EC14EBD11E004D7388 /* MUPnPStack.h */; };
+		E7C0E49814EBD11E004D7388 /* MUPnPStack.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3ED14EBD11E004D7388 /* MUPnPStack.m */; };
+		E7C0E49914EBD11E004D7388 /* NSError+UPnP.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3EE14EBD11E004D7388 /* NSError+UPnP.h */; };
+		E7C0E49A14EBD11E004D7388 /* NSError+UPnP.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3EF14EBD11E004D7388 /* NSError+UPnP.m */; };
+		E7C0E49B14EBD11E004D7388 /* LastChangeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3F014EBD11E004D7388 /* LastChangeParser.h */; };
+		E7C0E49C14EBD11E004D7388 /* LastChangeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3F114EBD11E004D7388 /* LastChangeParser.m */; };
+		E7C0E49D14EBD11E004D7388 /* upnpapi.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3F414EBD11E004D7388 /* upnpapi.c */; };
+		E7C0E49E14EBD11E004D7388 /* upnpdebug.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3F514EBD11E004D7388 /* upnpdebug.c */; };
+		E7C0E49F14EBD11E004D7388 /* UpnpString.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3F614EBD11E004D7388 /* UpnpString.c */; };
+		E7C0E4A014EBD11E004D7388 /* upnptools.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3F714EBD11E004D7388 /* upnptools.c */; };
+		E7C0E4A114EBD11E004D7388 /* autoconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E3F814EBD11E004D7388 /* autoconfig.h */; };
+		E7C0E4A214EBD11E004D7388 /* gena_callback2.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3FA14EBD11E004D7388 /* gena_callback2.c */; };
+		E7C0E4A314EBD11E004D7388 /* gena_ctrlpt.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3FB14EBD11E004D7388 /* gena_ctrlpt.c */; };
+		E7C0E4A414EBD11E004D7388 /* gena_device.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3FC14EBD11E004D7388 /* gena_device.c */; };
+		E7C0E4A514EBD11E004D7388 /* client_table.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E3FF14EBD11E004D7388 /* client_table.c */; };
+		E7C0E4A614EBD11E004D7388 /* miniserver.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40114EBD11E004D7388 /* miniserver.c */; };
+		E7C0E4A714EBD11E004D7388 /* httpparser.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40414EBD11E004D7388 /* httpparser.c */; };
+		E7C0E4A814EBD11E004D7388 /* httpreadwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40514EBD11E004D7388 /* httpreadwrite.c */; };
+		E7C0E4A914EBD11E004D7388 /* parsetools.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40614EBD11E004D7388 /* parsetools.c */; };
+		E7C0E4AA14EBD11E004D7388 /* statcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40714EBD11E004D7388 /* statcodes.c */; };
+		E7C0E4AB14EBD11E004D7388 /* webserver.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40814EBD11E004D7388 /* webserver.c */; };
+		E7C0E4AC14EBD11E004D7388 /* sock.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40914EBD11E004D7388 /* sock.c */; };
+		E7C0E4AD14EBD11E004D7388 /* uri.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40B14EBD11E004D7388 /* uri.c */; };
+		E7C0E4AE14EBD11E004D7388 /* service_table.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40D14EBD11E004D7388 /* service_table.c */; };
+		E7C0E4AF14EBD11E004D7388 /* membuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E40F14EBD11E004D7388 /* membuffer.c */; };
+		E7C0E4B014EBD11E004D7388 /* strintmap.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E41014EBD11E004D7388 /* strintmap.c */; };
+		E7C0E4B114EBD11E004D7388 /* upnp_timeout.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E41114EBD11E004D7388 /* upnp_timeout.c */; };
+		E7C0E4B214EBD11E004D7388 /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E41214EBD11E004D7388 /* util.c */; };
+		E7C0E4B314EBD11E004D7388 /* client_table.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41414EBD11E004D7388 /* client_table.h */; };
+		E7C0E4B414EBD11E004D7388 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41514EBD11E004D7388 /* config.h */; };
+		E7C0E4B514EBD11E004D7388 /* gena.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41614EBD11E004D7388 /* gena.h */; };
+		E7C0E4B614EBD11E004D7388 /* gena_ctrlpt.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41714EBD11E004D7388 /* gena_ctrlpt.h */; };
+		E7C0E4B714EBD11E004D7388 /* gena_device.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41814EBD11E004D7388 /* gena_device.h */; };
+		E7C0E4B814EBD11E004D7388 /* global.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41914EBD11E004D7388 /* global.h */; };
+		E7C0E4B914EBD11E004D7388 /* gmtdate.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41A14EBD11E004D7388 /* gmtdate.h */; };
+		E7C0E4BA14EBD11E004D7388 /* httpparser.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41B14EBD11E004D7388 /* httpparser.h */; };
+		E7C0E4BB14EBD11E004D7388 /* httpreadwrite.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41C14EBD11E004D7388 /* httpreadwrite.h */; };
+		E7C0E4BC14EBD11E004D7388 /* inet_pton.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41D14EBD11E004D7388 /* inet_pton.h */; };
+		E7C0E4BD14EBD11E004D7388 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41E14EBD11E004D7388 /* md5.h */; };
+		E7C0E4BE14EBD11E004D7388 /* membuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E41F14EBD11E004D7388 /* membuffer.h */; };
+		E7C0E4BF14EBD11E004D7388 /* miniserver.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42014EBD11E004D7388 /* miniserver.h */; };
+		E7C0E4C014EBD11E004D7388 /* netall.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42114EBD11E004D7388 /* netall.h */; };
+		E7C0E4C114EBD11E004D7388 /* parsetools.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42214EBD11E004D7388 /* parsetools.h */; };
+		E7C0E4C214EBD11E004D7388 /* server.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42314EBD11E004D7388 /* server.h */; };
+		E7C0E4C314EBD11E004D7388 /* service_table.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42414EBD11E004D7388 /* service_table.h */; };
+		E7C0E4C414EBD11E004D7388 /* soaplib.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42514EBD11E004D7388 /* soaplib.h */; };
+		E7C0E4C514EBD11E004D7388 /* sock.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42614EBD11E004D7388 /* sock.h */; };
+		E7C0E4C614EBD11E004D7388 /* ssdplib.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42714EBD11E004D7388 /* ssdplib.h */; };
+		E7C0E4C714EBD11E004D7388 /* statcodes.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42814EBD11E004D7388 /* statcodes.h */; };
+		E7C0E4C814EBD11E004D7388 /* statuscodes.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42914EBD11E004D7388 /* statuscodes.h */; };
+		E7C0E4C914EBD11E004D7388 /* strintmap.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42A14EBD11E004D7388 /* strintmap.h */; };
+		E7C0E4CA14EBD11E004D7388 /* sysdep.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42B14EBD11E004D7388 /* sysdep.h */; };
+		E7C0E4CB14EBD11E004D7388 /* unixutil.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42C14EBD11E004D7388 /* unixutil.h */; };
+		E7C0E4CC14EBD11E004D7388 /* upnp_timeout.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42D14EBD11E004D7388 /* upnp_timeout.h */; };
+		E7C0E4CD14EBD11E004D7388 /* upnpapi.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42E14EBD11E004D7388 /* upnpapi.h */; };
+		E7C0E4CE14EBD11E004D7388 /* upnputil.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E42F14EBD11E004D7388 /* upnputil.h */; };
+		E7C0E4CF14EBD11E004D7388 /* uri.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E43014EBD11E004D7388 /* uri.h */; };
+		E7C0E4D014EBD11E004D7388 /* urlconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E43114EBD11E004D7388 /* urlconfig.h */; };
+		E7C0E4D114EBD11E004D7388 /* uuid.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E43214EBD11E004D7388 /* uuid.h */; };
+		E7C0E4D214EBD11E004D7388 /* VirtualDir.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E43314EBD11E004D7388 /* VirtualDir.h */; };
+		E7C0E4D314EBD11E004D7388 /* webserver.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E43414EBD11E004D7388 /* webserver.h */; };
+		E7C0E4D414EBD11E004D7388 /* attr.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E43614EBD11E004D7388 /* attr.c */; };
+		E7C0E4D514EBD11E004D7388 /* document.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E43714EBD11E004D7388 /* document.c */; };
+		E7C0E4D614EBD11E004D7388 /* element.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E43814EBD11E004D7388 /* element.c */; };
+		E7C0E4D714EBD11E004D7388 /* ixml.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E43914EBD11E004D7388 /* ixml.c */; };
+		E7C0E4D814EBD11E004D7388 /* ixml.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E43A14EBD11E004D7388 /* ixml.h */; };
+		E7C0E4D914EBD11E004D7388 /* ixmldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E43B14EBD11E004D7388 /* ixmldebug.c */; };
+		E7C0E4DA14EBD11E004D7388 /* ixmldebug.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E43C14EBD11E004D7388 /* ixmldebug.h */; };
+		E7C0E4DB14EBD11E004D7388 /* ixmlmembuf.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E43D14EBD11E004D7388 /* ixmlmembuf.c */; };
+		E7C0E4DC14EBD11E004D7388 /* ixmlmembuf.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E43E14EBD11E004D7388 /* ixmlmembuf.h */; };
+		E7C0E4DD14EBD11E004D7388 /* ixmlparser.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E43F14EBD11E004D7388 /* ixmlparser.c */; };
+		E7C0E4DE14EBD11E004D7388 /* ixmlparser.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E44014EBD11E004D7388 /* ixmlparser.h */; };
+		E7C0E4DF14EBD11E004D7388 /* FreeList.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E44214EBD11E004D7388 /* FreeList.c */; };
+		E7C0E4E014EBD11E004D7388 /* FreeList.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E44314EBD11E004D7388 /* FreeList.h */; };
+		E7C0E4E114EBD11E004D7388 /* ithread.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E44414EBD11E004D7388 /* ithread.h */; };
+		E7C0E4E214EBD11E004D7388 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E44514EBD11E004D7388 /* LinkedList.c */; };
+		E7C0E4E314EBD11E004D7388 /* LinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E44614EBD11E004D7388 /* LinkedList.h */; };
+		E7C0E4E414EBD11E004D7388 /* namedNodeMap.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E44714EBD11E004D7388 /* namedNodeMap.c */; };
+		E7C0E4E514EBD11E004D7388 /* node.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E44814EBD11E004D7388 /* node.c */; };
+		E7C0E4E614EBD11E004D7388 /* nodeList.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E44914EBD11E004D7388 /* nodeList.c */; };
+		E7C0E4E714EBD11E004D7388 /* ThreadPool.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E44A14EBD11E004D7388 /* ThreadPool.c */; };
+		E7C0E4E814EBD11E004D7388 /* ThreadPool.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E44B14EBD11E004D7388 /* ThreadPool.h */; };
+		E7C0E4E914EBD11E004D7388 /* TimerThread.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E44C14EBD11E004D7388 /* TimerThread.c */; };
+		E7C0E4EA14EBD11E004D7388 /* TimerThread.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E44D14EBD11E004D7388 /* TimerThread.h */; };
+		E7C0E4EB14EBD11E004D7388 /* soap_common.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E44F14EBD11E004D7388 /* soap_common.c */; };
+		E7C0E4EC14EBD11E004D7388 /* soap_ctrlpt.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E45014EBD11E004D7388 /* soap_ctrlpt.c */; };
+		E7C0E4ED14EBD11E004D7388 /* soap_device.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E45114EBD11E004D7388 /* soap_device.c */; };
+		E7C0E4EE14EBD11E004D7388 /* ssdp_ctrlpt.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E45314EBD11E004D7388 /* ssdp_ctrlpt.c */; };
+		E7C0E4EF14EBD11E004D7388 /* ssdp_device.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E45414EBD11E004D7388 /* ssdp_device.c */; };
+		E7C0E4F014EBD11E004D7388 /* ssdp_ResultData.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45514EBD11E004D7388 /* ssdp_ResultData.h */; };
+		E7C0E4F114EBD11E004D7388 /* ssdp_server.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E45614EBD11E004D7388 /* ssdp_server.c */; };
+		E7C0E4F214EBD11E004D7388 /* upnp.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45714EBD11E004D7388 /* upnp.h */; };
+		E7C0E4F314EBD11E004D7388 /* upnpconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45814EBD11E004D7388 /* upnpconfig.h */; };
+		E7C0E4F414EBD11E004D7388 /* upnpdebug.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45914EBD11E004D7388 /* upnpdebug.h */; };
+		E7C0E4F514EBD11E004D7388 /* UpnpGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45A14EBD11E004D7388 /* UpnpGlobal.h */; };
+		E7C0E4F614EBD11E004D7388 /* UpnpInet.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45B14EBD11E004D7388 /* UpnpInet.h */; };
+		E7C0E4F714EBD11E004D7388 /* UpnpIntTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45C14EBD11E004D7388 /* UpnpIntTypes.h */; };
+		E7C0E4F814EBD11E004D7388 /* UpnpStdInt.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45D14EBD11E004D7388 /* UpnpStdInt.h */; };
+		E7C0E4F914EBD11E004D7388 /* UpnpString.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45E14EBD11E004D7388 /* UpnpString.h */; };
+		E7C0E4FA14EBD11E004D7388 /* upnptools.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E45F14EBD11E004D7388 /* upnptools.h */; };
+		E7C0E4FB14EBD11E004D7388 /* UpnpUniStd.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E46014EBD11E004D7388 /* UpnpUniStd.h */; };
+		E7C0E4FC14EBD11E004D7388 /* urlconfig.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E46214EBD11E004D7388 /* urlconfig.c */; };
+		E7C0E4FD14EBD11E004D7388 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E46414EBD11E004D7388 /* md5.c */; };
+		E7C0E4FE14EBD11E004D7388 /* sysdep.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E46514EBD11E004D7388 /* sysdep.c */; };
+		E7C0E4FF14EBD11E004D7388 /* uuid.c in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E46614EBD11E004D7388 /* uuid.c */; };
+		E7C0E50A14EBD212004D7388 /* NSString+protocolinfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E50614EBD212004D7388 /* NSString+protocolinfo.h */; };
+		E7C0E50B14EBD212004D7388 /* NSString+protocolinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E50714EBD212004D7388 /* NSString+protocolinfo.m */; };
+		E7C0E50C14EBD212004D7388 /* NSString+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E50814EBD212004D7388 /* NSString+Utils.h */; };
+		E7C0E50D14EBD212004D7388 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E50914EBD212004D7388 /* NSString+Utils.m */; };
+		E7C0E51014EBD2BC004D7388 /* MMediaTime.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C0E50E14EBD2BC004D7388 /* MMediaTime.h */; };
+		E7C0E51114EBD2BC004D7388 /* MMediaTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C0E50F14EBD2BC004D7388 /* MMediaTime.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E7C0E3A214EBD0A3004D7388 /* libiUPnP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiUPnP.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7C0E3A514EBD0A3004D7388 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E7C0E3A914EBD0A3004D7388 /* iUPnP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iUPnP-Prefix.pch"; sourceTree = "<group>"; };
+		E7C0E3BB14EBD11E004D7388 /* DidlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DidlParser.h; sourceTree = "<group>"; };
+		E7C0E3BC14EBD11E004D7388 /* DidlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DidlParser.m; sourceTree = "<group>"; };
+		E7C0E3BD14EBD11E004D7388 /* DidlResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DidlResult.h; sourceTree = "<group>"; };
+		E7C0E3BE14EBD11E004D7388 /* DidlResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DidlResult.m; sourceTree = "<group>"; };
+		E7C0E3BF14EBD11E004D7388 /* MediaContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaContainer.h; sourceTree = "<group>"; };
+		E7C0E3C014EBD11E004D7388 /* MediaContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaContainer.m; sourceTree = "<group>"; };
+		E7C0E3C114EBD11E004D7388 /* MediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaItem.h; sourceTree = "<group>"; };
+		E7C0E3C214EBD11E004D7388 /* MediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaItem.m; sourceTree = "<group>"; };
+		E7C0E3C314EBD11E004D7388 /* MediaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaObject.h; sourceTree = "<group>"; };
+		E7C0E3C414EBD11E004D7388 /* MediaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaObject.m; sourceTree = "<group>"; };
+		E7C0E3C514EBD11E004D7388 /* MediaRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaRes.h; sourceTree = "<group>"; };
+		E7C0E3C614EBD11E004D7388 /* MediaRes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaRes.m; sourceTree = "<group>"; };
+		E7C0E3C714EBD11E004D7388 /* ObjectClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectClass.h; sourceTree = "<group>"; };
+		E7C0E3C814EBD11E004D7388 /* ObjectClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectClass.m; sourceTree = "<group>"; };
+		E7C0E3C914EBD11E004D7388 /* UPnPArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPnPArtist.h; sourceTree = "<group>"; };
+		E7C0E3CA14EBD11E004D7388 /* UPnPArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPnPArtist.m; sourceTree = "<group>"; };
+		E7C0E3CB14EBD11E004D7388 /* LastChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastChange.h; sourceTree = "<group>"; };
+		E7C0E3CC14EBD11E004D7388 /* LastChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastChange.m; sourceTree = "<group>"; };
+		E7C0E3CF14EBD11E004D7388 /* MUPnPMediaRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUPnPMediaRenderer.h; sourceTree = "<group>"; };
+		E7C0E3D014EBD11E004D7388 /* MUPnPMediaRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUPnPMediaRenderer.m; sourceTree = "<group>"; };
+		E7C0E3D114EBD11E004D7388 /* PositionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionInfo.h; sourceTree = "<group>"; };
+		E7C0E3D214EBD11E004D7388 /* PositionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionInfo.m; sourceTree = "<group>"; };
+		E7C0E3D314EBD11E004D7388 /* RelExp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelExp.h; sourceTree = "<group>"; };
+		E7C0E3D414EBD11E004D7388 /* RelExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelExp.m; sourceTree = "<group>"; };
+		E7C0E3D514EBD11E004D7388 /* SearchCriteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCriteria.h; sourceTree = "<group>"; };
+		E7C0E3D614EBD11E004D7388 /* SearchCriteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCriteria.m; sourceTree = "<group>"; };
+		E7C0E3D714EBD11E004D7388 /* TransportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportInfo.h; sourceTree = "<group>"; };
+		E7C0E3D814EBD11E004D7388 /* TransportInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportInfo.m; sourceTree = "<group>"; };
+		E7C0E3DA14EBD11E004D7388 /* EventParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventParser.h; sourceTree = "<group>"; };
+		E7C0E3DB14EBD11E004D7388 /* EventParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventParser.m; sourceTree = "<group>"; };
+		E7C0E3DC14EBD11E004D7388 /* MSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSubscription.h; sourceTree = "<group>"; };
+		E7C0E3DD14EBD11E004D7388 /* MSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSubscription.m; sourceTree = "<group>"; };
+		E7C0E3DE14EBD11E004D7388 /* MUPnPAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUPnPAction.h; sourceTree = "<group>"; };
+		E7C0E3DF14EBD11E004D7388 /* MUPnPAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUPnPAction.m; sourceTree = "<group>"; };
+		E7C0E3E014EBD11E004D7388 /* MUPnPArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUPnPArgument.h; sourceTree = "<group>"; };
+		E7C0E3E114EBD11E004D7388 /* MUPnPArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUPnPArgument.m; sourceTree = "<group>"; };
+		E7C0E3E214EBD11E004D7388 /* MUPnPControlPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUPnPControlPoint.h; sourceTree = "<group>"; };
+		E7C0E3E314EBD11E004D7388 /* MUPnPControlPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUPnPControlPoint.m; sourceTree = "<group>"; };
+		E7C0E3E414EBD11E004D7388 /* MUPnPDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUPnPDevice.h; sourceTree = "<group>"; };
+		E7C0E3E514EBD11E004D7388 /* MUPnPDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUPnPDevice.m; sourceTree = "<group>"; };
+		E7C0E3E614EBD11E004D7388 /* MUPnPIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUPnPIcon.h; sourceTree = "<group>"; };
+		E7C0E3E714EBD11E004D7388 /* MUPnPIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUPnPIcon.m; sourceTree = "<group>"; };
+		E7C0E3E814EBD11E004D7388 /* MUPnPMediaServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MUPnPMediaServer.h; path = ../core/MUPnPMediaServer.h; sourceTree = "<group>"; };
+		E7C0E3E914EBD11E004D7388 /* MUPnPMediaServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MUPnPMediaServer.m; path = ../core/MUPnPMediaServer.m; sourceTree = "<group>"; };
+		E7C0E3EA14EBD11E004D7388 /* MUPnPService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUPnPService.h; sourceTree = "<group>"; };
+		E7C0E3EB14EBD11E004D7388 /* MUPnPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUPnPService.m; sourceTree = "<group>"; };
+		E7C0E3EC14EBD11E004D7388 /* MUPnPStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUPnPStack.h; sourceTree = "<group>"; };
+		E7C0E3ED14EBD11E004D7388 /* MUPnPStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUPnPStack.m; sourceTree = "<group>"; };
+		E7C0E3EE14EBD11E004D7388 /* NSError+UPnP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+UPnP.h"; sourceTree = "<group>"; };
+		E7C0E3EF14EBD11E004D7388 /* NSError+UPnP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+UPnP.m"; sourceTree = "<group>"; };
+		E7C0E3F014EBD11E004D7388 /* LastChangeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastChangeParser.h; sourceTree = "<group>"; };
+		E7C0E3F114EBD11E004D7388 /* LastChangeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastChangeParser.m; sourceTree = "<group>"; };
+		E7C0E3F414EBD11E004D7388 /* upnpapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = upnpapi.c; sourceTree = "<group>"; };
+		E7C0E3F514EBD11E004D7388 /* upnpdebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = upnpdebug.c; sourceTree = "<group>"; };
+		E7C0E3F614EBD11E004D7388 /* UpnpString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = UpnpString.c; sourceTree = "<group>"; };
+		E7C0E3F714EBD11E004D7388 /* upnptools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = upnptools.c; sourceTree = "<group>"; };
+		E7C0E3F814EBD11E004D7388 /* autoconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autoconfig.h; sourceTree = "<group>"; };
+		E7C0E3FA14EBD11E004D7388 /* gena_callback2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gena_callback2.c; sourceTree = "<group>"; };
+		E7C0E3FB14EBD11E004D7388 /* gena_ctrlpt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gena_ctrlpt.c; sourceTree = "<group>"; };
+		E7C0E3FC14EBD11E004D7388 /* gena_device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gena_device.c; sourceTree = "<group>"; };
+		E7C0E3FF14EBD11E004D7388 /* client_table.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = client_table.c; sourceTree = "<group>"; };
+		E7C0E40114EBD11E004D7388 /* miniserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = miniserver.c; sourceTree = "<group>"; };
+		E7C0E40414EBD11E004D7388 /* httpparser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = httpparser.c; sourceTree = "<group>"; };
+		E7C0E40514EBD11E004D7388 /* httpreadwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = httpreadwrite.c; sourceTree = "<group>"; };
+		E7C0E40614EBD11E004D7388 /* parsetools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parsetools.c; sourceTree = "<group>"; };
+		E7C0E40714EBD11E004D7388 /* statcodes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = statcodes.c; sourceTree = "<group>"; };
+		E7C0E40814EBD11E004D7388 /* webserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = webserver.c; sourceTree = "<group>"; };
+		E7C0E40914EBD11E004D7388 /* sock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sock.c; sourceTree = "<group>"; };
+		E7C0E40B14EBD11E004D7388 /* uri.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uri.c; sourceTree = "<group>"; };
+		E7C0E40D14EBD11E004D7388 /* service_table.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = service_table.c; sourceTree = "<group>"; };
+		E7C0E40F14EBD11E004D7388 /* membuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = membuffer.c; sourceTree = "<group>"; };
+		E7C0E41014EBD11E004D7388 /* strintmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strintmap.c; sourceTree = "<group>"; };
+		E7C0E41114EBD11E004D7388 /* upnp_timeout.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = upnp_timeout.c; sourceTree = "<group>"; };
+		E7C0E41214EBD11E004D7388 /* util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
+		E7C0E41414EBD11E004D7388 /* client_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = client_table.h; sourceTree = "<group>"; };
+		E7C0E41514EBD11E004D7388 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		E7C0E41614EBD11E004D7388 /* gena.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gena.h; sourceTree = "<group>"; };
+		E7C0E41714EBD11E004D7388 /* gena_ctrlpt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gena_ctrlpt.h; sourceTree = "<group>"; };
+		E7C0E41814EBD11E004D7388 /* gena_device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gena_device.h; sourceTree = "<group>"; };
+		E7C0E41914EBD11E004D7388 /* global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = global.h; sourceTree = "<group>"; };
+		E7C0E41A14EBD11E004D7388 /* gmtdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gmtdate.h; sourceTree = "<group>"; };
+		E7C0E41B14EBD11E004D7388 /* httpparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpparser.h; sourceTree = "<group>"; };
+		E7C0E41C14EBD11E004D7388 /* httpreadwrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpreadwrite.h; sourceTree = "<group>"; };
+		E7C0E41D14EBD11E004D7388 /* inet_pton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inet_pton.h; sourceTree = "<group>"; };
+		E7C0E41E14EBD11E004D7388 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		E7C0E41F14EBD11E004D7388 /* membuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = membuffer.h; sourceTree = "<group>"; };
+		E7C0E42014EBD11E004D7388 /* miniserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = miniserver.h; sourceTree = "<group>"; };
+		E7C0E42114EBD11E004D7388 /* netall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netall.h; sourceTree = "<group>"; };
+		E7C0E42214EBD11E004D7388 /* parsetools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parsetools.h; sourceTree = "<group>"; };
+		E7C0E42314EBD11E004D7388 /* server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server.h; sourceTree = "<group>"; };
+		E7C0E42414EBD11E004D7388 /* service_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = service_table.h; sourceTree = "<group>"; };
+		E7C0E42514EBD11E004D7388 /* soaplib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soaplib.h; sourceTree = "<group>"; };
+		E7C0E42614EBD11E004D7388 /* sock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sock.h; sourceTree = "<group>"; };
+		E7C0E42714EBD11E004D7388 /* ssdplib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssdplib.h; sourceTree = "<group>"; };
+		E7C0E42814EBD11E004D7388 /* statcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statcodes.h; sourceTree = "<group>"; };
+		E7C0E42914EBD11E004D7388 /* statuscodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statuscodes.h; sourceTree = "<group>"; };
+		E7C0E42A14EBD11E004D7388 /* strintmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strintmap.h; sourceTree = "<group>"; };
+		E7C0E42B14EBD11E004D7388 /* sysdep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sysdep.h; sourceTree = "<group>"; };
+		E7C0E42C14EBD11E004D7388 /* unixutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unixutil.h; sourceTree = "<group>"; };
+		E7C0E42D14EBD11E004D7388 /* upnp_timeout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upnp_timeout.h; sourceTree = "<group>"; };
+		E7C0E42E14EBD11E004D7388 /* upnpapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upnpapi.h; sourceTree = "<group>"; };
+		E7C0E42F14EBD11E004D7388 /* upnputil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upnputil.h; sourceTree = "<group>"; };
+		E7C0E43014EBD11E004D7388 /* uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uri.h; sourceTree = "<group>"; };
+		E7C0E43114EBD11E004D7388 /* urlconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = urlconfig.h; sourceTree = "<group>"; };
+		E7C0E43214EBD11E004D7388 /* uuid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uuid.h; sourceTree = "<group>"; };
+		E7C0E43314EBD11E004D7388 /* VirtualDir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualDir.h; sourceTree = "<group>"; };
+		E7C0E43414EBD11E004D7388 /* webserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webserver.h; sourceTree = "<group>"; };
+		E7C0E43614EBD11E004D7388 /* attr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = attr.c; sourceTree = "<group>"; };
+		E7C0E43714EBD11E004D7388 /* document.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = document.c; sourceTree = "<group>"; };
+		E7C0E43814EBD11E004D7388 /* element.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = element.c; sourceTree = "<group>"; };
+		E7C0E43914EBD11E004D7388 /* ixml.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ixml.c; sourceTree = "<group>"; };
+		E7C0E43A14EBD11E004D7388 /* ixml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ixml.h; sourceTree = "<group>"; };
+		E7C0E43B14EBD11E004D7388 /* ixmldebug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ixmldebug.c; sourceTree = "<group>"; };
+		E7C0E43C14EBD11E004D7388 /* ixmldebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ixmldebug.h; sourceTree = "<group>"; };
+		E7C0E43D14EBD11E004D7388 /* ixmlmembuf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ixmlmembuf.c; sourceTree = "<group>"; };
+		E7C0E43E14EBD11E004D7388 /* ixmlmembuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ixmlmembuf.h; sourceTree = "<group>"; };
+		E7C0E43F14EBD11E004D7388 /* ixmlparser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ixmlparser.c; sourceTree = "<group>"; };
+		E7C0E44014EBD11E004D7388 /* ixmlparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ixmlparser.h; sourceTree = "<group>"; };
+		E7C0E44214EBD11E004D7388 /* FreeList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FreeList.c; sourceTree = "<group>"; };
+		E7C0E44314EBD11E004D7388 /* FreeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeList.h; sourceTree = "<group>"; };
+		E7C0E44414EBD11E004D7388 /* ithread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ithread.h; sourceTree = "<group>"; };
+		E7C0E44514EBD11E004D7388 /* LinkedList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LinkedList.c; sourceTree = "<group>"; };
+		E7C0E44614EBD11E004D7388 /* LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
+		E7C0E44714EBD11E004D7388 /* namedNodeMap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = namedNodeMap.c; sourceTree = "<group>"; };
+		E7C0E44814EBD11E004D7388 /* node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = node.c; sourceTree = "<group>"; };
+		E7C0E44914EBD11E004D7388 /* nodeList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nodeList.c; sourceTree = "<group>"; };
+		E7C0E44A14EBD11E004D7388 /* ThreadPool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ThreadPool.c; sourceTree = "<group>"; };
+		E7C0E44B14EBD11E004D7388 /* ThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadPool.h; sourceTree = "<group>"; };
+		E7C0E44C14EBD11E004D7388 /* TimerThread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TimerThread.c; sourceTree = "<group>"; };
+		E7C0E44D14EBD11E004D7388 /* TimerThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerThread.h; sourceTree = "<group>"; };
+		E7C0E44F14EBD11E004D7388 /* soap_common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = soap_common.c; sourceTree = "<group>"; };
+		E7C0E45014EBD11E004D7388 /* soap_ctrlpt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = soap_ctrlpt.c; sourceTree = "<group>"; };
+		E7C0E45114EBD11E004D7388 /* soap_device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = soap_device.c; sourceTree = "<group>"; };
+		E7C0E45314EBD11E004D7388 /* ssdp_ctrlpt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ssdp_ctrlpt.c; sourceTree = "<group>"; };
+		E7C0E45414EBD11E004D7388 /* ssdp_device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ssdp_device.c; sourceTree = "<group>"; };
+		E7C0E45514EBD11E004D7388 /* ssdp_ResultData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssdp_ResultData.h; sourceTree = "<group>"; };
+		E7C0E45614EBD11E004D7388 /* ssdp_server.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ssdp_server.c; sourceTree = "<group>"; };
+		E7C0E45714EBD11E004D7388 /* upnp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upnp.h; sourceTree = "<group>"; };
+		E7C0E45814EBD11E004D7388 /* upnpconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upnpconfig.h; sourceTree = "<group>"; };
+		E7C0E45914EBD11E004D7388 /* upnpdebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upnpdebug.h; sourceTree = "<group>"; };
+		E7C0E45A14EBD11E004D7388 /* UpnpGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpnpGlobal.h; sourceTree = "<group>"; };
+		E7C0E45B14EBD11E004D7388 /* UpnpInet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpnpInet.h; sourceTree = "<group>"; };
+		E7C0E45C14EBD11E004D7388 /* UpnpIntTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpnpIntTypes.h; sourceTree = "<group>"; };
+		E7C0E45D14EBD11E004D7388 /* UpnpStdInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpnpStdInt.h; sourceTree = "<group>"; };
+		E7C0E45E14EBD11E004D7388 /* UpnpString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpnpString.h; sourceTree = "<group>"; };
+		E7C0E45F14EBD11E004D7388 /* upnptools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upnptools.h; sourceTree = "<group>"; };
+		E7C0E46014EBD11E004D7388 /* UpnpUniStd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpnpUniStd.h; sourceTree = "<group>"; };
+		E7C0E46214EBD11E004D7388 /* urlconfig.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = urlconfig.c; sourceTree = "<group>"; };
+		E7C0E46414EBD11E004D7388 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		E7C0E46514EBD11E004D7388 /* sysdep.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sysdep.c; sourceTree = "<group>"; };
+		E7C0E46614EBD11E004D7388 /* uuid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uuid.c; sourceTree = "<group>"; };
+		E7C0E50614EBD212004D7388 /* NSString+protocolinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+protocolinfo.h"; sourceTree = "<group>"; };
+		E7C0E50714EBD212004D7388 /* NSString+protocolinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+protocolinfo.m"; sourceTree = "<group>"; };
+		E7C0E50814EBD212004D7388 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
+		E7C0E50914EBD212004D7388 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
+		E7C0E50E14EBD2BC004D7388 /* MMediaTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMediaTime.h; sourceTree = "<group>"; };
+		E7C0E50F14EBD2BC004D7388 /* MMediaTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMediaTime.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E7C0E39F14EBD0A3004D7388 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C0E3A614EBD0A3004D7388 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E7C0E39714EBD0A3004D7388 = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3A714EBD0A3004D7388 /* iUPnP */,
+				E7C0E3A414EBD0A3004D7388 /* Frameworks */,
+				E7C0E3A314EBD0A3004D7388 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E7C0E3A314EBD0A3004D7388 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3A214EBD0A3004D7388 /* libiUPnP.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E7C0E3A414EBD0A3004D7388 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3A514EBD0A3004D7388 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7C0E3A714EBD0A3004D7388 /* iUPnP */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E50114EBD164004D7388 /* utils */,
+				E7C0E3B914EBD11E004D7388 /* av */,
+				E7C0E3D914EBD11E004D7388 /* core */,
+				E7C0E3F014EBD11E004D7388 /* LastChangeParser.h */,
+				E7C0E3F114EBD11E004D7388 /* LastChangeParser.m */,
+				E7C0E3F214EBD11E004D7388 /* libupnp */,
+				E7C0E3A814EBD0A3004D7388 /* Supporting Files */,
+			);
+			path = iUPnP;
+			sourceTree = "<group>";
+		};
+		E7C0E3A814EBD0A3004D7388 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3A914EBD0A3004D7388 /* iUPnP-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E7C0E3B914EBD11E004D7388 /* av */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E51414EBD3E4004D7388 /* Media Renderer */,
+				E7C0E51314EBD39B004D7388 /* Media Server */,
+				E7C0E3CB14EBD11E004D7388 /* LastChange.h */,
+				E7C0E3CC14EBD11E004D7388 /* LastChange.m */,
+			);
+			path = av;
+			sourceTree = "<group>";
+		};
+		E7C0E3BA14EBD11E004D7388 /* didl */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3BB14EBD11E004D7388 /* DidlParser.h */,
+				E7C0E3BC14EBD11E004D7388 /* DidlParser.m */,
+				E7C0E3BD14EBD11E004D7388 /* DidlResult.h */,
+				E7C0E3BE14EBD11E004D7388 /* DidlResult.m */,
+				E7C0E3BF14EBD11E004D7388 /* MediaContainer.h */,
+				E7C0E3C014EBD11E004D7388 /* MediaContainer.m */,
+				E7C0E3C114EBD11E004D7388 /* MediaItem.h */,
+				E7C0E3C214EBD11E004D7388 /* MediaItem.m */,
+				E7C0E3C314EBD11E004D7388 /* MediaObject.h */,
+				E7C0E3C414EBD11E004D7388 /* MediaObject.m */,
+				E7C0E3C514EBD11E004D7388 /* MediaRes.h */,
+				E7C0E3C614EBD11E004D7388 /* MediaRes.m */,
+				E7C0E3C714EBD11E004D7388 /* ObjectClass.h */,
+				E7C0E3C814EBD11E004D7388 /* ObjectClass.m */,
+				E7C0E3C914EBD11E004D7388 /* UPnPArtist.h */,
+				E7C0E3CA14EBD11E004D7388 /* UPnPArtist.m */,
+			);
+			path = didl;
+			sourceTree = "<group>";
+		};
+		E7C0E3D914EBD11E004D7388 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3DA14EBD11E004D7388 /* EventParser.h */,
+				E7C0E3DB14EBD11E004D7388 /* EventParser.m */,
+				E7C0E3DC14EBD11E004D7388 /* MSubscription.h */,
+				E7C0E3DD14EBD11E004D7388 /* MSubscription.m */,
+				E7C0E3DE14EBD11E004D7388 /* MUPnPAction.h */,
+				E7C0E3DF14EBD11E004D7388 /* MUPnPAction.m */,
+				E7C0E3E014EBD11E004D7388 /* MUPnPArgument.h */,
+				E7C0E3E114EBD11E004D7388 /* MUPnPArgument.m */,
+				E7C0E3E214EBD11E004D7388 /* MUPnPControlPoint.h */,
+				E7C0E3E314EBD11E004D7388 /* MUPnPControlPoint.m */,
+				E7C0E3E414EBD11E004D7388 /* MUPnPDevice.h */,
+				E7C0E3E514EBD11E004D7388 /* MUPnPDevice.m */,
+				E7C0E3E614EBD11E004D7388 /* MUPnPIcon.h */,
+				E7C0E3E714EBD11E004D7388 /* MUPnPIcon.m */,
+				E7C0E3EA14EBD11E004D7388 /* MUPnPService.h */,
+				E7C0E3EB14EBD11E004D7388 /* MUPnPService.m */,
+				E7C0E3EC14EBD11E004D7388 /* MUPnPStack.h */,
+				E7C0E3ED14EBD11E004D7388 /* MUPnPStack.m */,
+				E7C0E3EE14EBD11E004D7388 /* NSError+UPnP.h */,
+				E7C0E3EF14EBD11E004D7388 /* NSError+UPnP.m */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		E7C0E3F214EBD11E004D7388 /* libupnp */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3F314EBD11E004D7388 /* api */,
+				E7C0E3F814EBD11E004D7388 /* autoconfig.h */,
+				E7C0E3F914EBD11E004D7388 /* gena */,
+				E7C0E3FD14EBD11E004D7388 /* genlib */,
+				E7C0E41314EBD11E004D7388 /* inc */,
+				E7C0E43514EBD11E004D7388 /* ixml */,
+				E7C0E44114EBD11E004D7388 /* pthread */,
+				E7C0E44E14EBD11E004D7388 /* soap */,
+				E7C0E45214EBD11E004D7388 /* ssdp */,
+				E7C0E45714EBD11E004D7388 /* upnp.h */,
+				E7C0E45814EBD11E004D7388 /* upnpconfig.h */,
+				E7C0E45914EBD11E004D7388 /* upnpdebug.h */,
+				E7C0E45A14EBD11E004D7388 /* UpnpGlobal.h */,
+				E7C0E45B14EBD11E004D7388 /* UpnpInet.h */,
+				E7C0E45C14EBD11E004D7388 /* UpnpIntTypes.h */,
+				E7C0E45D14EBD11E004D7388 /* UpnpStdInt.h */,
+				E7C0E45E14EBD11E004D7388 /* UpnpString.h */,
+				E7C0E45F14EBD11E004D7388 /* upnptools.h */,
+				E7C0E46014EBD11E004D7388 /* UpnpUniStd.h */,
+				E7C0E46114EBD11E004D7388 /* urlconfig */,
+				E7C0E46314EBD11E004D7388 /* uuid */,
+			);
+			path = libupnp;
+			sourceTree = "<group>";
+		};
+		E7C0E3F314EBD11E004D7388 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3F414EBD11E004D7388 /* upnpapi.c */,
+				E7C0E3F514EBD11E004D7388 /* upnpdebug.c */,
+				E7C0E3F614EBD11E004D7388 /* UpnpString.c */,
+				E7C0E3F714EBD11E004D7388 /* upnptools.c */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		E7C0E3F914EBD11E004D7388 /* gena */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3FA14EBD11E004D7388 /* gena_callback2.c */,
+				E7C0E3FB14EBD11E004D7388 /* gena_ctrlpt.c */,
+				E7C0E3FC14EBD11E004D7388 /* gena_device.c */,
+			);
+			path = gena;
+			sourceTree = "<group>";
+		};
+		E7C0E3FD14EBD11E004D7388 /* genlib */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3FE14EBD11E004D7388 /* client_table */,
+				E7C0E40014EBD11E004D7388 /* miniserver */,
+				E7C0E40214EBD11E004D7388 /* net */,
+				E7C0E40C14EBD11E004D7388 /* service_table */,
+				E7C0E40E14EBD11E004D7388 /* util */,
+			);
+			path = genlib;
+			sourceTree = "<group>";
+		};
+		E7C0E3FE14EBD11E004D7388 /* client_table */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3FF14EBD11E004D7388 /* client_table.c */,
+			);
+			path = client_table;
+			sourceTree = "<group>";
+		};
+		E7C0E40014EBD11E004D7388 /* miniserver */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E40114EBD11E004D7388 /* miniserver.c */,
+			);
+			path = miniserver;
+			sourceTree = "<group>";
+		};
+		E7C0E40214EBD11E004D7388 /* net */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E40314EBD11E004D7388 /* http */,
+				E7C0E40914EBD11E004D7388 /* sock.c */,
+				E7C0E40A14EBD11E004D7388 /* uri */,
+			);
+			path = net;
+			sourceTree = "<group>";
+		};
+		E7C0E40314EBD11E004D7388 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E40414EBD11E004D7388 /* httpparser.c */,
+				E7C0E40514EBD11E004D7388 /* httpreadwrite.c */,
+				E7C0E40614EBD11E004D7388 /* parsetools.c */,
+				E7C0E40714EBD11E004D7388 /* statcodes.c */,
+				E7C0E40814EBD11E004D7388 /* webserver.c */,
+			);
+			path = http;
+			sourceTree = "<group>";
+		};
+		E7C0E40A14EBD11E004D7388 /* uri */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E40B14EBD11E004D7388 /* uri.c */,
+			);
+			path = uri;
+			sourceTree = "<group>";
+		};
+		E7C0E40C14EBD11E004D7388 /* service_table */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E40D14EBD11E004D7388 /* service_table.c */,
+			);
+			path = service_table;
+			sourceTree = "<group>";
+		};
+		E7C0E40E14EBD11E004D7388 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E40F14EBD11E004D7388 /* membuffer.c */,
+				E7C0E41014EBD11E004D7388 /* strintmap.c */,
+				E7C0E41114EBD11E004D7388 /* upnp_timeout.c */,
+				E7C0E41214EBD11E004D7388 /* util.c */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		E7C0E41314EBD11E004D7388 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E41414EBD11E004D7388 /* client_table.h */,
+				E7C0E41514EBD11E004D7388 /* config.h */,
+				E7C0E41614EBD11E004D7388 /* gena.h */,
+				E7C0E41714EBD11E004D7388 /* gena_ctrlpt.h */,
+				E7C0E41814EBD11E004D7388 /* gena_device.h */,
+				E7C0E41914EBD11E004D7388 /* global.h */,
+				E7C0E41A14EBD11E004D7388 /* gmtdate.h */,
+				E7C0E41B14EBD11E004D7388 /* httpparser.h */,
+				E7C0E41C14EBD11E004D7388 /* httpreadwrite.h */,
+				E7C0E41D14EBD11E004D7388 /* inet_pton.h */,
+				E7C0E41E14EBD11E004D7388 /* md5.h */,
+				E7C0E41F14EBD11E004D7388 /* membuffer.h */,
+				E7C0E42014EBD11E004D7388 /* miniserver.h */,
+				E7C0E42114EBD11E004D7388 /* netall.h */,
+				E7C0E42214EBD11E004D7388 /* parsetools.h */,
+				E7C0E42314EBD11E004D7388 /* server.h */,
+				E7C0E42414EBD11E004D7388 /* service_table.h */,
+				E7C0E42514EBD11E004D7388 /* soaplib.h */,
+				E7C0E42614EBD11E004D7388 /* sock.h */,
+				E7C0E42714EBD11E004D7388 /* ssdplib.h */,
+				E7C0E42814EBD11E004D7388 /* statcodes.h */,
+				E7C0E42914EBD11E004D7388 /* statuscodes.h */,
+				E7C0E42A14EBD11E004D7388 /* strintmap.h */,
+				E7C0E42B14EBD11E004D7388 /* sysdep.h */,
+				E7C0E42C14EBD11E004D7388 /* unixutil.h */,
+				E7C0E42D14EBD11E004D7388 /* upnp_timeout.h */,
+				E7C0E42E14EBD11E004D7388 /* upnpapi.h */,
+				E7C0E42F14EBD11E004D7388 /* upnputil.h */,
+				E7C0E43014EBD11E004D7388 /* uri.h */,
+				E7C0E43114EBD11E004D7388 /* urlconfig.h */,
+				E7C0E43214EBD11E004D7388 /* uuid.h */,
+				E7C0E43314EBD11E004D7388 /* VirtualDir.h */,
+				E7C0E43414EBD11E004D7388 /* webserver.h */,
+			);
+			path = inc;
+			sourceTree = "<group>";
+		};
+		E7C0E43514EBD11E004D7388 /* ixml */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E43614EBD11E004D7388 /* attr.c */,
+				E7C0E43714EBD11E004D7388 /* document.c */,
+				E7C0E43814EBD11E004D7388 /* element.c */,
+				E7C0E43914EBD11E004D7388 /* ixml.c */,
+				E7C0E43A14EBD11E004D7388 /* ixml.h */,
+				E7C0E43B14EBD11E004D7388 /* ixmldebug.c */,
+				E7C0E43C14EBD11E004D7388 /* ixmldebug.h */,
+				E7C0E43D14EBD11E004D7388 /* ixmlmembuf.c */,
+				E7C0E43E14EBD11E004D7388 /* ixmlmembuf.h */,
+				E7C0E43F14EBD11E004D7388 /* ixmlparser.c */,
+				E7C0E44014EBD11E004D7388 /* ixmlparser.h */,
+			);
+			path = ixml;
+			sourceTree = "<group>";
+		};
+		E7C0E44114EBD11E004D7388 /* pthread */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E44214EBD11E004D7388 /* FreeList.c */,
+				E7C0E44314EBD11E004D7388 /* FreeList.h */,
+				E7C0E44414EBD11E004D7388 /* ithread.h */,
+				E7C0E44514EBD11E004D7388 /* LinkedList.c */,
+				E7C0E44614EBD11E004D7388 /* LinkedList.h */,
+				E7C0E44714EBD11E004D7388 /* namedNodeMap.c */,
+				E7C0E44814EBD11E004D7388 /* node.c */,
+				E7C0E44914EBD11E004D7388 /* nodeList.c */,
+				E7C0E44A14EBD11E004D7388 /* ThreadPool.c */,
+				E7C0E44B14EBD11E004D7388 /* ThreadPool.h */,
+				E7C0E44C14EBD11E004D7388 /* TimerThread.c */,
+				E7C0E44D14EBD11E004D7388 /* TimerThread.h */,
+			);
+			path = pthread;
+			sourceTree = "<group>";
+		};
+		E7C0E44E14EBD11E004D7388 /* soap */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E44F14EBD11E004D7388 /* soap_common.c */,
+				E7C0E45014EBD11E004D7388 /* soap_ctrlpt.c */,
+				E7C0E45114EBD11E004D7388 /* soap_device.c */,
+			);
+			path = soap;
+			sourceTree = "<group>";
+		};
+		E7C0E45214EBD11E004D7388 /* ssdp */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E45314EBD11E004D7388 /* ssdp_ctrlpt.c */,
+				E7C0E45414EBD11E004D7388 /* ssdp_device.c */,
+				E7C0E45514EBD11E004D7388 /* ssdp_ResultData.h */,
+				E7C0E45614EBD11E004D7388 /* ssdp_server.c */,
+			);
+			path = ssdp;
+			sourceTree = "<group>";
+		};
+		E7C0E46114EBD11E004D7388 /* urlconfig */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E46214EBD11E004D7388 /* urlconfig.c */,
+			);
+			path = urlconfig;
+			sourceTree = "<group>";
+		};
+		E7C0E46314EBD11E004D7388 /* uuid */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E46414EBD11E004D7388 /* md5.c */,
+				E7C0E46514EBD11E004D7388 /* sysdep.c */,
+				E7C0E46614EBD11E004D7388 /* uuid.c */,
+			);
+			path = uuid;
+			sourceTree = "<group>";
+		};
+		E7C0E50114EBD164004D7388 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E50614EBD212004D7388 /* NSString+protocolinfo.h */,
+				E7C0E50714EBD212004D7388 /* NSString+protocolinfo.m */,
+				E7C0E50814EBD212004D7388 /* NSString+Utils.h */,
+				E7C0E50914EBD212004D7388 /* NSString+Utils.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		E7C0E51314EBD39B004D7388 /* Media Server */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E3D314EBD11E004D7388 /* RelExp.h */,
+				E7C0E3D414EBD11E004D7388 /* RelExp.m */,
+				E7C0E3D514EBD11E004D7388 /* SearchCriteria.h */,
+				E7C0E3D614EBD11E004D7388 /* SearchCriteria.m */,
+				E7C0E3BA14EBD11E004D7388 /* didl */,
+				E7C0E3E814EBD11E004D7388 /* MUPnPMediaServer.h */,
+				E7C0E3E914EBD11E004D7388 /* MUPnPMediaServer.m */,
+			);
+			name = "Media Server";
+			sourceTree = "<group>";
+		};
+		E7C0E51414EBD3E4004D7388 /* Media Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				E7C0E50E14EBD2BC004D7388 /* MMediaTime.h */,
+				E7C0E50F14EBD2BC004D7388 /* MMediaTime.m */,
+				E7C0E3D114EBD11E004D7388 /* PositionInfo.h */,
+				E7C0E3D214EBD11E004D7388 /* PositionInfo.m */,
+				E7C0E3D714EBD11E004D7388 /* TransportInfo.h */,
+				E7C0E3D814EBD11E004D7388 /* TransportInfo.m */,
+				E7C0E3CF14EBD11E004D7388 /* MUPnPMediaRenderer.h */,
+				E7C0E3D014EBD11E004D7388 /* MUPnPMediaRenderer.m */,
+			);
+			name = "Media Renderer";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E7C0E3A014EBD0A3004D7388 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C0E46714EBD11E004D7388 /* DidlParser.h in Headers */,
+				E7C0E46914EBD11E004D7388 /* DidlResult.h in Headers */,
+				E7C0E46B14EBD11E004D7388 /* MediaContainer.h in Headers */,
+				E7C0E46D14EBD11E004D7388 /* MediaItem.h in Headers */,
+				E7C0E46F14EBD11E004D7388 /* MediaObject.h in Headers */,
+				E7C0E47114EBD11E004D7388 /* MediaRes.h in Headers */,
+				E7C0E47314EBD11E004D7388 /* ObjectClass.h in Headers */,
+				E7C0E47514EBD11E004D7388 /* UPnPArtist.h in Headers */,
+				E7C0E47714EBD11E004D7388 /* LastChange.h in Headers */,
+				E7C0E47B14EBD11E004D7388 /* MUPnPMediaRenderer.h in Headers */,
+				E7C0E47D14EBD11E004D7388 /* PositionInfo.h in Headers */,
+				E7C0E47F14EBD11E004D7388 /* RelExp.h in Headers */,
+				E7C0E48114EBD11E004D7388 /* SearchCriteria.h in Headers */,
+				E7C0E48314EBD11E004D7388 /* TransportInfo.h in Headers */,
+				E7C0E48514EBD11E004D7388 /* EventParser.h in Headers */,
+				E7C0E48714EBD11E004D7388 /* MSubscription.h in Headers */,
+				E7C0E48914EBD11E004D7388 /* MUPnPAction.h in Headers */,
+				E7C0E48B14EBD11E004D7388 /* MUPnPArgument.h in Headers */,
+				E7C0E48D14EBD11E004D7388 /* MUPnPControlPoint.h in Headers */,
+				E7C0E48F14EBD11E004D7388 /* MUPnPDevice.h in Headers */,
+				E7C0E49114EBD11E004D7388 /* MUPnPIcon.h in Headers */,
+				E7C0E49314EBD11E004D7388 /* MUPnPMediaServer.h in Headers */,
+				E7C0E49514EBD11E004D7388 /* MUPnPService.h in Headers */,
+				E7C0E49714EBD11E004D7388 /* MUPnPStack.h in Headers */,
+				E7C0E49914EBD11E004D7388 /* NSError+UPnP.h in Headers */,
+				E7C0E49B14EBD11E004D7388 /* LastChangeParser.h in Headers */,
+				E7C0E4A114EBD11E004D7388 /* autoconfig.h in Headers */,
+				E7C0E4B314EBD11E004D7388 /* client_table.h in Headers */,
+				E7C0E4B414EBD11E004D7388 /* config.h in Headers */,
+				E7C0E4B514EBD11E004D7388 /* gena.h in Headers */,
+				E7C0E4B614EBD11E004D7388 /* gena_ctrlpt.h in Headers */,
+				E7C0E4B714EBD11E004D7388 /* gena_device.h in Headers */,
+				E7C0E4B814EBD11E004D7388 /* global.h in Headers */,
+				E7C0E4B914EBD11E004D7388 /* gmtdate.h in Headers */,
+				E7C0E4BA14EBD11E004D7388 /* httpparser.h in Headers */,
+				E7C0E4BB14EBD11E004D7388 /* httpreadwrite.h in Headers */,
+				E7C0E4BC14EBD11E004D7388 /* inet_pton.h in Headers */,
+				E7C0E4BD14EBD11E004D7388 /* md5.h in Headers */,
+				E7C0E4BE14EBD11E004D7388 /* membuffer.h in Headers */,
+				E7C0E4BF14EBD11E004D7388 /* miniserver.h in Headers */,
+				E7C0E4C014EBD11E004D7388 /* netall.h in Headers */,
+				E7C0E4C114EBD11E004D7388 /* parsetools.h in Headers */,
+				E7C0E4C214EBD11E004D7388 /* server.h in Headers */,
+				E7C0E4C314EBD11E004D7388 /* service_table.h in Headers */,
+				E7C0E4C414EBD11E004D7388 /* soaplib.h in Headers */,
+				E7C0E4C514EBD11E004D7388 /* sock.h in Headers */,
+				E7C0E4C614EBD11E004D7388 /* ssdplib.h in Headers */,
+				E7C0E4C714EBD11E004D7388 /* statcodes.h in Headers */,
+				E7C0E4C814EBD11E004D7388 /* statuscodes.h in Headers */,
+				E7C0E4C914EBD11E004D7388 /* strintmap.h in Headers */,
+				E7C0E4CA14EBD11E004D7388 /* sysdep.h in Headers */,
+				E7C0E4CB14EBD11E004D7388 /* unixutil.h in Headers */,
+				E7C0E4CC14EBD11E004D7388 /* upnp_timeout.h in Headers */,
+				E7C0E4CD14EBD11E004D7388 /* upnpapi.h in Headers */,
+				E7C0E4CE14EBD11E004D7388 /* upnputil.h in Headers */,
+				E7C0E4CF14EBD11E004D7388 /* uri.h in Headers */,
+				E7C0E4D014EBD11E004D7388 /* urlconfig.h in Headers */,
+				E7C0E4D114EBD11E004D7388 /* uuid.h in Headers */,
+				E7C0E4D214EBD11E004D7388 /* VirtualDir.h in Headers */,
+				E7C0E4D314EBD11E004D7388 /* webserver.h in Headers */,
+				E7C0E4D814EBD11E004D7388 /* ixml.h in Headers */,
+				E7C0E4DA14EBD11E004D7388 /* ixmldebug.h in Headers */,
+				E7C0E4DC14EBD11E004D7388 /* ixmlmembuf.h in Headers */,
+				E7C0E4DE14EBD11E004D7388 /* ixmlparser.h in Headers */,
+				E7C0E4E014EBD11E004D7388 /* FreeList.h in Headers */,
+				E7C0E4E114EBD11E004D7388 /* ithread.h in Headers */,
+				E7C0E4E314EBD11E004D7388 /* LinkedList.h in Headers */,
+				E7C0E4E814EBD11E004D7388 /* ThreadPool.h in Headers */,
+				E7C0E4EA14EBD11E004D7388 /* TimerThread.h in Headers */,
+				E7C0E4F014EBD11E004D7388 /* ssdp_ResultData.h in Headers */,
+				E7C0E4F214EBD11E004D7388 /* upnp.h in Headers */,
+				E7C0E4F314EBD11E004D7388 /* upnpconfig.h in Headers */,
+				E7C0E4F414EBD11E004D7388 /* upnpdebug.h in Headers */,
+				E7C0E4F514EBD11E004D7388 /* UpnpGlobal.h in Headers */,
+				E7C0E4F614EBD11E004D7388 /* UpnpInet.h in Headers */,
+				E7C0E4F714EBD11E004D7388 /* UpnpIntTypes.h in Headers */,
+				E7C0E4F814EBD11E004D7388 /* UpnpStdInt.h in Headers */,
+				E7C0E4F914EBD11E004D7388 /* UpnpString.h in Headers */,
+				E7C0E4FA14EBD11E004D7388 /* upnptools.h in Headers */,
+				E7C0E4FB14EBD11E004D7388 /* UpnpUniStd.h in Headers */,
+				E7C0E50A14EBD212004D7388 /* NSString+protocolinfo.h in Headers */,
+				E7C0E50C14EBD212004D7388 /* NSString+Utils.h in Headers */,
+				E7C0E51014EBD2BC004D7388 /* MMediaTime.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E7C0E3A114EBD0A3004D7388 /* iUPnP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7C0E3AF14EBD0A3004D7388 /* Build configuration list for PBXNativeTarget "iUPnP" */;
+			buildPhases = (
+				E7C0E39E14EBD0A3004D7388 /* Sources */,
+				E7C0E39F14EBD0A3004D7388 /* Frameworks */,
+				E7C0E3A014EBD0A3004D7388 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iUPnP;
+			productName = iUPnP;
+			productReference = E7C0E3A214EBD0A3004D7388 /* libiUPnP.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E7C0E39914EBD0A3004D7388 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E7C0E39C14EBD0A3004D7388 /* Build configuration list for PBXProject "iUPnP" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E7C0E39714EBD0A3004D7388;
+			productRefGroup = E7C0E3A314EBD0A3004D7388 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7C0E3A114EBD0A3004D7388 /* iUPnP */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E7C0E39E14EBD0A3004D7388 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C0E46814EBD11E004D7388 /* DidlParser.m in Sources */,
+				E7C0E46A14EBD11E004D7388 /* DidlResult.m in Sources */,
+				E7C0E46C14EBD11E004D7388 /* MediaContainer.m in Sources */,
+				E7C0E46E14EBD11E004D7388 /* MediaItem.m in Sources */,
+				E7C0E47014EBD11E004D7388 /* MediaObject.m in Sources */,
+				E7C0E47214EBD11E004D7388 /* MediaRes.m in Sources */,
+				E7C0E47414EBD11E004D7388 /* ObjectClass.m in Sources */,
+				E7C0E47614EBD11E004D7388 /* UPnPArtist.m in Sources */,
+				E7C0E47814EBD11E004D7388 /* LastChange.m in Sources */,
+				E7C0E47C14EBD11E004D7388 /* MUPnPMediaRenderer.m in Sources */,
+				E7C0E47E14EBD11E004D7388 /* PositionInfo.m in Sources */,
+				E7C0E48014EBD11E004D7388 /* RelExp.m in Sources */,
+				E7C0E48214EBD11E004D7388 /* SearchCriteria.m in Sources */,
+				E7C0E48414EBD11E004D7388 /* TransportInfo.m in Sources */,
+				E7C0E48614EBD11E004D7388 /* EventParser.m in Sources */,
+				E7C0E48814EBD11E004D7388 /* MSubscription.m in Sources */,
+				E7C0E48A14EBD11E004D7388 /* MUPnPAction.m in Sources */,
+				E7C0E48C14EBD11E004D7388 /* MUPnPArgument.m in Sources */,
+				E7C0E48E14EBD11E004D7388 /* MUPnPControlPoint.m in Sources */,
+				E7C0E49014EBD11E004D7388 /* MUPnPDevice.m in Sources */,
+				E7C0E49214EBD11E004D7388 /* MUPnPIcon.m in Sources */,
+				E7C0E49414EBD11E004D7388 /* MUPnPMediaServer.m in Sources */,
+				E7C0E49614EBD11E004D7388 /* MUPnPService.m in Sources */,
+				E7C0E49814EBD11E004D7388 /* MUPnPStack.m in Sources */,
+				E7C0E49A14EBD11E004D7388 /* NSError+UPnP.m in Sources */,
+				E7C0E49C14EBD11E004D7388 /* LastChangeParser.m in Sources */,
+				E7C0E49D14EBD11E004D7388 /* upnpapi.c in Sources */,
+				E7C0E49E14EBD11E004D7388 /* upnpdebug.c in Sources */,
+				E7C0E49F14EBD11E004D7388 /* UpnpString.c in Sources */,
+				E7C0E4A014EBD11E004D7388 /* upnptools.c in Sources */,
+				E7C0E4A214EBD11E004D7388 /* gena_callback2.c in Sources */,
+				E7C0E4A314EBD11E004D7388 /* gena_ctrlpt.c in Sources */,
+				E7C0E4A414EBD11E004D7388 /* gena_device.c in Sources */,
+				E7C0E4A514EBD11E004D7388 /* client_table.c in Sources */,
+				E7C0E4A614EBD11E004D7388 /* miniserver.c in Sources */,
+				E7C0E4A714EBD11E004D7388 /* httpparser.c in Sources */,
+				E7C0E4A814EBD11E004D7388 /* httpreadwrite.c in Sources */,
+				E7C0E4A914EBD11E004D7388 /* parsetools.c in Sources */,
+				E7C0E4AA14EBD11E004D7388 /* statcodes.c in Sources */,
+				E7C0E4AB14EBD11E004D7388 /* webserver.c in Sources */,
+				E7C0E4AC14EBD11E004D7388 /* sock.c in Sources */,
+				E7C0E4AD14EBD11E004D7388 /* uri.c in Sources */,
+				E7C0E4AE14EBD11E004D7388 /* service_table.c in Sources */,
+				E7C0E4AF14EBD11E004D7388 /* membuffer.c in Sources */,
+				E7C0E4B014EBD11E004D7388 /* strintmap.c in Sources */,
+				E7C0E4B114EBD11E004D7388 /* upnp_timeout.c in Sources */,
+				E7C0E4B214EBD11E004D7388 /* util.c in Sources */,
+				E7C0E4D414EBD11E004D7388 /* attr.c in Sources */,
+				E7C0E4D514EBD11E004D7388 /* document.c in Sources */,
+				E7C0E4D614EBD11E004D7388 /* element.c in Sources */,
+				E7C0E4D714EBD11E004D7388 /* ixml.c in Sources */,
+				E7C0E4D914EBD11E004D7388 /* ixmldebug.c in Sources */,
+				E7C0E4DB14EBD11E004D7388 /* ixmlmembuf.c in Sources */,
+				E7C0E4DD14EBD11E004D7388 /* ixmlparser.c in Sources */,
+				E7C0E4DF14EBD11E004D7388 /* FreeList.c in Sources */,
+				E7C0E4E214EBD11E004D7388 /* LinkedList.c in Sources */,
+				E7C0E4E414EBD11E004D7388 /* namedNodeMap.c in Sources */,
+				E7C0E4E514EBD11E004D7388 /* node.c in Sources */,
+				E7C0E4E614EBD11E004D7388 /* nodeList.c in Sources */,
+				E7C0E4E714EBD11E004D7388 /* ThreadPool.c in Sources */,
+				E7C0E4E914EBD11E004D7388 /* TimerThread.c in Sources */,
+				E7C0E4EB14EBD11E004D7388 /* soap_common.c in Sources */,
+				E7C0E4EC14EBD11E004D7388 /* soap_ctrlpt.c in Sources */,
+				E7C0E4ED14EBD11E004D7388 /* soap_device.c in Sources */,
+				E7C0E4EE14EBD11E004D7388 /* ssdp_ctrlpt.c in Sources */,
+				E7C0E4EF14EBD11E004D7388 /* ssdp_device.c in Sources */,
+				E7C0E4F114EBD11E004D7388 /* ssdp_server.c in Sources */,
+				E7C0E4FC14EBD11E004D7388 /* urlconfig.c in Sources */,
+				E7C0E4FD14EBD11E004D7388 /* md5.c in Sources */,
+				E7C0E4FE14EBD11E004D7388 /* sysdep.c in Sources */,
+				E7C0E4FF14EBD11E004D7388 /* uuid.c in Sources */,
+				E7C0E50B14EBD212004D7388 /* NSString+protocolinfo.m in Sources */,
+				E7C0E50D14EBD212004D7388 /* NSString+Utils.m in Sources */,
+				E7C0E51114EBD2BC004D7388 /* MMediaTime.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E7C0E3AD14EBD0A3004D7388 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E7C0E3AE14EBD0A3004D7388 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E7C0E3B014EBD0A3004D7388 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iUPnP.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iUPnP/iUPnP-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E7C0E3B114EBD0A3004D7388 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iUPnP.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iUPnP/iUPnP-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E7C0E39C14EBD0A3004D7388 /* Build configuration list for PBXProject "iUPnP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7C0E3AD14EBD0A3004D7388 /* Debug */,
+				E7C0E3AE14EBD0A3004D7388 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7C0E3AF14EBD0A3004D7388 /* Build configuration list for PBXNativeTarget "iUPnP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7C0E3B014EBD0A3004D7388 /* Debug */,
+				E7C0E3B114EBD0A3004D7388 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E7C0E39914EBD0A3004D7388 /* Project object */;
+}
